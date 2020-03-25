@@ -3,30 +3,30 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Sandeep Pawar | Power BI, ML, Python, R, Azure ML</title>
+<title>Resources | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Sandeep Pawar" />
+<meta property="og:title" content="Resources" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Power BI, ML, Python, R, Azure ML" />
 <meta property="og:description" content="Power BI, ML, Python, R, Azure ML" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/resources/" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/resources/" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <script type="application/ld+json">
-{"description":"Power BI, ML, Python, R, Azure ML","@type":"WebSite","url":"https://pawarbi.github.io/blog/","name":"Sandeep Pawar","headline":"Sandeep Pawar","@context":"https://schema.org"}</script>
+{"description":"Power BI, ML, Python, R, Azure ML","@type":"WebPage","url":"https://pawarbi.github.io/blog/resources/","headline":"Resources","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Sandeep Pawar | Power BI, ML, Python, R, Azure ML</title>
+<title>Resources | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Sandeep Pawar" />
+<meta property="og:title" content="Resources" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Power BI, ML, Python, R, Azure ML" />
 <meta property="og:description" content="Power BI, ML, Python, R, Azure ML" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/resources/" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/resources/" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <script type="application/ld+json">
-{"description":"Power BI, ML, Python, R, Azure ML","@type":"WebSite","url":"https://pawarbi.github.io/blog/","name":"Sandeep Pawar","headline":"Sandeep Pawar","@context":"https://schema.org"}</script>
+{"description":"Power BI, ML, Python, R, Azure ML","@type":"WebPage","url":"https://pawarbi.github.io/blog/resources/","headline":"Resources","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -78,40 +78,22 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><p>This site is built with <a href="https://github.com/fastai/fastpages">fastpages</a>, An easy to use blogging platform with extra features for Jupyter Notebooks.</p>
+        <article class="post">
 
-<p><img src="/blog/images/diagram.png" alt="" title="https://github.com/fastai/fastpages" /></p>
+  <header class="post-header">
+    <h1 class="post-title">Resources</h1>
+  </header>
 
-<p><a href="https://github.com/fastai/fastpages">fastpages</a> automates the process of creating blog posts via GitHub Actions, so you don’t have to fuss with conversion scripts.  A full list of features can be found on <a href="https://github.com/fastai/fastpages">GitHub</a>.</p>
-
-<p>You can edit the <code class="highlighter-rouge">index.html</code> file to change this content.</p>
-
-<h1 id="posts">Posts</h1>
-
+  <div class="post-content">
+    My name is Sandeep Pawar
 
 
-  
+My LinkedIn is  **[Sandeep Pawar](https://www.linkedin.com/in/sanpawar/)**
 
-  <!-- Hide posts if front matter flag hide:true -->
-  
-  <ul class="post-list"><li><h3>
-    <a class="post-link" href="/blog/2020/03/24/fable.html">
-    Title
-    </a>
-</h3><p class="post-meta-description">summary</p><p class="post-meta">Mar 24, 2020</p>
-</li><li><h3>
-    <a class="post-link" href="/blog/jupyter/2020/02/20/test.html">
-    Fastpages Notebook Blog Post
-    </a>
-</h3><p class="post-meta-description">A tutorial of fastpages for Jupyter notebooks.</p><p class="post-meta">Feb 20, 2020</p>
-</li><li><h3>
-    <a class="post-link" href="/blog/markdown/2020/01/14/test-markdown-post.html">
-    An Example Markdown Post
-    </a>
-</h3><p class="post-meta-description">A minimal example of using markdown with fastpages.</p><p class="post-meta">Jan 14, 2020</p>
-</li></ul>
+  </div>
 
-    </div>
+</article>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/blog/"></data>
