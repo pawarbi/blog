@@ -4,9 +4,9 @@
         "post0": {
             "title": "Title",
             "content": "import pandas as pd import numpy as np import rpy2 import warnings warnings.filterwarnings(&#39;ignore&#39;) from rpy2.robjects import pandas2ri import rpy2.rinterface as rinterface pandas2ri.activate() %load_ext rpy2.ipython . The rpy2.ipython extension is already loaded. To reload it, use: %reload_ext rpy2.ipython . data=pd.read_excel(r&quot;C: Users spawar Personal Analytics Time Series Datasets timeseries.xlsx&quot;) train=data.iloc[:-6] . %%R -i train -o rdf,fit,glance library(dplyr) library(tsibble) library(fable) rdf &lt;- train %&gt;% mutate(Date = yearmonth(Date)) %&gt;% as_tsibble(index=Date) fit &lt;- rdf %&gt;% model(ETS(Sales),ETS(log(Sales))) glance &lt;- fit%&gt;% glance() . print(glance, end=&quot;&quot;) . # A tibble: 2 x 9 .model sigma2 log_ik AIC AICc BIC MSE AMSE MAE &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; 1 ETS(Sales) 0.00169 -199. 416. 438. 424. 2.25e+8 3.47e+8 0.0267 2 ETS(log(Sales)) 0.00143 38.2 -58.4 -35.9 -50.4 7.96e-4 8.65e-4 0.0226 . glance . R/rpy2 DataFrame (0 x 1) .model .",
-            "url": "https://pawarbi.github.io/blog/2020/03/24/fable.html",
-            "relUrl": "/2020/03/24/fable.html",
-            "date": " • Mar 24, 2020"
+            "url": "https://pawarbi.github.io/blog/2020/03/25/fable.html",
+            "relUrl": "/2020/03/25/fable.html",
+            "date": " • Mar 25, 2020"
         }
         
     
