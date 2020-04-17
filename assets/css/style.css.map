@@ -3,11 +3,11 @@
 	"file": "style.css",
 	"sources": [
 		"style.scss",
-		"../../tmp/jekyll-remote-theme-20200417-1-qho1ly/_sass/minima/skins/classic.scss",
-		"../../tmp/jekyll-remote-theme-20200417-1-qho1ly/_sass/minima/initialize.scss",
-		"../../tmp/jekyll-remote-theme-20200417-1-qho1ly/_sass/minima/custom-variables.scss",
-		"../../tmp/jekyll-remote-theme-20200417-1-qho1ly/_sass/minima/_base.scss",
-		"../../tmp/jekyll-remote-theme-20200417-1-qho1ly/_sass/minima/_layout.scss",
+		"../../tmp/jekyll-remote-theme-20200417-1-nx9ew0/_sass/minima/skins/classic.scss",
+		"../../tmp/jekyll-remote-theme-20200417-1-nx9ew0/_sass/minima/initialize.scss",
+		"../../tmp/jekyll-remote-theme-20200417-1-nx9ew0/_sass/minima/custom-variables.scss",
+		"../../tmp/jekyll-remote-theme-20200417-1-nx9ew0/_sass/minima/_base.scss",
+		"../../tmp/jekyll-remote-theme-20200417-1-nx9ew0/_sass/minima/_layout.scss",
 		"_sass/minima/custom-styles.scss",
 		"_sass/minima/fastpages-styles.scss"
 	],
