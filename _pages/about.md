@@ -9,7 +9,7 @@ I like making espressos and latte art.
 
 ![My Latte Art](https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg)
 
-Education:
+**Education**:
  - M.S, Mechanical Engineering, Illinois Institute of Technology, Chicago IL
  - Masters in Engineering Management, Business Analytics, Northwestern University, IL 
 
