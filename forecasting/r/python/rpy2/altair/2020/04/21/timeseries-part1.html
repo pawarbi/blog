@@ -9,13 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods." />
 <meta property="og:description" content="Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods." />
-<link rel="canonical" href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-15T00:00:00-05:00" />
+<meta property="article:published_time" content="2020-04-21T00:00:00-05:00" />
 <script type="application/ld+json">
-{"datePublished":"2020-04-15T00:00:00-05:00","dateModified":"2020-04-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html"},"description":"Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html","headline":"Time series Forecasting in Python &amp; R, Part 1 (EDA)","@context":"https://schema.org"}</script>
+{"datePublished":"2020-04-21T00:00:00-05:00","dateModified":"2020-04-21T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html"},"description":"Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html","headline":"Time series Forecasting in Python &amp; R, Part 1 (EDA)","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Time series Forecasting in Python &amp; R, Part 1 (EDA) | Sandeep Pawar</title>
@@ -24,13 +24,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods." />
 <meta property="og:description" content="Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods." />
-<link rel="canonical" href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-15T00:00:00-05:00" />
+<meta property="article:published_time" content="2020-04-21T00:00:00-05:00" />
 <script type="application/ld+json">
-{"datePublished":"2020-04-15T00:00:00-05:00","dateModified":"2020-04-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html"},"description":"Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html","headline":"Time series Forecasting in Python &amp; R, Part 1 (EDA)","@context":"https://schema.org"}</script>
+{"datePublished":"2020-04-21T00:00:00-05:00","dateModified":"2020-04-21T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html"},"description":"Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html","headline":"Time series Forecasting in Python &amp; R, Part 1 (EDA)","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -85,8 +85,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Time series Forecasting in Python &amp; R, Part 1 (EDA)</h1><p class="page-description">Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-04-15T00:00:00-05:00" itemprop="datePublished">
-        Apr 15, 2020
+    <h1 class="post-title p-name" itemprop="name headline">Time series Forecasting in Python &amp; R, Part 1 (EDA)</h1><p class="page-description">Time series forecasting using various forecasting methods in Python &amp; R in one notebook. In the first, part I cover Exploratory Data Analysis (EDA) of the time series using visualizations and statistical methods.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-04-21T00:00:00-05:00" itemprop="datePublished">
+        Apr 21, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -121,19 +121,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-04-15-timeseries-part1.ipynb" role="button" target="_blank">
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-04-21-timeseries-part1.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-04-15-timeseries-part1.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-04-21-timeseries-part1.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-04-15-timeseries-part1.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-04-21-timeseries-part1.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -142,7 +142,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Project-Goals">Project Goals </a>
+<li class="toc-entry toc-h2"><a href="#Overview">Overview </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Importing-libraries">Importing libraries </a></li>
 <li class="toc-entry toc-h3"><a href="#Importing-Data">Importing Data </a></li>
@@ -223,7 +223,7 @@ window.onload = wrap_img;
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2020-04-15-timeseries-part1.ipynb
+# file to edit: _notebooks/2020-04-21-timeseries-part1.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -238,14 +238,14 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Project-Goals">
-<a class="anchor" href="#Project-Goals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Goals<a class="anchor-link" href="#Project-Goals"> </a>
+<h2 id="Overview">
+<a class="anchor" href="#Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview<a class="anchor-link" href="#Overview"> </a>
 </h2>
 <p>This is a quarterly sales data of a French retail company from Prof. Rob Hyndman's <a href="https://robjhyndman.com/forecasting/">"Forecasting Methods &amp; Applications"</a> book. I have uploaded the data to my <a href="https://github.com/pawarbi/blog/tree/master/data">github</a>.The goals for this first part are:</p>
 <ol>
 <li>Exploratory data analysis of the time series</li>
-<li>Explain the time series behaviour in qualitative and quantitative terms to build intution for model selection</li>
-<li>Identify the models that can be used based on the findings in the EDA</li>
+<li>Explain the time series behaviour in qualitative and quantitative terms to build intuition for model selection</li>
+<li>Identify the candidate models and possible model parameters that can be used based on the findings in the EDA</li>
 </ol>
 
 </div>
@@ -721,7 +721,7 @@ Rpy2: 2.9.4
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -780,58 +780,6 @@ Rpy2: 2.9.4
     <tr>
       <th>2013-03-31</th>
       <td>382.0</td>
-    </tr>
-    <tr>
-      <th>2013-06-30</th>
-      <td>409.0</td>
-    </tr>
-    <tr>
-      <th>2013-09-30</th>
-      <td>498.0</td>
-    </tr>
-    <tr>
-      <th>2013-12-31</th>
-      <td>387.0</td>
-    </tr>
-    <tr>
-      <th>2014-03-31</th>
-      <td>473.0</td>
-    </tr>
-    <tr>
-      <th>2014-06-30</th>
-      <td>513.0</td>
-    </tr>
-    <tr>
-      <th>2014-09-30</th>
-      <td>582.0</td>
-    </tr>
-    <tr>
-      <th>2014-12-31</th>
-      <td>474.0</td>
-    </tr>
-    <tr>
-      <th>2015-03-31</th>
-      <td>544.0</td>
-    </tr>
-    <tr>
-      <th>2015-06-30</th>
-      <td>582.0</td>
-    </tr>
-    <tr>
-      <th>2015-09-30</th>
-      <td>681.0</td>
-    </tr>
-    <tr>
-      <th>2015-12-31</th>
-      <td>557.0</td>
-    </tr>
-    <tr>
-      <th>2016-03-31</th>
-      <td>628.0</td>
-    </tr>
-    <tr>
-      <th>2016-06-30</th>
-      <td>707.0</td>
     </tr>
   </tbody>
 </table>
@@ -931,7 +879,7 @@ will be needed.</li>
 <li>De-compose the series into level, trend, seasonal components and residual error. Observe the patterns in the decomposed series. </li>
 <li>Is the trend constant, growing/slowing linearly or exponentially or some other non-linear function?</li>
 <li>Is the seasonal pattern repetitive?</li>
-<li>How is the seasonal pattern changing relative to level? If it is constant relative to level, it shows "additive" seasonality, whereas if it is growing, it's "multiplicative"</li>
+<li>How is the seasonal pattern changing relative to level? If it is constant relative to level, it shows "additive" seasonality, whereas if it is growing, it's "multiplicative".(Part 2 covers this in detail)</li>
 </ul>
 </li>
 </ol>
@@ -960,7 +908,7 @@ will be needed.</li>
 <li>
 <strong><em>White Noise</em></strong>: If a time series has zero mean and a constant variance , i.e. N(0,$\sigma^2$), it's a white noise. The variables in this case are <em>independent and identically distributed</em> (i.i.d) and are uncorrelated. We want the residuals left after fitting the model to be a white noise. White noise can be identified by using ADFuller test and plotting autocorrelation function (ACF) plots. In an ACF plot, the autocorrelation should be insignificant (inside the 95% CI band) at all lags. </li>
 <li>
-<strong><em>Random Walk</em></strong>: Random walks are non-stationary. It's mean or variance or both change over time. Random walk cannot be forecast because we have more unknowns than the data so we will end up having way too many parameters in the model. In essence, random walk has no pattern to it, it's last data point plus some random signal (drift). Thus, if the first difference of the time series results in a white noise, it's an indication of a Random Walk. e.g. most equity stocks are random walk but by looking at percent difference (%growth over time) we can study the white noise.
+<strong><em>Random Walk</em></strong>: Random walks are non-stationary. Its mean or variance or both change over time. Random walk cannot be forecast because we have more unknowns than the data so we will end up having way too many parameters in the model. In essence, random walk has no pattern to it, it's last data point plus some random signal (drift). Thus, if the first difference of the time series results in a white noise, it's an indication of a Random Walk. e.g. most equity stocks are random walk but by looking at percent difference (%growth over time) we can study the white noise.
 <pre><code>        `Next Data point = Previous Data Point + Random Noise`
         `Random Noise = Next Data Point - Previous Data Point`</code></pre>
 </li>
@@ -1039,10 +987,10 @@ will be needed.</li>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-9e9b90f4cb134c7e8d89beb4dbfd2ad7"></div>
+<div id="altair-viz-417e46a8603d4d8189a334c04914c844"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-9e9b90f4cb134c7e8d89beb4dbfd2ad7");
+    const outputDiv = document.getElementById("altair-viz-417e46a8603d4d8189a334c04914c844");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1514,10 +1462,10 @@ unique dates: 18
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-763b0a6ca165457eb0d0748199c4473b"></div>
+<div id="altair-viz-8251c67461d1446fb61f1adfd8cb2001"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-763b0a6ca165457eb0d0748199c4473b");
+    const outputDiv = document.getElementById("altair-viz-8251c67461d1446fb61f1adfd8cb2001");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1619,10 +1567,10 @@ unique dates: 18
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-a2d0f3e8676249c7841b058766fde7d3"></div>
+<div id="altair-viz-07da8185b6e34e969cf494dc7c4e73e5"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-a2d0f3e8676249c7841b058766fde7d3");
+    const outputDiv = document.getElementById("altair-viz-07da8185b6e34e969cf494dc7c4e73e5");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1720,7 +1668,7 @@ unique dates: 18
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#%Growth each year. Excluding 2016 since we have only 2 quarters</span>
 <span class="n">growth</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:</span><span class="s1">'2015'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">train</span><span class="p">[:</span><span class="s1">'2015'</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="p">)[</span><span class="s2">"Sales"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-<span class="n">growth</span>
+<span class="n">growth</span><span class="o">*</span><span class="mi">100</span>
 </pre></div>
 
     </div>
@@ -1736,10 +1684,10 @@ unique dates: 18
 
 <div class="output_text output_subarea output_execute_result">
 <pre>Date
-2012         NaN
-2013    0.102632
-2014    0.218377
-2015    0.157689
+2012          NaN
+2013    10.263158
+2014    21.837709
+2015    15.768854
 Name: Sales, dtype: float64</pre>
 </div>
 
@@ -1824,10 +1772,10 @@ Name: Sales, dtype: float64</pre>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-69064634794a4626a1bad26beeaddc2a"></div>
+<div id="altair-viz-290f72e12ddd4dea9b43e53195fe3e32"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-69064634794a4626a1bad26beeaddc2a");
+    const outputDiv = document.getElementById("altair-viz-290f72e12ddd4dea9b43e53195fe3e32");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -2088,10 +2036,10 @@ Name: Sales, dtype: float64</pre>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-7e75bb8eec68470a97f63c69d1d9162b"></div>
+<div id="altair-viz-038a408063f8428b8156bf5f6f2c5c9a"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-7e75bb8eec68470a97f63c69d1d9162b");
+    const outputDiv = document.getElementById("altair-viz-038a408063f8428b8156bf5f6f2c5c9a");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -2347,7 +2295,7 @@ Name: Sales, dtype: float64</pre>
 <li>Kenel Density plot shows data looks normally distributed, bi-modal distribution in quarters is because of small sample size. Peaks shift right from 2012 to 2015 indicating increase in average. </li>
 <li>Distribution becomes fatter as the years progress, indicating higher spread/variation (as seen above in boxplot too)</li>
 <li>Though The sales peak in Q3 each year, as a % of annual sales, all quarters contribute roughly the same</li>
-<li>Seasonal factor analysis shows that in 3rd quarter we see that sales jump up by 15% (or $73K) relative to average while in other three quartersit drop sby 1-7%. This is great for intuitive understanding of series behaviour. Another key takeaway from this analysis is that sales is not stable, as is evident from the charts above, multiplicative seasonality would capture the pattern better than additive seasonality. This insight will come handy when we create ETS model (part 2). We could also reduce the variance by taking the log so errors are additive.</li>
+<li>Seasonal factor analysis shows that in 3rd quarter we see that sales jump up by 15% (or $73K) relative to average while in other three quarters it drops by 1-7%. This is great for intuitive understanding of series behaviour. Another key takeaway from this analysis is that sales is not stable, as is evident from the charts above, multiplicative seasonality would capture the pattern better than additive seasonality. This insight will come handy when we create HW/ETS model (part 2). We could also reduce the variance by taking the log so errors are additive.</li>
 </ol>
 
 </div>
@@ -2418,9 +2366,9 @@ Name: Sales, dtype: float64</pre>
 <a class="anchor" href="#Observations:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Observations:<a class="anchor-link" href="#Observations:"> </a>
 </h4>
 <ol>
-<li>Trend is more than linear, notice a small upward take off after 2013-07. Also notice that trend is projecting upward and does not seem to be dampening/leveling off.</li>
+<li>Trend is more than linear, notice a small upward take off after 2013-07. Also notice that trend is projecting upward .</li>
 <li>Seasonal pattern is consistent</li>
-<li>Resduals are whetever is left after fitting the trend and seasonal components to the observed data. It's the component we cannot explain. We want the residuals to be i.i.d (i.e uncorrelated). If the residuals have a pattern, it means there still some structural information left to be captured. Residuals are showing some wavy pattern, which is not good. Let's perform Ljung Box test to confirm if they are <em>i.i.d as a group</em>.</li>
+<li>Resduals are whetever is left after fitting the trend and seasonal components to the observed data. It's the component we cannot explain. We want the residuals to be <em>i.i.d</em> (i.e uncorrelated). If the residuals have a pattern, it means there is still some structural information left to be captured. Residuals are showing some wavy pattern, which is not good. Let's perform Ljung Box test to confirm if they are <em>i.i.d as a group</em>.</li>
 <li>We do not want to see any recognizable patterns in the residuals, e.g. waves, upward/downward slope, funnel pattern etc. </li>
 </ol>
 
@@ -2462,7 +2410,7 @@ Name: Sales, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Residuals are uncorrelated. If the residuals are correlated, we can perform transformations to see if it stabilizes the variance. It's also an indication that we may need to use exogenous variable to fully explain the time series behaviour or use higher order models.</p>
+<p>Residuals are uncorrelated. If the residuals are correlated, we can perform transformations to see if it stabilizes the variance. It's also an indication that we may need to use exogenous variable to fully explain the time series behaviour or use higher order models. In this case, the residuals are uncorrelated so that's good.</p>
 
 </div>
 </div>
@@ -2766,7 +2714,7 @@ Name: Sales, dtype: float64</pre>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Calculate ad fuller statistic</span>
 <span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s2">"Sales"</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"p value:</span><span class="si">{</span><span class="n">adf</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">", Series is Stationary"</span> <span class="k">if</span> <span class="n">adf</span> <span class="o">&lt;</span><span class="mf">0.05</span> <span class="k">else</span> <span class="s2">", Series is Non-Stationary"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"p value:</span><span class="si">{</span><span class="n">adf</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">", Series is Stationary"</span> <span class="k">if</span> <span class="n">adf</span> <span class="o">&lt;</span><span class="mf">0.05</span> <span class="k">else</span> <span class="s2">", Series is Non-Stationary"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2779,7 +2727,7 @@ Name: Sales, dtype: float64</pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>p value:0.9990329594016152 , Series is Non-Stationary
+<pre>p value:0.999 , Series is Non-Stationary
 </pre>
 </div>
 </div>
@@ -3235,7 +3183,7 @@ The autocovariance measures the linear dependence between two points on the same
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Jarque Bera Stastical Test for Normality</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">jarque_bera</span> <span class="k">as</span> <span class="n">jb</span>
 <span class="n">is_norm</span><span class="o">=</span><span class="n">jb</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s2">"Sales"</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"p value:</span><span class="si">{</span><span class="n">is_norm</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">", Series is Normal"</span> <span class="k">if</span> <span class="n">is_norm</span> <span class="o">&gt;</span><span class="mf">0.05</span> <span class="k">else</span> <span class="s2">", Series is Non-Normal"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"p value:</span><span class="si">{</span><span class="n">is_norm</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">", Series is Normal"</span> <span class="k">if</span> <span class="n">is_norm</span> <span class="o">&gt;</span><span class="mf">0.05</span> <span class="k">else</span> <span class="s2">", Series is Non-Normal"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3248,7 +3196,7 @@ The autocovariance measures the linear dependence between two points on the same
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>p value:0.5912668357500079 , Series is Normal
+<pre>p value:0.59 , Series is Normal
 </pre>
 </div>
 </div>
@@ -3267,7 +3215,7 @@ The autocovariance measures the linear dependence between two points on the same
 </h5>
 <ol>
 <li>Q-Q plot shows the data follows the 45deg line very closely, deviates slightly in the left tail. </li>
-<li>Shapiro-Wilk test shows the data is from Normal distribution</li>
+<li>Jarque Bera test shows the data is from Normal distribution</li>
 </ol>
 
 </div>
@@ -3285,7 +3233,7 @@ The autocovariance measures the linear dependence between two points on the same
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Model explainability is as important as model accuracy. We will keep above insights in mind when choosing, fitting, evaluating and selecting the model. We will choose the model that we can explain based on above insights. It is important to be able to explain the time series behavour in qualitative and quantitative terms.</p>
+<p>Model explainability is as important as model accuracy. We will keep above insights in mind when choosing, fitting, evaluating and selecting various models. We will choose the model that we can explain based on above insights. It is important to be able to explain the time series behavour in qualitative and quantitative terms.</p>
 <p>In Part 2, I will cover model fitting, selection and ensemble forecasting</p>
 
 </div>
@@ -3620,18 +3568,18 @@ numeric(0)
 <p>Here is a summary of what we have learned about this time series:</p>
 <ol>
 <li>There are no null values, outliers or duplicate values in the series. Series is continuous, non-intermittent. No structural breaks. We don't have to do any cleaning.</li>
-<li>Series has a trend. Sales have increased every year. It looks more than linear but less than exponential. We might need to try Box Cox transform. </li>
+<li>Series has a trend. Sales have increased every year. It looks more than linear but less than exponential. We might need to try lof or BoxCox transform. </li>
 <li>Series has seasonality with seasonal periods = 4. Peak in Q3, drops in Q4, ramps up from Q1 to Q3. No other dominant periods. No cyclic behaviour.</li>
 <li>Avg sales per quarter is 497, and S.D is 111, low variability. We will use this to guage the model error relative to mean and S.D. </li>
-<li>Since it is not a high-frequency data and has fixed seasonality, we can use ETS class of models</li>
+<li>Since it is not a high-frequency data and has fixed seasonality, we can use ETS and SARIMA class of models</li>
 <li>SARIMA could be used. We will need at least 1 differencing as de-trended series was stationary</li>
 <li>Mean, variance, covariance are not constant. Series is not stationary, not white noise and not random-walk.</li>
 <li>Variance increasing with time. Highs also look to be increasing relative to mean (rolling avg). 'multiplicative' seasonality might fit better in ETS model</li>
-<li>Series is not normal but did not look highly skewed </li>
+<li>Series is normally distributed</li>
 <li>1st lag was significant, though barely (ACF~0.5)</li>
 <li>We do not have any information on exogenous variables</li>
 <li>As there are no outliers and series is not intermittent, we can use RSME for model evaluation</li>
-<li>We never looked at the test data. All the EDA and model building must be done using the training set. Intuitively, given what we have observed in the training set, we expect the forecast to be on the upward trend with slightly mupltiplicative seasonality. Trend does not seems to ve leveling off.</li>
+<li>We never looked at the test data. All the EDA and model building must be done using the training set. Intuitively, given what we have observed in the training set, we expect the forecast to be on the upward trend with slightly mupltiplicative seasonality. </li>
 </ol>
 
 </div>
@@ -3666,7 +3614,7 @@ numeric(0)
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/forecasting/r/python/rpy2/altair/2020/04/15/timeseries-part1.html" hidden></a>
+</script><a class="u-url" href="/blog/forecasting/r/python/rpy2/altair/2020/04/21/timeseries-part1.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
