@@ -5,7 +5,7 @@ permalink: /about/
 ---
 My name is Sandeep Pawar. I am a Simulation & Data Analytics Engineer at [Cree Lighting](https://www.creelighting.com/) where I focus on using computational simulations (FEA, CFD), data analystics, Statistics, Machine Learning to improve products and processses. My primary background is in Mechanical Engineering & Product Development which I use to create insightful data solutions for manufacturing operations. I like challenging myself to learn new things.
 
-I like making espressos and latte art. 
+I enjoy watching cricket and making espressos & latte art. 
 
 ![My Latte Art](https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg)
 
