@@ -10,8 +10,8 @@ I enjoy watching cricket and making espressos & latte art.
 ![My Latte Art](https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg)
 
 **Education**:
- - M.S, Mechanical Engineering, Illinois Institute of Technology, Chicago IL
- - Masters in Engineering Management, Business Analytics, Northwestern University, IL 
+ - **M.S, Mechanical Engineering**, ***Illinois Institute of Technology, Chicago IL***
+ - **Masters in Engineering Management**, ***Business Analytics, Northwestern University, IL***
 
 You can connect with me on LinkedIn and Twitter at:
 - **[LinkedIn](https://www.linkedin.com/in/sanpawar/)**
