@@ -103,7 +103,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -173,64 +173,69 @@ window.onload = wrap_img;
 <a class="anchor" href="#Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview<a class="anchor-link" href="#Overview"> </a>
 </h2>
 <p>Using Python and R in Power BI, when used correctly, can allow quick experimentation, data/calculation validation, statistical analysis/inferencing of the data. However, before you use Python/R in Power BI keep the performance and data privacy issues in mind. I personally use Python in my report development, model development process but use it as a tool for experimentation rather than replacement to native Power BI tools. Below are my recommendations / tips:</p>
-<ol>
+<ul>
 <li>Always read the documentation <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-scripts">Python</a> and <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-r-scripts">R</a> for known limitations, official guidelines</li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>
-<strong>Uncheck  “Enhanced meta-data”</strong> if you are using Python. Power BI released it as a preview feature in <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-desktop-march-2020-feature-summary/#_Other">March 2020</a>. Unfortunately I learned it the hard way. If you use Python in Power Query with this option checked and save the file, it will currupt your file and <strong>you cannot recover it back</strong>. Enhanced metadata allows read/write XMLA (Premium feature). This is a serious bug that MS needs to fix. If you need to use this option, use R. </li>
-</ol>
+<strong>Uncheck “Enhanced meta-data”</strong> if you are using Python. Power BI released it as a preview feature in <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-desktop-march-2020-feature-summary/#_Other">March 2020</a>. Unfortunately I learned it the hard way. If you use Python in Power Query with this option checked and save the file, it will currupt your file and <strong>you cannot recover it back</strong>. Enhanced metadata allows read/write XMLA (Premium feature). This is a serious bug that MS needs to fix. If you need to use this option, use R. </li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/meta.JPG" alt="meta"></p>
-<ol>
+<ul>
 <li>
 <strong>Keep the data privacy implications in mind</strong>. Data Privacy must be set to "Public" . While that does not mean the report/dashboard/data are made public, do not use Python /R if you are working with sensitive data. When the data privacy is set to "Public", Microsoft stores it in less restrictive storage. </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>
 <strong>Always create and use virtual environment</strong> ,e.g. use  virtualenv/pipenv, conda. Conda may not always work if multiple Python copies are installed and is a known <a href="https://github.com/MicrosoftDocs/powerbi-docs/issues/379">issue</a>. More on Python virtual enviroment <a href="https://docs.python.org/3/tutorial/venv.html">here</a>. Use the directory of the virtual environment as Python home directory.</li>
-</ol>
+</ul>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/vv.JPG" alt="venv"></p>
-<ol>
+<ul>
 <li>
 <strong>Only install the packages you need</strong>. Power BI needs pandas and matplotlib installed at minimum. I personally only use Pandas, Numpy, Statsmodels, Scipy, Scikit-learn, Matplotlib, Seaborn in my virtual environment</li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>
-<strong>Only import the packages you need</strong>, e.g. <code>from scipy.stats import lognorm</code> instead of <code>from scipy import *</code>to reduce execution time</li>
-</ol>
-<ol>
+<strong>Only import the packages you need</strong>, e.g. <code>from scipy.stats import lognorm</code> instead of <code>from scipy import *</code> to the reduce execution time</li>
+</ul>
+<ul>
 <li>By default, Power BI loads pandas, matplotlib and os, no need to re-import it (<code>import pandas as pd</code>). If you do need to alias the package, create a variable, <code>pd=pandas</code> and then you can use <code>pd.read_csv(..)</code>
 </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>
 <strong>Change date column to text</strong> before running Python and change it back to Date format after running the script. If you keep it as Date, all Date values will be returned as "Microsoft.OldDb.Date". You can also change the column type to Date/Time and parse it back but it's esier to convert text.</li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>Duplicate the original query and apply Python /R on duplicated query </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>Apply Python / R as the last step or when the rows have been filtered, unnecessary columns have been removed to reduce the *.csv file Power BI creates. The temporary csv file must be &lt;250 MB, so it's best to reduce the data to keep the file size down. </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>Use only one Python / R script in a query, if you must use Python / R.</li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li>
-<strong>Always run Query Diagnostics</strong> to make sure Python/R script isn’t the bottleneck, query execution time is &lt;&lt; 5min. Query will time out if the execution time is &gt;30 minutes. Run the script in your IDE to time the execution.</li>
-</ol>
-<ol>
-<li>Power Query is powerful and preferred, so <strong>don't use Python / R as a replacement</strong>. Use it for quick experimentation, data validation, spot/sanity checking, calculation validation, statistical analysis only. I have intentionally left out Machine Learning here. I do not think an ML model shuld be deployed as a Python / R script because of the limitations and it's a bad deployment practice. ML models need to be monitored for performance, data drift etc and Power BI does not allow that. <strong>Do not deploy ML models in Power Query</strong>
+<strong>Always run Query Diagnostics</strong> to make sure Python/R script isn’t the bottleneck, query execution time is &lt;&lt; 5min. Query will time out if the execution time is &gt;30 minutes. Run the script in your IDE to time the execution. If you are using Python, vectorize the data to improve efficiency, avoid for loops, use <code>apply()</code>, avoid intermediate dataframes.</li>
+</ul>
+<ul>
+<li>Power Query is powerful and preferred, so <strong>don't use Python / R as a replacement</strong>. Use it for quick experimentation, data validation, spot/sanity checking, calculation validation, statistical analysis only. I have intentionally left out Machine Learning here. I do not think an ML model should be deployed as a Python / R script because of the limitations and it's a bad deployment practice in general. ML models need to be revised, monitored for performance, data drift etc and Power BI does not allow that. <strong>Do not deploy ML models in Power Query</strong>
 </li>
-</ol>
+</ul>
 <ol>
-<li>Use Power Query Parameter in Python /R if you need to reuse a script or need a quick way to change arguments,params. You can pass <code>&amp;Text.From([param])</code> or <code>&amp;Number.From([param])</code> in any Python / R scipt to make it more dynamic. </li>
+<li>Use Power Query Parameter in Python /R if you need to reuse a script or need a quick way to change arguments,params. You can pass <code>&amp;Text.From([param])</code> or <code>&amp;Number.From([param])</code> in any Python / R script to make it more dynamic. </li>
 </ol>
 <ol>
 <li>Apply correct summarization for visuals (No summarization, sum, average etc.), always add an index/unique key to make sure rows are not removed</li>
 </ol>
 <ol>
-<li>Create Python/R visuals after you have finalized column/measure names. Renaming column/measure will throw an error</li>
+<li>
+<p>Create Python/R visuals after you have finalized column/measure names. Renaming column/measure will throw an error</p>
+</li>
+<li>
+<p>Use native Power BI visuals for production reports and Python/R visuals for getting more insights and for experimentation. Power/R visuals are very slow to respond and do not allow cross-filtering, highlighting.</p>
+</li>
 </ol>
 
 </div>
