@@ -178,12 +178,12 @@ window.onload = wrap_img;
 </ul>
 <ul>
 <li>
-<strong>Uncheck “Enhanced meta-data”</strong> if you are using Python. Power BI released it as a preview feature in <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-desktop-march-2020-feature-summary/#_Other">March 2020</a>. Unfortunately I learned it the hard way. If you use Python in Power Query with this option checked and save the file, it will currupt your file and <strong>you cannot recover it back</strong>. Enhanced metadata allows read/write XMLA (Premium feature). This is a serious bug that MS needs to fix. If you need to use this option, use R. </li>
+<strong>Uncheck “Enhanced meta-data”</strong> if you are using Python. Power BI released it as a preview feature in <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-desktop-march-2020-feature-summary/#_Other">March 2020</a>. Unfortunately, I learned it the hard way. If you use Python in Power Query with this option selected and save the file, it will currupt your file and <strong>you cannot recover it back</strong> (well, <a href="https://www.thebiccountant.com/2020/04/13/power-bi-store-datasets-in-enhanced-metadata-format-warning/">not entirely</a>). Enhanced metadata allows read/write XMLA (Premium feature). This is a serious bug that MS needs to fix. If you need to use this option, use R. </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/meta.JPG" alt="meta"></p>
 <ul>
 <li>
-<strong>Keep the data privacy implications in mind</strong>. Data Privacy must be set to "Public" . While that does not mean the report/dashboard/data are made public, do not use Python /R if you are working with sensitive data. When the data privacy is set to "Public", Microsoft stores it in less restrictive storage. </li>
+<strong>Keep the data privacy implications in mind</strong>. Data Privacy must be set to "Public" . While that does not mean the report/dashboard/data are made public, do not use Python /R if you are working with sensitive data. When the data privacy is set to "Public", Microsoft stores it in less restrictive storage but the data is safe. </li>
 </ul>
 <ul>
 <li>
@@ -192,7 +192,7 @@ window.onload = wrap_img;
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/vv.JPG" alt="venv"></p>
 <ul>
 <li>
-<strong>Only install the packages you need</strong>. Power BI needs pandas and matplotlib installed at minimum. I personally only use Pandas, Numpy, Statsmodels, Scipy, Scikit-learn, Matplotlib, Seaborn in my virtual environment</li>
+<strong>Only install the packages you need</strong>. Power BI needs pandas and matplotlib installed at minimum. I personally only use Pandas, Numpy, Statsmodels, Scipy, Scikit-learn, Matplotlib, Seaborn in my Power BI virtual environment. If you find yourself needing more packages, you should consider using the IDE and deploying Python/R outside of Power BI.</li>
 </ul>
 <ul>
 <li>
@@ -207,7 +207,7 @@ window.onload = wrap_img;
 <strong>Change date column to text</strong> before running Python and change it back to Date format after running the script. If you keep it as Date, all Date values will be returned as "Microsoft.OldDb.Date". You can also change the column type to Date/Time and parse it back but it's esier to convert text.</li>
 </ul>
 <ul>
-<li>Duplicate the original query and apply Python /R on duplicated query </li>
+<li>Duplicate the original query and apply Python /R on duplicated query, instead of the original.</li>
 </ul>
 <ul>
 <li>Apply Python / R as the last step or when the rows have been filtered, unnecessary columns have been removed to reduce the *.csv file Power BI creates. The temporary csv file must be &lt;250 MB, so it's best to reduce the data to keep the file size down. </li>
@@ -220,21 +220,24 @@ window.onload = wrap_img;
 <strong>Always run Query Diagnostics</strong> to make sure Python/R script isn’t the bottleneck, query execution time is &lt;&lt; 5min. Query will time out if the execution time is &gt;30 minutes. Run the script in your IDE to time the execution. If you are using Python, vectorize the data to improve efficiency, avoid for loops, use <code>apply()</code>, avoid intermediate dataframes.</li>
 </ul>
 <ul>
-<li>Power Query is powerful and preferred, so <strong>don't use Python / R as a replacement</strong>. Use it for quick experimentation, data validation, spot/sanity checking, calculation validation, statistical analysis only. I have intentionally left out Machine Learning here. I do not think an ML model should be deployed as a Python / R script because of the limitations and it's a bad deployment practice in general. ML models need to be revised, monitored for performance, data drift etc and Power BI does not allow that. <strong>Do not deploy ML models in Power Query</strong>
+<li>Power Query is powerful and preferred, so <strong>don't use Python / R as a replacement</strong>. Use it for quick experimentation, data validation, spot/sanity checking, calculation validation, statistical analysis only. I use it often in my workflow for finding patterns, anamolies, outliers, correlation etc. using Power BI + Jupyter (blog to come. ). I have intentionally left out Machine Learning here. I do not think an ML model should be deployed as a Python / R script because of the limitations and it's a bad deployment practice in general. ML models need to be revised, monitored for performance, data drift etc and Power BI does not allow that. <strong>Do not deploy ML models in Power Query</strong>
 </li>
 </ul>
 <ol>
 <li>Use Power Query Parameter in Python /R if you need to reuse a script or need a quick way to change arguments,params. You can pass <code>&amp;Text.From([param])</code> or <code>&amp;Number.From([param])</code> in any Python / R script to make it more dynamic. </li>
 </ol>
 <ol>
-<li>Apply correct summarization for visuals (No summarization, sum, average etc.), always add an index/unique key to make sure rows are not removed</li>
+<li>Apply correct summarization for visuals (No summarization, sum, average etc.), always add an index/unique key to make sure rows are not removed.</li>
 </ol>
 <ol>
 <li>
 <p>Create Python/R visuals after you have finalized column/measure names. Renaming column/measure will throw an error</p>
 </li>
 <li>
-<p>Use native Power BI visuals for production reports and Python/R visuals for getting more insights and for experimentation. Power/R visuals are very slow to respond and do not allow cross-filtering, highlighting.</p>
+<p>Use native Power BI visuals for production reports and Python/R visuals for getting more insights and for experimentation. Power/R visuals are very slow to refresh and do not allow cross-filtering, highlighting.</p>
+</li>
+<li>
+<p>If you do use Python/R visual in production report, run the <a href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-performance-analyzer">Performance Analyzer</a> to check execution &amp; refresh time. If it's too slow, consider using native visuals or build one in <a href="https://charticulator.com/">charticulator</a>. I rarely use custom visuals to avoid dependency and data security reasons.</p>
 </li>
 </ol>
 
