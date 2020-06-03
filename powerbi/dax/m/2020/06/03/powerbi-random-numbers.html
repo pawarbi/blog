@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Random Number Generation in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Random Number Generation in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers" />
+<meta property="og:description" content="Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-03T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-06-03T00:00:00-05:00","dateModified":"2020-06-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html"},"description":"Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html","headline":"Random Number Generation in Power BI","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Random Number Generation in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Random Number Generation in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers" />
+<meta property="og:description" content="Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-03T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-06-03T00:00:00-05:00","dateModified":"2020-06-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html"},"description":"Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html","headline":"Random Number Generation in Power BI","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Random Number Generation in Power BI</h1><p class="page-description">Quick post on some things to keep in mind when using the RAND(), RANDBETWEEN() in Power BI to generate random numbers</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-03T00:00:00-05:00" itemprop="datePublished">
+        Jun 3, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#DAX">DAX</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#M">M</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-06-03-powerbi-random-numbers.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-06-03-powerbi-random-numbers.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-06-03-powerbi-random-numbers.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Random-Number-Generation">Random Number Generation </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#What-are-random-numbers?">What are random numbers? </a></li>
+<li class="toc-entry toc-h4"><a href="#How-to-generate-random-numbers?">How to generate random numbers? </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Tip-1:-DAX-and-M-RandomBetween-behave-differently">Tip 1: DAX and M RandomBetween behave differently </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-2:-Multiple-Random-numbers-in-Power-Query">Tip 2: Multiple Random numbers in Power Query </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers">Tip 3: You can use RAND() to create decimal random numbers between two numbers </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()">Tip 4: IMPORTANT Be careful with using ROUND() with RAND() </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-5:-DAX-&-M-do-not-allow-random-seed">Tip 5: DAX &amp; M do not allow random seed </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX">Tip 6: Randomly subsample the data by using SAMPLE() in DAX </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-06-03-powerbi-random-numbers.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Random-Number-Generation">
+<a class="anchor" href="#Random-Number-Generation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Random Number Generation<a class="anchor-link" href="#Random-Number-Generation"> </a>
+</h1>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/david-anderson-BedZDFNtxmw-unsplash.jpg" alt="Random Number" title="Credit: David Anderson, Unsplash"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A quick post on creating random numbers in Power BI. While it's very easy to use, there are couple of things to keep in mind to get correct results. Typically the random numbers aren't needed in Power BI reports but I use them very often for simulations, statsitical functions and synthetic data generation.</p>
+<h4 id="What-are-random-numbers?">
+<a class="anchor" href="#What-are-random-numbers?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are random numbers?<a class="anchor-link" href="#What-are-random-numbers?"> </a>
+</h4>
+<p>As series of values is said to contain random numbers if all the values have equal probability of occurence and there is no correlation, <em>i.e.</em> the numbers are uniformly distributed.</p>
+<h4 id="How-to-generate-random-numbers?">
+<a class="anchor" href="#How-to-generate-random-numbers?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to generate random numbers?<a class="anchor-link" href="#How-to-generate-random-numbers?"> </a>
+</h4>
+<p>In DAX, you can use <code>RAND()</code> <a href="https://docs.microsoft.com/en-us/dax/rand-function-dax">function</a> to generate random numbers. Similarly, to generate random numbers <em>between</em> two numbers, <a href="https://docs.microsoft.com/en-us/dax/randbetween-function-dax">use</a> <code>RANDBETWEEN()</code>.</p>
+<p>In Power Query, <code>List.Random()</code> creates a list of random numbers, while <code>Number.Random()</code> creates a single random number. You can add an index column <strong>before</strong> using the <code>Number.Random()</code> to get different random numbers on each row. You can delete the index column after the <code>Number.Random()</code> step. There isn't a <code>List.RandomBetween()</code> but <code>Number.RandomBetween()</code> can be used along with index column to generate numbers between two specified values.</p>
+<h5 id="Tip-1:-DAX-and-M-RandomBetween-behave-differently">
+<a class="anchor" href="#Tip-1:-DAX-and-M-RandomBetween-behave-differently" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 1: DAX and M RandomBetween behave differently<a class="anchor-link" href="#Tip-1:-DAX-and-M-RandomBetween-behave-differently"> </a>
+</h5>
+<p>If you generate random numbers between (1,100) using DAX <code>RANDOMBETWEEN(1,100)</code>, it will generate <em>integer/whole numbers</em> between (1,100) and will <strong>include</strong> numbers 1 and 100. In constrast to that, in Power Query <code>Number.RandomBetween(1,100)</code> will generate <em>decimal numbers</em> between 1 and 100 and will <strong>exclude</strong> 100. Thus, if you are using M and want to include 100, use <code>Number.RandomBetween(1,101)</code>.</p>
+<h5 id="Tip-2:-Multiple-Random-numbers-in-Power-Query">
+<a class="anchor" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 2: Multiple Random numbers in Power Query<a class="anchor-link" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query"> </a>
+</h5>
+<p>To create multiple columns containing random numbers, add an index column <strong>each</strong> time <strong>before</strong> using the <code>Number.Random()</code>. You can delete the columns later.</p>
+<p>You can alse wrap the table with <code>Table.Buffer()</code> to generate different number on each row.</p>
+<h5 id="Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers">
+<a class="anchor" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 3: You can use RAND() to create decimal random numbers between two numbers<a class="anchor-link" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers"> </a>
+</h5>
+<p>As <code>RANDBETWEEN()</code> creates integers, you can use <code>RAND()*N</code> to create decimal numbers between (0,N). In this case, the numbers <strong>will not include</strong> 0 and N.</p>
+<p>Similarly, to generate decimal random numbers between (N1,N2) use <code>N2 + RAND() *(N2-N1)</code>. N1 &amp; N2 are not included.</p>
+<p>You can divide <code>RANDBETWEEN()</code> by 10^i, to create numbers with 'i' decimal digits</p>
+<h5 id="Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()">
+<a class="anchor" href="#Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 4: IMPORTANT Be careful with using ROUND() with RAND()<a class="anchor-link" href="#Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()"> </a>
+</h5>
+<p>As mentioned above, all random numbers should have equal probability of occurence otherwise it violates the uniform distribution assumption. If you use <code>ROUND()</code> with <code>RAND()</code> ( e.g.<code>ROUND(RAND()*50,0)</code>) to generate integers between 0 and 50, the end numbers will have half the probability of occurence compared to rest of the numbers. This is because numbers greater than or equal to 0.5 will be rounded to the next integer. e.g. 49.25 will be rounded down to 49 whereas 49.68 will be rounded up to 50. Thus, the end values have half the probability of occurence. The correct way is to use <code>INT()</code> i.e <code>INT(RAND()*50)</code>. While the error resulting from this will be minimal, it's better to use the correct formula when creating synthetic data to avoid bias.</p>
+<h5 id="Tip-5:-DAX-&amp;-M-do-not-allow-random-seed">
+<a class="anchor" href="#Tip-5:-DAX-&amp;-M-do-not-allow-random-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 5: DAX &amp; M do not allow random seed<a class="anchor-link" href="#Tip-5:-DAX-&amp;-M-do-not-allow-random-seed"> </a>
+</h5>
+<p>In Python and R, you can specify the seed number to generate reproducible random numbers. Both in DAX &amp; M do not allow seed, so with each refresh new random numbers are generated. In many uses, this is not desirable. A work around for that is to generate random numbers in Power Query using M, indexing those and disabling the refresh for that query.</p>
+<ul>
+<li>
+<p>Create an index column and random number column using</p>
+<p>Table.FromColumns( { {1..n_samples}, List.Random(n_samples)}, {"Index", "NRandom"} )</p>
+<p>where n_samples &gt;&gt;&gt; number of random values you need. For example, if you are going to need 3 sets of random numbers 1000 each, use n_samples &gt;&gt; 3000 ,say 5000.</p>
+</li>
+<li>Uncheck "Include in report refresh" for that query </li>
+<li>Now you can use this list by using <code>FILETR()</code> in DAX by passing <code>Table[Index] &lt; 1001</code> and so forth </li>
+</ul>
+<h5 id="Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX">
+<a class="anchor" href="#Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 6: Randomly subsample the data by using SAMPLE() in DAX<a class="anchor-link" href="#Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX"> </a>
+</h5>
+<p>I use this often to check robsutness/sensitivity of the simulation results with respect to the features used. For example, some columns may show correlaton or importance when used entirely but when sub-sampled may or may not.</p>
+<p>To sample a column, use <code>SAMPLE(sample_size, 'Table', 'Table'[Column])</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.youtube.com/channel/UCJ7UhloHSA4wAqPzyi6TOkw">Ruth</a> provides a good overview of the <code>SAMPLE()</code> function below:
+
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ULQz5PDbgaE" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/dax/m/2020/06/03/powerbi-random-numbers.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
