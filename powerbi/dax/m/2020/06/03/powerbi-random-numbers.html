@@ -208,6 +208,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Tip-1:-DAX-and-M-RandomBetween-behave-differently" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 1: DAX and M RandomBetween behave differently<a class="anchor-link" href="#Tip-1:-DAX-and-M-RandomBetween-behave-differently"> </a>
 </h5>
 <p>If you generate random numbers between (1,100) using DAX <code>RANDOMBETWEEN(1,100)</code>, it will generate <em>integer/whole numbers</em> between (1,100) and will <strong>include</strong> numbers 1 and 100. In constrast to that, in Power Query <code>Number.RandomBetween(1,100)</code> will generate <em>decimal numbers</em> between 1 and 100 and will <strong>exclude</strong> 100. Thus, if you are using M and want to include 100, use <code>Number.RandomBetween(1,101)</code>.</p>
+<p>To generate integer random values using M, first add an index column and then create a custom column using <code>Int16.From(Number.RandomBetween(1,100))</code>. This includes numbers 1 and 100.</p>
 <h5 id="Tip-2:-Multiple-Random-numbers-in-Power-Query">
 <a class="anchor" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 2: Multiple Random numbers in Power Query<a class="anchor-link" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query"> </a>
 </h5>
@@ -217,7 +218,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 3: You can use RAND() to create decimal random numbers between two numbers<a class="anchor-link" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers"> </a>
 </h5>
 <p>As <code>RANDBETWEEN()</code> creates integers, you can use <code>RAND()*N</code> to create decimal numbers between (0,N). In this case, the numbers <strong>will not include</strong> 0 and N.</p>
-<p>Similarly, to generate decimal random numbers between (N1,N2) use <code>N2 + RAND() *(N2-N1)</code>. N1 &amp; N2 are not included.</p>
+<p>Similarly, to generate decimal random numbers between (N1,N2) use <code>N1 + RAND() *(N2-N1)</code>. N1 &amp; N2 are not included.</p>
 <p>You can divide <code>RANDBETWEEN()</code> by 10^i, to create numbers with 'i' decimal digits</p>
 <h5 id="Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()">
 <a class="anchor" href="#Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 4: IMPORTANT Be careful with using ROUND() with RAND()<a class="anchor-link" href="#Tip-4:-IMPORTANT-Be-careful-with-using-ROUND()-with-RAND()"> </a>
@@ -226,7 +227,7 @@ window.onload = wrap_img;
 <h5 id="Tip-5:-DAX-&amp;-M-do-not-allow-random-seed">
 <a class="anchor" href="#Tip-5:-DAX-&amp;-M-do-not-allow-random-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 5: DAX &amp; M do not allow random seed<a class="anchor-link" href="#Tip-5:-DAX-&amp;-M-do-not-allow-random-seed"> </a>
 </h5>
-<p>In Python and R, you can specify the seed number to generate reproducible random numbers. Both in DAX &amp; M do not allow seed, so with each refresh new random numbers are generated. In many uses, this is not desirable. A work around for that is to generate random numbers in Power Query using M, indexing those and disabling the refresh for that query.</p>
+<p>In Python and R, you can specify the seed number to generate reproducible random numbers. Both in DAX &amp; M do not allow seed, so with each refresh new random numbers are generated. In many cases, this is not desirable. A work around for that is to generate random numbers in Power Query using M, indexing those and disabling the refresh for that query.</p>
 <ul>
 <li>
 <p>Create an index column and random number column using</p>
@@ -270,6 +271,8 @@ window.onload = wrap_img;
 <p>To generate lower case latters: <code>UNICHAR(RANDBETWEEN(97,122)</code></p>
 <p>To generate upper &amp; lower case latters: <code>UNICHAR(RANDBETWEEN(97,122) &amp; UNICHAR(RANDBETWEEN(65,90)</code></p>
 <p>In addition you can nest them with <code>RANDBETWEEN()</code> to generate a random words, passwords, symbols etc. For a list of unicode chart, <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html#x0000">see this</a></p>
+<p>Similarly, to generate characters using M, first create an index column and then use:</p>
+<p><code>Character.FromNumber(Int16.From(Number.RandomBetween(65,90)))</code> for upper case letters. Thanks to <a href="https://twitter.com/notaboutthecell">Alex Powers</a> for the tip.</p>
 
 </div>
 </div>
