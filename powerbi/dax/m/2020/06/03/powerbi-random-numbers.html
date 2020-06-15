@@ -103,7 +103,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      5 min read
     
 </span></p>
 
@@ -160,6 +160,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h5"><a href="#Tip-5:-DAX-&-M-do-not-allow-random-seed">Tip 5: DAX &amp; M do not allow random seed </a></li>
 <li class="toc-entry toc-h5"><a href="#Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX">Tip 6: Randomly subsample the data by using SAMPLE() in DAX </a></li>
 <li class="toc-entry toc-h5"><a href="#Tip-7:-Randomly-generate-letters-or-sequence-of-letters">Tip 7: Randomly generate letters or sequence of letters </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-8:-Changing-column-type-to-decimal">Tip 8: Changing column type to decimal </a></li>
 </ul>
 </li>
 </ul>
@@ -213,7 +214,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 2: Multiple Random numbers in Power Query<a class="anchor-link" href="#Tip-2:-Multiple-Random-numbers-in-Power-Query"> </a>
 </h5>
 <p>To create multiple columns containing random numbers, add an index column <strong>each</strong> time <strong>before</strong> using the <code>Number.Random()</code>. You can delete the columns later.</p>
-<p>You can alse wrap the table with <code>Table.Buffer()</code> to generate different number on each row.</p>
+<p>You can alse wrap the step <strong>before</strong> the <code>Number.Random()</code> step with <code>Table.Buffer()</code> to generate different number on each row. For example, if you added a custom column, your step would look like <code>Table.Buffer(Table.AddColumn(...))</code>. In this case you will not need to add an index column. If you need to add multiple random number columns, you can buffer the previous step each time. But we careful of the performance and transformation implications of <code>Table.Buffer()</code>. Read more abou it <a href="https://www.excelguru.ca/blog/2016/05/25/keep-the-most-recent-entry/">here</a>. Thanks to Gil Raviv for this <a href="https://datachant.com/">tip</a>.</p>
 <h5 id="Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers">
 <a class="anchor" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 3: You can use RAND() to create decimal random numbers between two numbers<a class="anchor-link" href="#Tip-3:-You-can-use-RAND()-to-create-decimal-random-numbers-between-two-numbers"> </a>
 </h5>
@@ -273,6 +274,17 @@ window.onload = wrap_img;
 <p>In addition you can nest them with <code>RANDBETWEEN()</code> to generate a random words, passwords, symbols etc. For a list of unicode chart, <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html#x0000">see this</a></p>
 <p>Similarly, to generate characters using M, first create an index column and then use:</p>
 <p><code>Character.FromNumber(Int16.From(Number.RandomBetween(65,90)))</code> for upper case letters. Thanks to <a href="https://twitter.com/notaboutthecell">Alex Powers</a> for the tip.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Tip-8:-Changing-column-type-to-decimal">
+<a class="anchor" href="#Tip-8:-Changing-column-type-to-decimal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 8: Changing column type to decimal<a class="anchor-link" href="#Tip-8:-Changing-column-type-to-decimal"> </a>
+</h5>
+<p>When you create the custom column with random numbers using <code>Number.Random()</code> in Power Query, it will be mixed type (123/ABC). If you convert it to Decimal, randomness is lost and all the numbers in the column will be the same. Solution to that is just add another index column ! You can always delete it later.</p>
 
 </div>
 </div>
