@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Exporting Data From Power BI to SQL Server Using Python | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Exporting Data From Power BI to SQL Server Using Python" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Exporting data in Power Query to a SQL server using Python" />
+<meta property="og:description" content="Exporting data in Power Query to a SQL server using Python" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-23T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-06-23T00:00:00-05:00","dateModified":"2020-06-23T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html"},"description":"Exporting data in Power Query to a SQL server using Python","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html","headline":"Exporting Data From Power BI to SQL Server Using Python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Exporting Data From Power BI to SQL Server Using Python | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Exporting Data From Power BI to SQL Server Using Python" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Exporting data in Power Query to a SQL server using Python" />
+<meta property="og:description" content="Exporting data in Power Query to a SQL server using Python" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-23T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-06-23T00:00:00-05:00","dateModified":"2020-06-23T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html"},"description":"Exporting data in Power Query to a SQL server using Python","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html","headline":"Exporting Data From Power BI to SQL Server Using Python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Exporting Data From Power BI to SQL Server Using Python</h1><p class="page-description">Exporting data in Power Query to a SQL server using Python</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-23T00:00:00-05:00" itemprop="datePublished">
+        Jun 23, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#Python">Python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#SQL">SQL</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#export">export</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-06-23-export-powerbi-sql-python.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-06-23-export-powerbi-sql-python.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-06-23-export-powerbi-sql-python.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Exporting-to-SQL">Exporting to SQL </a></li>
+<li class="toc-entry toc-h2"><a href="#Python-Code">Python Code </a></li>
+<li class="toc-entry toc-h2"><a href="#PowerQuery-Custom-Function">PowerQuery Custom Function </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-06-23-export-powerbi-sql-python.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exporting-to-SQL">
+<a class="anchor" href="#Exporting-to-SQL" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exporting to SQL<a class="anchor-link" href="#Exporting-to-SQL"> </a>
+</h2>
+<p>Watch the video below for exporting data from Power Query to SQL Server. Below are the links to the blogs and packages mentioned in the video:</p>
+<ul>
+<li><a href="https://www.biinsight.com/export-power-bi-service-data-to-sql-server/">Exporting to SQL server using R</a></li>
+<li><a href="https://www.thebiccountant.com/2018/12/29/export-data-from-power-bi-to-csv-using-python/">Exporting a CSV using Python</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15">SQL Server Management Studio</a></li>
+<li><a href="https://www.sqlalchemy.org/">SQLAlchemy</a></li>
+<li><a href="https://pawarbi.github.io/blog/powerbi/r/python/2020/05/15/powerbi-python-r-tips.html">Recommendations for Using Python/R in Power BI</a></li>
+<li><a href="https://docs.microsoft.com/en-us/power-query/handlingdocumentation">Writing M Custom Function Documentation</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-Code">
+<a class="anchor" href="#Python-Code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Python Code<a class="anchor-link" href="#Python-Code"> </a>
+</h2>
+<ul>
+<li>Install Python, Sqlalchemy </li>
+<li>Setup Python in Power BI </li>
+<li>Temporarily set the data privacy to Public. Be sure to change it back to the original privacy level</li>
+<li>Delete the export query after you are done exprting to SQL server</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#hide_output</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span>
+
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">select</span>
+
+
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">urllib</span>
+
+
+<span class="n">params</span> <span class="o">=</span> \
+
+    <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="s1">'DRIVER=ODBC Driver 17 for SQL Server;SERVER=localhost;DATABASE=pbi;trusted_connection=yes'</span>
+
+                            <span class="p">)</span>
+
+
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">'mssql+pyodbc:///?odbc_connect=</span><span class="si">%s</span><span class="s1">'</span>
+
+                                  <span class="o">%</span> <span class="n">params</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">raw_connection</span><span class="p">()</span>
+
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'from_pbi2'</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+               <span class="n">if_exists</span><span class="o">=</span><span class="s1">'append'</span><span class="p">)</span> <span class="o">//</span> <span class="ow">or</span> <span class="s1">'replace'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PowerQuery-Custom-Function">
+<a class="anchor" href="#PowerQuery-Custom-Function" aria-hidden="true"><span class="octicon octicon-link"></span></a>PowerQuery Custom Function<a class="anchor-link" href="#PowerQuery-Custom-Function"> </a>
+</h2>
+<p>Copy everything between the dotted lines ( --- )  and paste it in the 'Advanced Editor'.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#hide_output</span>
+<span class="sd">"""</span>
+
+
+<span class="sd">---------------------------------Start Copy--------------------------------------------------------</span>
+
+
+<span class="sd">let fn = (source as table, Driver as text, database as text, table as text, server as text, if_exists as text) as table =&gt;</span>
+
+<span class="sd"> let</span>
+<span class="sd">    Source = source,</span>
+<span class="sd">    </span>
+<span class="sd">    // Script to Export Power BI to SQL database </span>
+<span class="sd">    // Author: Sandeep Pawar </span>
+<span class="sd">    // Visit www.pawarbi.com for details and </span>
+<span class="sd">    // Version: 0.1</span>
+<span class="sd">    // Date: Jun 23,2020</span>
+
+<span class="sd">    Run_Python = Python.Execute("# 'dataset' holds the input data for this script#(lf)# install pyodbc , sqlalchemy#(lf)import sqlalchemy#(lf)#(lf)from sqlalchemy import create_engine, MetaData, Table, select#(lf)#(lf)from six.moves import urllib#(lf)#(lf)# change SERVER name with your server name &amp; database name with your database name#(lf)# For Driver, search odbc in Windows &gt; Driver Use the driver installed there#(lf)params = urllib.parse.quote_plus(""DRIVER="&amp;Text.From(Driver)&amp;";SERVER="&amp;Text.From(server)&amp;";DATABASE="&amp;Text.From(database)&amp;";trusted_connection=yes"")#(lf)#(lf)engine = sqlalchemy.create_engine(""mssql+pyodbc:///?odbc_connect=%s"" % params, echo=False) #(lf)#(lf)connection = engine.raw_connection()#(lf)#(lf)#engine.connect() #(lf)# suppose df is the data-frame that we want to insert in database#(lf)#(lf)#if_exists: Use replace if you want to replace an existing table with named ""from_pbi"" You can use any table name#(lf)dataset.to_sql(name="&amp;Text.From(table)&amp;",con=engine, index=False, if_exists="&amp;Text.From(if_exists)&amp;")",[dataset=Source])</span>
+<span class="sd"> in</span>
+<span class="sd">   </span>
+<span class="sd">    Run_Python,</span>
+
+<span class="sd">documentation = [</span>
+<span class="sd">Documentation.Name   = " Export to SQL",</span>
+<span class="sd">Documentation.Description = " Power BI to SQL export Using Python  ",</span>
+<span class="sd">Documentation.Category = " Table ",</span>
+<span class="sd">Documentation.Source = "www.PawarBI.com ",</span>
+<span class="sd">Documentation.Author = " Sandeep Pawar PawarBI.com  ",</span>
+<span class="sd">Documentation.Examples = {[Description =  "Use this function to export a dataset imported in Power Query to a SQL Server database. You will need to install Python, Pandas, pyodbc and sqlalchemy for this code to work. If you get firewall error, set the data privacy to public for the purposes of exporting the data and then you can revert it back to chosen data privacy setting. Visit www.pawarbi.com or my youtube channel 'PawarBI' for details",</span>
+<span class="sd">Code = "Enter SQL Driver: SQL Server Driver 17, </span>
+<span class="sd">database: pbi, </span>
+<span class="sd">table: 'from_pbi', </span>
+<span class="sd">if_exists: 'replace' or 'append'  ",</span>
+<span class="sd">Result = " The script will export the data to the specified SQL server, under 'pbi' database in table named 'from_pbi'  "]}]</span>
+<span class="sd">  </span>
+<span class="sd">in  </span>
+<span class="sd">  Value.ReplaceType(fn, Value.ReplaceMetadata(Value.Type(fn), documentation))</span>
+
+
+
+<span class="sd">---------------------------------------End Copy-----------------------------------------------------------------------</span>
+
+
+
+
+
+
+
+
+<span class="sd">"""</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ke_aYyBRE9U" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/python/sql/export/2020/06/23/export-powerbi-sql-python.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
