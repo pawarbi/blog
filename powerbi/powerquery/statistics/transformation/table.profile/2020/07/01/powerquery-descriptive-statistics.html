@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Creating Custom Summary Statistics Table in Power Query | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Creating Custom Summary Statistics Table in Power Query" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics." />
+<meta property="og:description" content="Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics." />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-07-01T00:00:00-05:00","dateModified":"2020-07-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html"},"description":"Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html","headline":"Creating Custom Summary Statistics Table in Power Query","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Creating Custom Summary Statistics Table in Power Query | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Creating Custom Summary Statistics Table in Power Query" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics." />
+<meta property="og:description" content="Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics." />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2020-07-01T00:00:00-05:00","dateModified":"2020-07-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html"},"description":"Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics.","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html","headline":"Creating Custom Summary Statistics Table in Power Query","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Creating Custom Summary Statistics Table in Power Query</h1><p class="page-description">Table.Profile() provides descriptive statistics for the entire table. This method allows you to obtain descriptive statistics for every column based on a category or categories and also add custom statistics.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-01T00:00:00-05:00" itemprop="datePublished">
+        Jul 1, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#powerquery">powerquery</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#statistics">statistics</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#transformation">transformation</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#table.profile">table.profile</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-07-01-powerquery-descriptive-statistics.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-07-01-powerquery-descriptive-statistics.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-07-01-powerquery-descriptive-statistics.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Introduction">Introduction </a></li>
+<li class="toc-entry toc-h2"><a href="#Table.Profile()">Table.Profile() </a></li>
+<li class="toc-entry toc-h2"><a href="#Custum-Function-to-Count-Outliers">Custum Function to Count Outliers </a></li>
+<li class="toc-entry toc-h1"><a href="#hide_output">hide_output </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Video">Video </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-07-01-powerquery-descriptive-statistics.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
+</h2>
+<p>A Reddit user posted a question on <a href="https://www.reddit.com/r/PowerBI/comments/hemj6y/tableprofile_that_respects_slicers_and_deals_with/">r/PowerBI</a> forum few days ago about "... <em>Table.Profile that respects slicers and deals with strings</em>..." I answered the question by noting that it would be a easier to do it with DAX using SWITCH(). But coincidentally, I had a similar requirement for a project where the user wanted to get summary statistics for each numerical column and filterable by a slicer. The summary statistics in my case also included some custom fucntions. I could have created calculated columns, but Power Query offers a faster &amp; memory-efficient solution. The reddit user had question about strings but I am going to focus on numerical columns only for simplicity. This is a quick way to get summary statistics for exploratory data analysis or checking data quality.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table.Profile()">
+<a class="anchor" href="#Table.Profile()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table.Profile()<a class="anchor-link" href="#Table.Profile()"> </a>
+</h2>
+<p>As this user mentioned in the question, the easiest and fastest way to get descriptive statistics is to wrap the table with <code>Table.Profile()</code>. Read the documentation <a href="https://docs.microsoft.com/en-us/powerquery-m/table-profile">here</a>. By default, <code>Table.Profile()</code> returns min, max, average, standard deviation, count, null count, distinct count. But you can add more aggregates or custom functions by specifying the second parameter <code>additionalAggregates as nullable list</code>.  <a href="https://twitter.com/SchreiberLars">Lars Schreiber</a> has an excellent <a href="https://ssbi-blog.de/blog/technical-topics-english/table-profile-and-its-unknown-second-parameter/">blog post</a> on using that second parameter.</p>
+<p>In the example below, I added median and a custom function to count number of outliers in each column. This second parameter can be specified as ColumnName</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Custum-Function-to-Count-Outliers">
+<a class="anchor" href="#Custum-Function-to-Count-Outliers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custum Function to Count Outliers<a class="anchor-link" href="#Custum-Function-to-Count-Outliers"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="hide_output">
+<a class="anchor" href="#hide_output" aria-hidden="true"><span class="octicon octicon-link"></span></a>hide_output<a class="anchor-link" href="#hide_output"> </a>
+</h1>
+<p>(mylist as list, optional limit as number) =&gt;
+let
+   // Function to count number of outlier value based on how far it is from the average. 
+   // By default values that are 2 standard deviations away form the mean are counted as outliers
+   // Sandeep Pawar 
+   // PawarBI.com
+   // Date: 7/2/2020</p>
+
+<pre><code>mean = List.Average(mylist),
+sd = List.StandardDeviation(mylist),
+limit = 2,
+outliers = List.Select( mylist, each _ &gt; (mean + 2*sd)),
+outcount = List.Count(outliers)
+
+
+</code></pre>
+<p>in
+    outcount</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To use this custom function <code>fxoutlier(list,limit)</code> in <code>Table.Profile()</code>, I can write:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#hide_output</span>
+<span class="n">Table</span><span class="o">.</span><span class="n">Profile</span><span class="p">(</span><span class="n">TableName</span><span class="p">,</span> <span class="p">{{</span><span class="s2">"Outliers"</span><span class="p">,</span> <span class="n">each</span> <span class="n">Type</span><span class="o">.</span><span class="n">Is</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">nullable</span> <span class="n">number</span><span class="p">),</span> <span class="n">each</span> <span class="n">fxoutlier</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="n">null</span><span class="p">)}})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Video">
+<a class="anchor" href="#Video" aria-hidden="true"><span class="octicon octicon-link"></span></a>Video<a class="anchor-link" href="#Video"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/u4ce1vzMiAE" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/powerquery/statistics/transformation/table.profile/2020/07/01/powerquery-descriptive-statistics.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
