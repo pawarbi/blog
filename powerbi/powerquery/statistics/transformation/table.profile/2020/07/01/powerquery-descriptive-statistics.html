@@ -156,7 +156,7 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#Introduction">Introduction </a></li>
 <li class="toc-entry toc-h2"><a href="#Table.Profile()">Table.Profile() </a></li>
-<li class="toc-entry toc-h2"><a href="#Custum-Function-to-Count-Outliers">Custum Function to Count Outliers </a></li>
+<li class="toc-entry toc-h2"><a href="#Custom-Function-to-Count-Outliers">Custom Function to Count Outliers </a></li>
 <li class="toc-entry toc-h2"><a href="#Video">Video </a></li>
 </ul><!--
 #################################################
@@ -200,8 +200,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Custum-Function-to-Count-Outliers">
-<a class="anchor" href="#Custum-Function-to-Count-Outliers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custum Function to Count Outliers<a class="anchor-link" href="#Custum-Function-to-Count-Outliers"> </a>
+<h2 id="Custom-Function-to-Count-Outliers">
+<a class="anchor" href="#Custom-Function-to-Count-Outliers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Function to Count Outliers<a class="anchor-link" href="#Custom-Function-to-Count-Outliers"> </a>
 </h2>
 </div>
 </div>
@@ -227,7 +227,7 @@ window.onload = wrap_img;
     <span class="n">mean</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">Average</span><span class="p">(</span><span class="n">mylist</span><span class="p">),</span>
     <span class="n">sd</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">StandardDeviation</span><span class="p">(</span><span class="n">mylist</span><span class="p">),</span>
     <span class="n">limit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">outliers</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span> <span class="n">mylist</span><span class="p">,</span> <span class="n">each</span> <span class="n">_</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">mean</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sd</span><span class="p">)),</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span> <span class="n">mylist</span><span class="p">,</span> <span class="n">each</span> <span class="n">_</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">mean</span> <span class="o">+</span> <span class="n">limit</span><span class="o">*</span><span class="n">sd</span><span class="p">)),</span>
     <span class="n">outcount</span> <span class="o">=</span> <span class="n">List</span><span class="o">.</span><span class="n">Count</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
 
 
