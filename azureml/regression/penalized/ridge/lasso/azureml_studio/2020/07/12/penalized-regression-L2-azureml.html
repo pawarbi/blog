@@ -711,8 +711,8 @@ RTest Size: 53
 <span class="n">pipe_final</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
 <span class="n">pipe_final</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"OLS Train R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">pipe_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"OLS Test R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">pipe_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"OLS Train RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">pipe_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"OLS Test RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">pipe_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"------------------------------------"</span><span class="p">)</span>
 
 <span class="c1">#Ridge Regression</span>
@@ -720,8 +720,8 @@ RTest Size: 53
 <span class="n">rr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">rr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Ridge Train R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">rr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Ridge Test R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">rr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ridge Train RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">rr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ridge Test RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">rr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"------------------------------------"</span><span class="p">)</span>
 
 <span class="c1">#Lasso Regression</span>
@@ -729,8 +729,8 @@ RTest Size: 53
 <span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Lasso Train R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Lasso Test R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Lasso Train RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Lasso Test RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"------------------------------------"</span><span class="p">)</span>
 
 <span class="c1">#Decision Tree</span>
@@ -738,8 +738,8 @@ RTest Size: 53
 <span class="n">dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x1_scaled</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"DT Train R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"DT Test R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"DT Train RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"DT Test RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"------------------------------------"</span><span class="p">)</span>
 
 <span class="c1">#Random Forest</span>
@@ -747,8 +747,8 @@ RTest Size: 53
 <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x1_scaled</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"RF Train R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"RF Test R2:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"RF Train RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1_scaled</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"RF Test RMSE:"</span><span class="p">,</span><span class="n">rmse</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2_scaled</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -761,20 +761,20 @@ RTest Size: 53
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>OLS Train R2: 300.6194521415407
-OLS Test R2: 388.68624678093903
+<pre>OLS Train RMSE: 300.6194521415407
+OLS Test RMSE: 388.68624678093903
 ------------------------------------
-Ridge Train R2: 342.07177961040986
-Ridge Test R2: 327.5827363090764
+Ridge Train RMSE: 342.07177961040986
+Ridge Test RMSE: 327.5827363090764
 ------------------------------------
-Lasso Train R2: 323.78659234667606
-Lasso Test R2: 345.58566621397665
+Lasso Train RMSE: 323.78659234667606
+Lasso Test RMSE: 345.58566621397665
 ------------------------------------
-DT Train R2: 295.640673916212
-DT Test R2: 248.6086248329667
+DT Train RMSE: 295.640673916212
+DT Test RMSE: 248.6086248329667
 ------------------------------------
-RF Train R2: 105.21304424052263
-RF Test R2: 238.30193002425779
+RF Train RMSE: 109.41741807765071
+RF Test RMSE: 235.4703983064576
 </pre>
 </div>
 </div>
