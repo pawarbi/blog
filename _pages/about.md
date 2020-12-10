@@ -10,6 +10,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 ![My Latte Art](https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg)
 
 **Education**:
+ - **B.E, Mechanical Engineering**, *Pune, India*
  - **M.S, Mechanical Engineering**, *Illinois Institute of Technology, Chicago IL*
  - **Masters in Engineering Management**, *Business Analytics, Northwestern University, IL*
  
