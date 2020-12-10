@@ -26,6 +26,19 @@ I enjoy watching cricket and making espressos & latte art.
  - Won 1st Prize for my project on Time Series Forecasting in Azure ML
  - Finalist, AECOM Global Business Innovation & Strategy Competition
  
+ **Speking Engagements**
+ - **Introduction to Power BI for Educators**, January 31st, 2020. Microsoft Technology Event, Chicago
+ - **Propelling Power BI with Python & R (English)**, May 16th, 2020, ![Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-16/)
+ - **Propelling Power BI with Python & R (Hindi)**, May 17th, 2020, ![Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-17/)
+ - **Introduction to Classical Time Series Forecasting**, Aug 17th, 2020, ![Udacity Azure ML Group](https://youtu.be/2G6glc5Act8)
+ - **Key Influencer Deep Dive**, Sept 15th, 2020, ![Power BI Days Munich](https://www.powerbidays.com/virtualevent/munich-power-bi-days-2020-09-15/)
+ - **Deploying Azure ML forecast Model in Power BI**, Dec 08th, 2020, ![Washington DC Power BI User Group](https://youtu.be/aOAbTv1S0XY?t=2017)
+ - **Forecasting in Power BI**, Dec 09th, 2020, ![Austin,TX Power BI User Group](https://www.meetup.com/Austin-Power-BI-User-Group/events/274513479/)
+ - **Key Influencer Deep Dive**, Dec 10th, 2020, ![Lexington,KY Power BI User Group](https://cutt.ly/key_influencer)
+ - **Time Series Forecasting in Power BI**, Dec 15th, 2020, ![Power BI Days Hamburg](https://www.powerbidays.com/virtualevent/virtual-hamburg-power-bi-days-2020-12-15/)
+  - **Risk Modeling in Power BI using Monte Carlo Simulation**, Dec 22nd, 2020, ![Dublin Power BI User Group](https://www.meetup.com/DublinPUG/events/273906186/)
+  - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2020, ![Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
+ 
  You can connect with me on LinkedIn and Twitter at:
 - **[LinkedIn](https://cutt.ly/pawarbi-linkedin)**
 - **[Twitter](https://cutt.ly/pawarbi-twitter)**
