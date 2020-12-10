@@ -26,7 +26,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - Won 1st Prize for my project on Time Series Forecasting in Azure ML
  - Finalist, AECOM Global Business Innovation & Strategy Competition
  
- **Speking Engagements**
+ **Speaking Engagements**
  - **Introduction to Power BI for Educators**, January 31st, 2020. Microsoft Technology Event, Chicago
  - **Propelling Power BI with Python & R (English)**, May 16th, 2020, ![Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-16/)
  - **Propelling Power BI with Python & R (Hindi)**, May 17th, 2020, ![Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-17/)
