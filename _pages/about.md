@@ -12,8 +12,21 @@ I enjoy watching cricket and making espressos & latte art.
 **Education**:
  - **M.S, Mechanical Engineering**, *Illinois Institute of Technology, Chicago IL*
  - **Masters in Engineering Management**, *Business Analytics, Northwestern University, IL*
-
-You can connect with me on LinkedIn and Twitter at:
+ 
+**Certifications**:
+ - Microsoft Certified Azure AI Fundamentals
+ - Microsoft Certified Azure Data Scientist
+ - JMP: Modern Screening Designs (Statistical Design of Experiments)
+ - JMP: ANOVA and Regression
+ - JMP: Data Exploration
+ 
+ **Some Bragging**
+ - Won Navigant Business Strategy Competition 
+ - Won Microsoft-Udacity Azure Machine Learning Scholarship
+ - Won 1st Prize for my on Time Series Forecasting in Azure ML
+ - Finalist, AECOM Global Business Innovation & Strategy Competition
+ 
+ You can connect with me on LinkedIn and Twitter at:
 - **[LinkedIn](https://www.linkedin.com/in/sanpawar/)**
 - **[Twitter](https://twitter.com/pawarbi)**
 - **[Azure Notebooks](https://notebooks.azure.com/PawarBI/projects/pawarbi)**
