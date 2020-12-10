@@ -27,9 +27,9 @@ I enjoy watching cricket and making espressos & latte art.
  - Finalist, AECOM Global Business Innovation & Strategy Competition
  
  You can connect with me on LinkedIn and Twitter at:
-- **[LinkedIn](https://www.linkedin.com/in/sanpawar/)**
-- **[Twitter](https://twitter.com/pawarbi)**
-- **[Azure Notebooks](https://notebooks.azure.com/PawarBI/projects/pawarbi)**
+- **[LinkedIn](https://cutt.ly/pawarbi-linkedin)**
+- **[Twitter](https://cutt.ly/pawarbi-twitter)**
+- **[YouTube](https://cutt.ly/pawarbi-youtube)**
 
 
 
