@@ -23,7 +23,7 @@ I enjoy watching cricket and making espressos & latte art.
  **Some Bragging**
  - Won Navigant Business Strategy Competition 
  - Won Microsoft-Udacity Azure Machine Learning Scholarship
- - Won 1st Prize for my on Time Series Forecasting in Azure ML
+ - Won 1st Prize for my project on Time Series Forecasting in Azure ML
  - Finalist, AECOM Global Business Innovation & Strategy Competition
  
  You can connect with me on LinkedIn and Twitter at:
