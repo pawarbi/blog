@@ -44,6 +44,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 - **[LinkedIn](https://cutt.ly/pawarbi-linkedin)**
 - **[Twitter](https://cutt.ly/pawarbi-twitter)**
 - **[YouTube](https://cutt.ly/pawarbi-youtube)**
+- **[Email](pawarbi@outlook.com)**
 
 
 
