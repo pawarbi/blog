@@ -15,8 +15,9 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - **Masters in Engineering Management**, *Business Analytics, Northwestern University, IL*
  
 **Certifications**:
- - Microsoft Certified Azure AI Fundamentals
- - Microsoft Certified Azure Data Scientist
+ - Microsoft Certified Azure Data Scientist (DP-100)
+ - Microsoft Certified Data Analyst (DA-100)
+ - Azure AI Fundamentals Certification (AI-900)
  - JMP: Modern Screening Designs (Statistical Design of Experiments)
  - JMP: ANOVA and Regression
  - JMP: Data Exploration
