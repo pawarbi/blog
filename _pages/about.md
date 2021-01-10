@@ -27,6 +27,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - Won Microsoft-Udacity Azure Machine Learning Scholarship
  - Won 1st Prize for my project on Time Series Forecasting in Azure ML
  - Finalist, AECOM Global Business Innovation & Strategy Competition
+ - 4 Patents: US D750317, US 20150345715, US 20150316249, US 20140268730. Related to thermal design of lighting fixtures 
  
  **Speaking Engagements**
  - **Introduction to Power BI for Educators**, January 31st, 2020. Microsoft Technology Event, Chicago
@@ -36,9 +37,11 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - **Key Influencer Deep Dive**, Sept 15th, 2020, [Power BI Days Munich](https://www.powerbidays.com/virtualevent/munich-power-bi-days-2020-09-15/)
  - **Deploying Azure ML forecast Model in Power BI**, Dec 08th, 2020, [Washington DC Power BI User Group](https://youtu.be/aOAbTv1S0XY?t=2017)
  - **Forecasting in Power BI**, Dec 09th, 2020, [Austin,TX Power BI User Group](https://www.meetup.com/Austin-Power-BI-User-Group/events/274513479/)
- - **Key Influencer Deep Dive**, Dec 10th, 2020, !Lexington,KY Power BI User Group](https://cutt.ly/key_influencer)
+ - **Key Influencer Deep Dive**, Dec 10th, 2020, [Lexington,KY Power BI User Group](https://cutt.ly/key_influencer)
  - **Time Series Forecasting in Power BI**, Dec 15th, 2020, [Power BI Days Hamburg](https://www.powerbidays.com/virtualevent/virtual-hamburg-power-bi-days-2020-12-15/)
-  - **Risk Modeling in Power BI using Monte Carlo Simulation**, Dec 22nd, 2020, ![Dublin Power BI User Group](https://www.meetup.com/DublinPUG/events/273906186/)
+  - **Risk Modeling in Power BI using Monte Carlo Simulation**, Dec 22nd, 2020, [Dublin Power BI User Group](https://www.meetup.com/DublinPUG/events/273906186/)
+  - **Model Interpretability using Azure ML SDK**, Jan 16 2020, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
+  - **Time Series Forecasting in Power BI**, Jan 17 2020, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
   - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2020, ![Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
  
  You can connect with me on LinkedIn and Twitter at:
