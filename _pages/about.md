@@ -40,9 +40,10 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - **Key Influencer Deep Dive**, Dec 10th, 2020, [Lexington,KY Power BI User Group](https://cutt.ly/key_influencer)
  - **Time Series Forecasting in Power BI**, Dec 15th, 2020, [Power BI Days Hamburg](https://www.powerbidays.com/virtualevent/virtual-hamburg-power-bi-days-2020-12-15/)
   - **Risk Modeling in Power BI using Monte Carlo Simulation**, Dec 22nd, 2020, [Dublin Power BI User Group](https://www.meetup.com/DublinPUG/events/273906186/)
-  - **Model Interpretability using Azure ML SDK**, Jan 16 2020, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
-  - **Time Series Forecasting in Power BI**, Jan 17 2020, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
-  - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2020, ![Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
+  - **Model Interpretability using Azure ML SDK**, Jan 16 2021, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
+  - **Time Series Forecasting in Power BI**, Jan 17 2021, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
+  - **Introduction to Azure ML SDK**, Azure Saturday Hamburg, Feb 20 2021
+  - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2020, [Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
  
  You can connect with me on LinkedIn and Twitter at:
 - **[LinkedIn](https://cutt.ly/pawarbi-linkedin)**
