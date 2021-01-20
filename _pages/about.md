@@ -29,7 +29,9 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 
 <img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg" alt="My Latte Art" width="400"/>
 
-
+ **Volunteering:**
+ I volunteer at [Elmhurst Art Museum](https://www.elmhurstartmuseum.org/), a local non-profit that showcases artwork of local and international artists and helps educate local community about art. I help them with their data analytics needs to improve community outreach and marketing. I am always looking for volunteering opportunities so feel free to get in touch with me if I can be of any help. 
+ 
 **Education**:
  - **B.E, Mechanical Engineering**, *Pune, India*
  - **M.S, Mechanical Engineering**, *Illinois Institute of Technology, Chicago IL*
@@ -72,8 +74,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 - **[YouTube](https://cutt.ly/pawarbi-youtube)**
 - **[Email](pawarbi@outlook.com)**
 
- **Volunteering:**
- I volunteer at [Elmhurst Art Museum](https://www.elmhurstartmuseum.org/), a local non-profit that showcases artwork of local and international artists and helps educate local community about art. I help them with their data analytics needs to improve community outreach and marketing. I am always looking for volunteering opportunities so feel free to get in touch with me if I can be of any help. 
+
 
 
 
