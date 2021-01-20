@@ -7,6 +7,7 @@ My name is Sandeep Pawar. I am a Simulation & Data Analytics Engineer at [Cree L
 
 I enjoy watching cricket and making espressos & latte art. I can make a heart, tulip & rose. Learning to make a swan :) 
 
+<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg" alt="My Latte Art" width="200"/>
 ![My Latte Art](https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg)
 
 **Education**:
