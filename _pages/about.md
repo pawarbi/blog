@@ -13,18 +13,6 @@ I pivoted to Data Science ~4 years ago (2016) after I helped solve a business ch
 
 I am a passionate learner and am always learning something new. I love to challenge myself to learn new techniques, methods, tools and apply them in different settings. The business challenge I mentioned above? I used the Statistical method I used in my engineering research (Monte Carlo Simulation) to solve it. In 2015 I participated in a Business Strategy competition organized by [Navigant Consulting](https://en.wikipedia.org/wiki/Navigant_Consulting). In that competition, the participants were asked to analyze market for a new diabetes drug and advise the company on 'Go-No Go' strategy. I had no prior experience of any of it. I did research on drug markets, how clinical trials work, learned how to create [Complex Real Options](https://hbr.org/2004/03/a-real-world-way-to-manage-real-options), incorporate various risk in drug/financial valuations and presented a business strategy. I won the first prize in that competition. Not bragging, I am just proud of my efforts. One of the judges thought that I had been doing this for many years! I bring the same rigor and passion to all the projects I work on. I may not know everything but you can count on me learning and excelling.
 
-*Things I am Good At*:
-- Analytical Thinking & Research
-- Learning
-- Collaboration
-- Systems Thinking 
-- Data Science/Analytics
-
-*Things I am Working on Getting Better At*:
-- Programming (I am not a programmer as you may know by now :) )
-- Time-management
-- Writing blogs and sharing what I learn
-
 I enjoy watching cricket and making espressos & latte art. I can make a heart, tulip & rose. Learning to make a swan :) (If you have a favorite coffee blend or local espresso bar, send me a note). Since you asked, my favorite beans are [Epic Espresso by 49th Parallel](https://49thcoffee.com/products/epic-espresso-soe) and favorite cafe is [Espresso Cielo in Santa Monica, CA](https://espressocielo.com/).  I am a die-hard [Sachin Tendulkar](https://en.wikipedia.org/wiki/Sachin_Tendulkar) fan.
 
 <img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/IMG_20200416_161323.jpg" alt="My Latte Art" width="400"/>
