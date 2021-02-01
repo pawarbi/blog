@@ -21,11 +21,13 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  I volunteer at [Elmhurst Art Museum](https://www.elmhurstartmuseum.org/), a local non-profit that showcases artwork of local and international artists and helps educate local community about art. I help them with their data analytics needs to improve community outreach and marketing. I am always looking for volunteering opportunities so feel free to get in touch with me if I can be of any help. 
  
 **Education**:
- - **B.E, Mechanical Engineering**, *Pune, India*
- - **M.S, Mechanical Engineering**, *Illinois Institute of Technology, Chicago IL*
  - **Masters in Engineering Management**, *Business Analytics, Northwestern University, IL*
+ - **M.S, Mechanical Engineering**, *Illinois Institute of Technology, Chicago IL*
+ - **B.E, Mechanical Engineering**, *Pune, India*
+
  
 **Certifications**:
+ - Machine Learning Engineer with Microsoft Azure - [Udacity Nanodegree](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/f184bcbe-c13a-4dee-baea-9b2c608a3fe1.svg)
  - Microsoft Certified Azure Data Scientist (DP-100)
  - Microsoft Certified Data Analyst (DA-100)
  - Azure AI Fundamentals Certification (AI-900)
