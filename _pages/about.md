@@ -59,7 +59,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   
 **---Upcoming---**
   
-  - **Introduction to Azure ML SDK**, Azure Saturday Hamburg, Feb 20 2021
+  - **Introduction to Azure ML SDK**, [Azure Saturday Hamburg](https://www.eventleaf.com/azuresaturdayhamburg#ss), Feb 20 2021
   - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2021, [Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
   - **Operationalizing Machine Learning Models With Azure ML & Power BI**, Mar 22nd, 2021, [Power BI Days](https://www.powerbidays.com/virtualevent/power-break-2021-03-22/)
   - **Power Up Power BI with Jupyter Notebook - Use Cases**, Apr 2nd, 2021, SQL Friday
