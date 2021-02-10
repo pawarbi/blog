@@ -44,7 +44,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - 2X Employee Recognition Award for using Data Analytics to help create business solutions
  
  **Speaking Engagements**
- - **Introduction to Power BI for Educators**, January 31st, 2020. Microsoft Technology Event, Chicago
+ - **Introduction to Power BI for Educators**, January 31st, 2020. [Microsoft Technology Event](https://twitter.com/PawarBI/status/1223350259591663616), Chicago
  - **Propelling Power BI with Python & R (English)**, May 16th, 2020, [Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-16/)
  - **Propelling Power BI with Python & R (Hindi)**, May 17th, 2020, [Bangalore Power BI Days](https://www.powerbidays.com/virtualevent/bangalore-power-bi-days-2020-05-17/)
  - **Introduction to Classical Time Series Forecasting**, Aug 17th, 2020, [Udacity Azure ML Group](https://youtu.be/2G6glc5Act8)
