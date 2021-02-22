@@ -4,9 +4,9 @@
         "post0": {
             "title": "",
             "content": "Forecasting in Power BI . I have written and talked about Time Series Forecasting previously, especially on how to create forecasts in Power BI. You can refer to my previous blog posts below: . Time series Forecasting in Python &amp; R, Part 1 (EDA): Link This blog covers exploratory data analysis techniques for time series data before creating the forecast. . Time series Forecasting in Python &amp; R, Part 2 (Forecasting): Link Here I go into theoretical and practical aspects of creatings forecasts using many different classical forecasting methods . Time series Forecasting in Power BI: Link This blog shows how to create forecasts in Power BI, its strengths, limitations, and my recommendations. . I recently presented on this topic at Global AI Bootcamp, Singapore. Here is the recording of that presentation. It summarizes my findings from the blog above. . .",
-            "url": "https://pawarbi.github.io/blog/2021/02/17/2021-01-20-timeseries-forecasting-in-powerbi.html",
-            "relUrl": "/2021/02/17/2021-01-20-timeseries-forecasting-in-powerbi.html",
-            "date": " • Feb 17, 2021"
+            "url": "https://pawarbi.github.io/blog/2021/02/22/2021-01-20-timeseries-forecasting-in-powerbi.html",
+            "relUrl": "/2021/02/22/2021-01-20-timeseries-forecasting-in-powerbi.html",
+            "date": " • Feb 22, 2021"
         }
         
     
