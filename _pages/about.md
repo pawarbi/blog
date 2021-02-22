@@ -55,11 +55,12 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  - **Time Series Forecasting in Power BI**, Dec 15th, 2020, [Power BI Days Hamburg](https://www.powerbidays.com/virtualevent/virtual-hamburg-power-bi-days-2020-12-15/)
   - **Risk Modeling in Power BI using Monte Carlo Simulation**, Dec 22nd, 2020, [Dublin Power BI User Group](https://www.meetup.com/DublinPUG/events/273906186/)
   - **Model Interpretability using Azure ML SDK**, Jan 16 2021, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
-  - **Time Series Forecasting in Power BI**, Jan 17 2021, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)
-  
-**---Upcoming---**
-  
+  - **Time Series Forecasting in Power BI**, Jan 17 2021, [Global AI Bootcamp Singapore](http://www.aibootcampsg.com/)  
   - **Introduction to Azure ML SDK**,Feb 20 2021,  [Azure Saturday Hamburg](https://www.eventleaf.com/azuresaturdayhamburg#ss)
+
+**---Upcoming---**
+
+
   - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2021, [Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
   - **Operationalizing Machine Learning Models With Azure ML & Power BI**, Mar 22nd, 2021, [Power BI Days](https://www.powerbidays.com/virtualevent/power-break-2021-03-22/)
   - **Power Up Power BI with Jupyter Notebook - Use Cases**, Apr 2nd, 2021, SQL Friday
