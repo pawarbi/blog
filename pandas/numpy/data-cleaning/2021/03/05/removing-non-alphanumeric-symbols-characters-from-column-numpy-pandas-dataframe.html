@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Removing Non-Alphanumeric Characters From A Column | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Removing Non-Alphanumeric Characters From A Column" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme" />
+<meta property="og:description" content="Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-05T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme","@type":"BlogPosting","headline":"Removing Non-Alphanumeric Characters From A Column","dateModified":"2021-03-05T00:00:00-06:00","datePublished":"2021-03-05T00:00:00-06:00","url":"https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Removing Non-Alphanumeric Characters From A Column | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Removing Non-Alphanumeric Characters From A Column" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme" />
+<meta property="og:description" content="Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-05T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme","@type":"BlogPosting","headline":"Removing Non-Alphanumeric Characters From A Column","dateModified":"2021-03-05T00:00:00-06:00","datePublished":"2021-03-05T00:00:00-06:00","url":"https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Removing Non-Alphanumeric Characters From A Column</h1><p class="page-description">Removing non-alphanumeric characters and special symbols from a column in Pandas datafarme</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-03-05T00:00:00-06:00" itemprop="datePublished">
+        Mar 5, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#pandas">pandas</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#numpy">numpy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#data-cleaning">data-cleaning</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2021-03-05-removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2021-03-05-removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2021-03-05-removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Remove-symbols-and-return-alphanumerics">Remove symbols and return alphanumerics </a></li>
+<li class="toc-entry toc-h3"><a href="#Remove-symbols-&-numbers-and-return-alphabets-only">Remove symbols &amp; numbers and return alphabets only </a></li>
+<li class="toc-entry toc-h3"><a href="#Bonus:-Remove-symbols-&-characters-and-return-numbers-only">Bonus: Remove symbols &amp; characters and return numbers only </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-03-05-removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a short blogpost. I wanted to document this recipe for my own benefit, and hopefully it will help others. I was working with a very messy dataset with some columns containing non-alphanumeric characters such as #,!,$^*) and even emojis.</p>
+<p>numpy has two methods <code>isalnum</code> and <code>isalpha</code>.</p>
+<p><code>isalnum</code> returns True if all characters are alphanumeric, i.e. letters and numbers. <a href="https://www.programiz.com/python-programming/methods/string/isalnum">documentation</a></p>
+<p><code>isalpha</code> returns True if all characters are alphabets (only alphabets, no numbers).<a href="https://www.programiz.com/python-programming/methods/string/isalpha">documentation</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'col'</span><span class="p">:[</span><span class="s1">'abc'</span><span class="p">,</span> <span class="s1">'a b c'</span><span class="p">,</span> <span class="s1">'a_b_c'</span><span class="p">,</span> <span class="s1">'#$#$abc'</span><span class="p">,</span> <span class="s1">'abc111'</span><span class="p">,</span> <span class="s1">'abc111#@$@'</span><span class="p">,</span> <span class="s1">'  abc   !!! 123'</span><span class="p">,</span> <span class="s1">'ABC'</span><span class="p">]})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a b c</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a_b_c</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>#$#$abc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abc111</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>abc111#@$@</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>abc   !!! 123</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ABC</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Remove-symbols-and-return-alphanumerics">
+<a class="anchor" href="#Remove-symbols-and-return-alphanumerics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove symbols and return alphanumerics<a class="anchor-link" href="#Remove-symbols-and-return-alphanumerics"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">alphanum</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">isalnum</span><span class="p">,</span> <span class="n">element</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'alphanum'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">alphanum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">col</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col</th>
+      <th>alphanum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a b c</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a_b_c</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>#$#$abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abc111</td>
+      <td>abc111</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>abc111#@$@</td>
+      <td>abc111</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>abc   !!! 123</td>
+      <td>abc123</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ABC</td>
+      <td>ABC</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Remove-symbols-&amp;-numbers-and-return-alphabets-only">
+<a class="anchor" href="#Remove-symbols-&amp;-numbers-and-return-alphabets-only" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove symbols &amp; numbers and return alphabets only<a class="anchor-link" href="#Remove-symbols-&amp;-numbers-and-return-alphabets-only"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">alphabets</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">isalpha</span><span class="p">,</span> <span class="n">element</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'alphabets'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">alphabets</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">col</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col</th>
+      <th>alphanum</th>
+      <th>alphabets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>abc</td>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a b c</td>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a_b_c</td>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>#$#$abc</td>
+      <td>abc</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abc111</td>
+      <td>abc111</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>abc111#@$@</td>
+      <td>abc111</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>abc   !!! 123</td>
+      <td>abc123</td>
+      <td>abc</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ABC</td>
+      <td>ABC</td>
+      <td>ABC</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bonus:-Remove-symbols-&amp;-characters-and-return-numbers-only">
+<a class="anchor" href="#Bonus:-Remove-symbols-&amp;-characters-and-return-numbers-only" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bonus: Remove symbols &amp; characters and return numbers only<a class="anchor-link" href="#Bonus:-Remove-symbols-&amp;-characters-and-return-numbers-only"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">numbers</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">,</span> <span class="n">element</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'num'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">numbers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">col</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col</th>
+      <th>alphanum</th>
+      <th>alphabets</th>
+      <th>num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>abc</td>
+      <td>abc</td>
+      <td>abc</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a b c</td>
+      <td>abc</td>
+      <td>abc</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a_b_c</td>
+      <td>abc</td>
+      <td>abc</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>#$#$abc</td>
+      <td>abc</td>
+      <td>abc</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abc111</td>
+      <td>abc111</td>
+      <td>abc</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>abc111#@$@</td>
+      <td>abc111</td>
+      <td>abc</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>abc   !!! 123</td>
+      <td>abc123</td>
+      <td>abc</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ABC</td>
+      <td>ABC</td>
+      <td>ABC</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>col          object
+alphanum     object
+alphabets    object
+num          object
+dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the <code>num</code> column is returned as an <code>object</code> (i.e. string) and not a number so be sure to convert it to <code>int</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/pandas/numpy/data-cleaning/2021/03/05/removing-non-alphanumeric-symbols-characters-from-column-numpy-pandas-dataframe.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
