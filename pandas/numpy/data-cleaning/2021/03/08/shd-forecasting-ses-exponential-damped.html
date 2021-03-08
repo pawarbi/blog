@@ -221,9 +221,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$
-shd=\frac{SES + Holt's + Damped}{3} \\
-$$
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/shd.JPG" alt="shd"></p>
+
 </div>
 </div>
 </div>
@@ -231,7 +230,7 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How does it stack against other algorithms?</strong></p>
-<p><a href="https://flora.insead.edu/fichiersti_wp/inseadwp1999/99-70.pdf">Read it yourself</a>. It worked as good and even outperformed many other algorithms in the M3 competition. It works particularly well with low frequency time series (Yearly, monthly). It works well because we are ensembling three different algorithms. It's been shown that forecast combinations often outperform single best models.</p>
+<p><a href="https://flora.insead.edu/fichiersti_wp/inseadwp1999/99-70.pdf">Read it yourself</a>. It worked as good and even better than most other algorithms in the M3 competition. It works particularly well with low frequency time series (Yearly, monthly). It works well because we are ensembling three different algorithms. It's been shown that forecast combinations often outperform single best models.</p>
 <p>I will demonstrate it using an example below. This is the same dataset I used in my two previous <a href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/fbprophet/ensemble_forecast/uncertainty/simulation/2020/04/21/timeseries-part2.html">blogs</a>.</p>
 
 </div>
@@ -597,7 +596,7 @@ Test legth: 4
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>RMSE using SHD is 63734. For comparison, <a href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/fbprophet/ensemble_forecast/uncertainty/simulation/2020/04/21/timeseries-part2.html#Facebook-Prophet">FB Prophet</a> gave ~66,000 and <a href="https://pawarbi.github.io/blog/forecasting/r/python/rpy2/altair/fbprophet/ensemble_forecast/uncertainty/simulation/2020/04/21/timeseries-part2.html#SARIMA2---(Using-Logged-value">SARIMA</a>) was ~82,000. I was able to further improve this by ensembling many algorithms but still it's impressive that with just lines of code you can create a sophisticated algorithm !</p>
-<p>So a reminder, <strong>always start with baseline simple algorithms</strong>. In practice, fast and frugal wins the long race.</p>
+<p>So a reminder, <strong>always start with baseline simple algorithms</strong>. In practice, <a href="https://arxiv.org/abs/2102.13209">fast and frugal</a> wins the long race.</p>
 
 </div>
 </div>
