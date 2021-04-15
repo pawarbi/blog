@@ -3,13 +3,13 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated Mar 2021)*
+*(Last Updated Apr 2021)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
 
 My background is in Mechanical Engineering & Product Development. After graduating with an M.S in Mechanical Engineering, I worked as research engineer focused on using engineering simulation tools  ([Finite Element Analysis](https://en.wikipedia.org/wiki/Finite_element_method), [Computational Fluid Dynamics](https://www.simscale.com/docs/simwiki/cfd-computational-fluid-dynamics/what-is-cfd-computational-fluid-dynamics/)) to analyze products. I am co-inventor of 4 patents related to thermal management of lighting fixtures. For 10+ years, I worked in a cross-disciplinary team of engineers to analyze structural and thermal performance of industrial and semiconductor products. I used to design physical tests using [DOE](https://asq.org/quality-resources/design-of-experiments), gather data, analyze it, create simulation models and recommend design changes to the product engineers. Now as a Data Science professional, I do the same thing but with different tools and data.
 
-I pivoted to Data Science ~4 years ago (2016) after I helped solve a business challenge using Statistics and Data Analytics. It energized me so much that I pursued my second Master's in Engineering Management at Northwestern University with focus on Organizational Analytics. I learned how to use analytics to gain business insights.  As an engineer I understand [System Dynamics](https://en.wikipedia.org/wiki/System_dynamics) , and hence focus on creating sustainable solutions rather than quick band-aid fixes. 
+I pivoted to Data Science ~5 years ago (2016) after I helped solve a business challenge using Statistics and Data Analytics. It energized me so much that I pursued my second Master's in Engineering Management at Northwestern University with focus on Organizational Analytics. I learned how to use analytics to gain business insights.  As an engineer I understand [System Dynamics](https://en.wikipedia.org/wiki/System_dynamics) , and hence focus on creating sustainable solutions rather than quick band-aid fixes. 
 
 I am a passionate learner and am always learning something new. I love to challenge myself to learn new techniques, methods, tools and apply them in different settings. The business challenge I mentioned above? I used some of the Statistical methods I had used in my engineering research (Monte Carlo Simulation, uncertainty estimation) to solve it. I was given Employee Recognition Award (twice) for helping solve the issue.  In 2015, I participated in a Business Strategy competition organized by [Navigant Consulting](https://en.wikipedia.org/wiki/Navigant_Consulting). In that competition, the participants were asked to analyze market for a new diabetes drug and advise the company on 'Go-No Go' strategy. I had no prior experience of any of it. I did research on drug markets, how clinical trials work, learned how to create [Complex Real Options](https://hbr.org/2004/03/a-real-world-way-to-manage-real-options), incorporate various risk in drug/financial valuations and presented a business strategy. I won the first prize in that competition. Not bragging, I am just proud of my efforts. One of the judges thought that I had been doing this for many years! I bring the same rigor and passion to all the projects I work on. I may not know everything but you can count on me learning and excelling. I am a proponent of open source and love sharing what I learn.
 
@@ -64,10 +64,9 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 
 **---Upcoming---**
 
-
-  - **Power Up Power BI with Jupyter Notebook - Use Cases**, Apr 2nd, 2021, SQL Friday
-  - **Enterprise Risk Modeling in Power BI**, Apr, 2021, [Global Power BI Summit 2021](https://globalpowerbisummit.com/?page_id=561)
+  - **Enterprise Risk Modeling in Power BI**, Apr 21, 2021, [Global Power BI Summit 2021](https://globalpowerbisummit.com/?page_id=561)
   - **Power BI Datasets & Dataflow**, Apr 21, 2021, [CincyPASS](https://www.meetup.com/CincyPASS/events/257412506/)
+  - **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, Dataweekender
   - **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group
   
   
