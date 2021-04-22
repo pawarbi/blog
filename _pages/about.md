@@ -59,15 +59,17 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Introduction to Azure ML SDK**,Feb 20 2021,  [Azure Saturday Hamburg](https://www.eventleaf.com/azuresaturdayhamburg#ss)
   - **Enterprise Risk Modeling in Power BI**, Feb 27th, 2021, [Scottish Summit 2021](https://scottishsummit.com/scottish-summit-2021-sessions)
   - **Operationalizing Machine Learning Models With Azure ML & Power BI**, Mar 22nd, 2021, [Power BI Days](https://www.powerbidays.com/virtualevent/power-break-2021-03-22/)
+  - **Enterprise Risk Modeling in Power BI**, Apr 21, 2021, [Global Power BI Summit 2021](https://globalpowerbisummit.com/?page_id=561)
+  - **Power BI Datasets & Dataflow**, Apr 21, 2021, [Cinninatti Data and AI User Group](https://www.meetup.com/CincyPASS/events/257412506/)
 
 
 
 **---Upcoming---**
 
-  - **Enterprise Risk Modeling in Power BI**, Apr 21, 2021, [Global Power BI Summit 2021](https://globalpowerbisummit.com/?page_id=561)
-  - **Power BI Datasets & Dataflow**, Apr 21, 2021, [CincyPASS](https://www.meetup.com/CincyPASS/events/257412506/)
-  - **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, Dataweekender
-  - **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group
+
+
+- **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, [DataWeekender](https://www.dataweekender.com/schedule)
+- **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group
   
   
   
