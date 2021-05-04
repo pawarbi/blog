@@ -178,7 +178,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It's not uncommon to have a table with hundreds of columns with different column types such as numerical, text, date, percentage etc. You can select columns by using the UI option "Choose Columns" and then selecting which columns to keep. But if you have have tens of columns of the same type, you will have to manually go through the list of columns and select the columns to keep. As far as I know, there is no direct way to only keep, for example, numerical columns. In Pandas, you can use <code>select_dtypes</code> method and pass which columns choose based on the column types. No such option or function is available in Power Query.</p>
+<p>It's not uncommon to have a table with hundreds of columns with different column types such as numerical, text, date, percentage etc. You can select columns by using the UI option "Choose Columns" and then selecting which columns to keep. But if you have have tens of columns of the same type, you will have to manually go through the list of columns and select the columns to keep. As far as I know, there is no direct way to only keep, for example, numerical columns. In Pandas, you can use <code>select_dtypes</code> method and pass which columns to choose based on the data types. No such option or function is available in Power Query.</p>
 <p>In this example, I will show how I achieved it. You can customize it or turn it into a function based on your use case.</p>
 
 </div>
@@ -213,7 +213,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Similarly, <code>Type.Is</code> is a logical function that you can use to get a True/False if the type equals defined column type. 
-For example, to check number 123 is a text you would write <code>Type.Is(Value.Type(123), Text.Type)</code>. This will return <code>FALSE</code> while <code>Type.Is(Value.Type(123), Number.Type)</code> returns <code>TRUE</code>. Here is we first obtained the type of the value using <code>Value.Type</code> and then compared it with <code>Number.Type</code>. Since both match, the result is <code>TRUE</code>. You can see a list of all data types in M <a href="https://docs.microsoft.com/en-us/powerquery-m/m-spec-types">here</a>.</p>
+For example, to check if number 123 is a text you would write <code>Type.Is(Value.Type(123), Text.Type)</code>. This will return <code>FALSE</code> while <code>Type.Is(Value.Type(123), Number.Type)</code> returns <code>TRUE</code>. Here we first obtained the type of the value using <code>Value.Type</code> and then compared it with <code>Number.Type</code>. Since both match, the result is <code>TRUE</code>. You can see a list of all data types in M <a href="https://docs.microsoft.com/en-us/powerquery-m/m-spec-types">here</a>.</p>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ For example, to check number 123 is a text you would write <code>Type.Is(Value.T
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To apply this to your table, you only need to make sure <code>SourceTable2</code> is your table with all columns with acorrectly assigned data types. You could convert it to a function to take table and data type as arguments. I will leave it to you.</p>
+<p>To apply this to your table, you only need to make sure <code>SourceTable2</code> is your table with all columns with correctly assigned data types. You could convert it to a function to take table and data type as arguments. I will leave it to you.</p>
 
 </div>
 </div>
