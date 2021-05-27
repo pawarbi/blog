@@ -3,7 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated Apr 2021)*
+*(Last Updated May 2021)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
 
@@ -61,15 +61,18 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Operationalizing Machine Learning Models With Azure ML & Power BI**, Mar 22nd, 2021, [Power BI Days](https://www.powerbidays.com/virtualevent/power-break-2021-03-22/)
   - **Enterprise Risk Modeling in Power BI**, Apr 21, 2021, [Global Power BI Summit 2021](https://globalpowerbisummit.com/?page_id=561)
   - **Power BI Datasets & Dataflow**, Apr 21, 2021, [Cincinnati Data and AI User Group](https://www.meetup.com/CincyPASS/events/257412506/)
+  - **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, [DataWeekender](https://www.dataweekender.com/schedule)
+  - **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group [Portland PBUG](https://www.meetup.com/Portland-Power-BI-User-Group/events/276593555/)
 
 
 
 **---Upcoming---**
+- **None** Taking Summer Break :) 
 
 
 
-- **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, [DataWeekender](https://www.dataweekender.com/schedule)
-- **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group
+
+
   
   
   
