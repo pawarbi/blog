@@ -3,7 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated May 2021)*
+*(Last Updated June 2021)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
 
@@ -67,7 +67,11 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 
 
 **---Upcoming---**
-- **None** Taking Summer Break :) 
+- **Power Up Power BI with Jupyter Notebook - Use Cases**, June 25, 2021, [Data Saturdays ANZ 2021](https://www.eventbrite.com.au/e/data-anz-2021-tickets-150669086293)
+- **Power Up Power BI with Jupyter Notebook - Use Cases**, Sept 28, 2021, Hampton Roads Power BI User Group
+- **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+- **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+- **Power BI for advanced analytics - Part 1**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 
 
 
