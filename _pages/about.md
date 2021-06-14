@@ -71,7 +71,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 - **Power Up Power BI with Jupyter Notebook - Use Cases**, Sept 28, 2021, Hampton Roads Power BI User Group
 - **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 - **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
-- **Power BI for advanced analytics - Part 1**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+- **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 
 
 
