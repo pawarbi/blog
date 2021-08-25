@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Migrating Power BI Dataflows Across Workspaces | Sandeep Pawar</title>
+<title>Power BI AutoML Deep Dive | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Migrating Power BI Dataflows Across Workspaces" />
+<meta property="og:title" content="Power BI AutoML Deep Dive" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows" />
-<meta property="og:description" content="Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html" />
+<meta name="description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
+<meta property="og:description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-08-25T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows","headline":"Migrating Power BI Dataflows Across Workspaces","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html"},"url":"https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html","@context":"https://schema.org"}</script>
+{"description":"I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI","headline":"Power BI AutoML Deep Dive","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html"},"url":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -24,19 +24,19 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Migrating Power BI Dataflows Across Workspaces | Sandeep Pawar</title>
+<title>Power BI AutoML Deep Dive | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Migrating Power BI Dataflows Across Workspaces" />
+<meta property="og:title" content="Power BI AutoML Deep Dive" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows" />
-<meta property="og:description" content="Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html" />
+<meta name="description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
+<meta property="og:description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-08-25T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows","headline":"Migrating Power BI Dataflows Across Workspaces","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html"},"url":"https://pawarbi.github.io/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html","@context":"https://schema.org"}</script>
+{"description":"I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI","headline":"Power BI AutoML Deep Dive","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html"},"url":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -97,7 +97,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Migrating Power BI Dataflows Across Workspaces</h1><p class="page-description">Blog &amp; video on how to move Dataflows from one workspace to the other and reconnect Power BI desktop report to the migrated dataflows</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-25T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Power BI AutoML Deep Dive</h1><p class="page-description">I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-25T00:00:00-05:00" itemprop="datePublished">
         Aug 25, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -113,16 +113,10 @@ window.onload = wrap_img;
         <a class="category-tags-link" href="/blog/categories/#PowerBI">PowerBI</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/blog/categories/#dataflow">dataflow</a>
+        <a class="category-tags-link" href="/blog/categories/#automl">automl</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/blog/categories/#migration">migration</a>
-        &nbsp;
-      
-        <a class="category-tags-link" href="/blog/categories/#workspaces">workspaces</a>
-        &nbsp;
-      
-        <a class="category-tags-link" href="/blog/categories/#json">json</a>
+        <a class="category-tags-link" href="/blog/categories/#machinelearning">machinelearning</a>
         
       
       </p>
@@ -133,19 +127,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2021-08-25-segmentation-clustering-powerbi-multivariate.ipynb" role="button" target="_blank">
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2021-08-25-powerbi-automl.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2021-08-25-segmentation-clustering-powerbi-multivariate.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2021-08-25-powerbi-automl.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2021-08-25-segmentation-clustering-powerbi-multivariate.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2021-08-25-powerbi-automl.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -159,7 +153,7 @@ window.onload = wrap_img;
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2021-08-25-segmentation-clustering-powerbi-multivariate.ipynb
+# file to edit: _notebooks/2021-08-25-powerbi-automl.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -216,7 +210,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/powerbi/dataflow/migration/workspaces/json/2021/08/25/segmentation-clustering-powerbi-multivariate.html" hidden></a>
+</script><a class="u-url" href="/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
