@@ -47,7 +47,7 @@
     
         ,"post4": {
             "title": "Power BI AutoML Deep Dive",
-            "content": "Power BI AutoML Deep Dive . In this session I wanted to show, not only how to create the machine learning models, but more importantly how to create models that answer business questions and are explainable and robust. Please watch and let me know your thoughts. Topic covered: . Machine Learning Basics | License Requirements | How to create models that are: Business focused (cost/loss functions/profit curves) | Generalizable (underfitting/overfitting/error terrain analysis) | Interpretable (SHAP, feature importance) | Manageable (MLOps process and workflow) | . | Recommendations, Limitations | . youtube https://youtu.be/_CaFacQiW_E .",
+            "content": "Power BI AutoML Deep Dive . In this session I wanted to show, not only how to create the machine learning models, but more importantly how to create models that answer business questions and are explainable and robust. Please watch and let me know your thoughts. Topic covered: . Machine Learning Basics | License Requirements | How to create models that are: Business focused (cost/loss functions/profit curves) | Generalizable (underfitting/overfitting/error terrain analysis) | Interpretable (SHAP, feature importance) | Manageable (MLOps process and workflow) | . | Recommendations, Limitations | . .",
             "url": "https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html",
             "relUrl": "/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html",
             "date": " • Aug 25, 2021"
