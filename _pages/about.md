@@ -3,7 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated June 2021)*
+*(Last Updated August 2021)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
 
