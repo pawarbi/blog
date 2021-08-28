@@ -73,6 +73,7 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
 - **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 - **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 - **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+- **Clustering and Segmentation In Power BI**, Nov 8-12, 2021, [PASS Data Community Summit](https://passdatacommunitysummit.com/)
 
 
 
