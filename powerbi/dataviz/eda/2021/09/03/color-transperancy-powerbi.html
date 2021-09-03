@@ -148,7 +148,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Changing-the-Tolor-Transperancy">Changing the Tolor Transperancy </a></li>
+<li class="toc-entry toc-h2"><a href="#Changing-the-Color-Transperancy">Changing the Color Transperancy </a></li>
 <li class="toc-entry toc-h2"><a href="#Solution">Solution </a></li>
 <li class="toc-entry toc-h2"><a href="#Use-Cases">Use Cases </a></li>
 </ul><!--
@@ -170,8 +170,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Changing-the-Tolor-Transperancy">
-<a class="anchor" href="#Changing-the-Tolor-Transperancy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing the Tolor Transperancy<a class="anchor-link" href="#Changing-the-Tolor-Transperancy"> </a>
+<h2 id="Changing-the-Color-Transperancy">
+<a class="anchor" href="#Changing-the-Color-Transperancy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing the Color Transperancy<a class="anchor-link" href="#Changing-the-Color-Transperancy"> </a>
 </h2>
 <p>As someone who uses Python/R heavily for exploratory data analysis and Power BI for publishing the final data analytics reports, I have always missed the ability to adjust the color transperancy in Power BI. In Power BI you can change the color dynamically and conditionally but there is no native functionality to change the transperancy.</p>
 <p>I was working on a project where I wanted to highlight certain clusters in the data to the business user. Sure, I could change the color but it's very challenging when the data points are concentrated in a small area and they overlap each other. In Python and R you can easily adjust the <code>alpha</code> value in most plots to see the dense area clearly.</p>
@@ -615,6 +615,44 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">pbi</span> <span class="o">=</span> <span class="s1">'https://app.powerbi.com/view?r=eyJrIjoiOTY2YTBhODctNmFhNS00OTFhLThiZmYtZmY4OTI3OTZiMzQ0IiwidCI6IjkxMzc2MWU4LTc4NjEtNDc0ZS05ZjM4LWQyZDc1MjUwMDExZiJ9'</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">pbi</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiOTY2YTBhODctNmFhNS00OTFhLThiZmYtZmY4OTI3OTZiMzQ0IiwidCI6IjkxMzc2MWU4LTc4NjEtNDc0ZS05ZjM4LWQyZDc1MjUwMDExZiJ9" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
