@@ -3,7 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated August 2021)*
+*(Last Updated October 2021)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
 
@@ -64,13 +64,14 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Power Up Power BI with Jupyter Notebook - Use Cases**, May 15, 2021, [DataWeekender](https://www.dataweekender.com/schedule)
   - **Power BI AutoML Deep Dive**, May 26, 2021, Portalnd Power BI user Group [Portland PBUG](https://www.meetup.com/Portland-Power-BI-User-Group/events/276593555/)
   - **Power Up Power BI with Jupyter Notebook - Use Cases (Lightning Talk)**, June 25, 2021, [Data Saturdays ANZ 2021](https://www.eventbrite.com.au/e/data-anz-2021-tickets-150669086293)
+  - **Power Up Power BI with Jupyter Notebook - Use Cases**, Sept 28, 2021, [Hampton Roads Power BI User Group](https://www.meetup.com/hrpbiug/events/279762267)
+  - **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 
 
 
 **---Upcoming---**
 
-- **Power Up Power BI with Jupyter Notebook - Use Cases**, Sept 28, 2021, [Hampton Roads Power BI User Group](https://www.meetup.com/hrpbiug/events/279762267)
-- **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+
 - **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 - **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
 - **Clustering and Segmentation In Power BI**, Nov 8-12, 2021, [PASS Data Community Summit](https://passdatacommunitysummit.com/)
