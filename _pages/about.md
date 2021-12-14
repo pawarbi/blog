@@ -3,11 +3,11 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated October 2021)*
+*(Last Updated December 2021)*
 
-My name is Sandeep Pawar. I am a Data Science professional, currently working at [Cree Lighting](https://www.creelighting.com/) as Simulation & Data Analytics Engineer. I use engineering simulations, data analytics, Statistics, and Machine Learning to improve products and processes. 
+My name is Sandeep Pawar. I am a Data Science professional, currently working in Pharmacy Analytics team at [Humana](https://www.humana.com/) as Sr. Data Visualization Engineer. I use advanced data analytics, Statistics, Machine Learning to help improve health & well-being of our members. 
 
-My background is in Mechanical Engineering & Product Development. After graduating with an M.S in Mechanical Engineering, I worked as research engineer focused on using engineering simulation tools  ([Finite Element Analysis](https://en.wikipedia.org/wiki/Finite_element_method), [Computational Fluid Dynamics](https://www.simscale.com/docs/simwiki/cfd-computational-fluid-dynamics/what-is-cfd-computational-fluid-dynamics/)) to analyze products. I am co-inventor of 4 patents related to thermal management of lighting fixtures. For 10+ years, I worked in a cross-disciplinary team of engineers to analyze structural and thermal performance of industrial and semiconductor products. I used to design physical tests using [DOE](https://asq.org/quality-resources/design-of-experiments), gather data, analyze it, create simulation models and recommend design changes to the product engineers. Now as a Data Science professional, I do the same thing but with different tools and data.
+Prior to Humana, I worked at Cree Lighting as Data Analytics Engineer. My background is in Mechanical Engineering & Product Development. After graduating with an M.S in Mechanical Engineering, I worked as research engineer focused on using engineering simulation tools  ([Finite Element Analysis](https://en.wikipedia.org/wiki/Finite_element_method), [Computational Fluid Dynamics](https://www.simscale.com/docs/simwiki/cfd-computational-fluid-dynamics/what-is-cfd-computational-fluid-dynamics/)) to analyze products. I am co-inventor of 4 patents related to thermal management of lighting fixtures. For 10+ years, I worked in a cross-disciplinary team of engineers to analyze structural and thermal performance of industrial and semiconductor products. I used to design physical tests using [DOE](https://asq.org/quality-resources/design-of-experiments), gather data, analyze it, create simulation models and recommend design changes to the product engineers. Now as a Data Science professional, I do the same thing but with different tools and data.
 
 I pivoted to Data Science ~5 years ago (2016) after I helped solve a business challenge using Statistics and Data Analytics. It energized me so much that I pursued my second Master's in Engineering Management at Northwestern University with focus on Organizational Analytics. I learned how to use analytics to gain business insights.  As an engineer I understand [System Dynamics](https://en.wikipedia.org/wiki/System_dynamics) , and hence focus on creating sustainable solutions rather than quick band-aid fixes. 
 
@@ -66,15 +66,10 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Power Up Power BI with Jupyter Notebook - Use Cases (Lightning Talk)**, June 25, 2021, [Data Saturdays ANZ 2021](https://www.eventbrite.com.au/e/data-anz-2021-tickets-150669086293)
   - **Power Up Power BI with Jupyter Notebook - Use Cases**, Sept 28, 2021, [Hampton Roads Power BI User Group](https://www.meetup.com/hrpbiug/events/279762267)
   - **Excel for Data Science**, Oct 06, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
-
-
-
-**---Upcoming---**
-
-
-- **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
-- **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
-- **Clustering and Segmentation In Power BI**, Nov 8-12, 2021, [PASS Data Community Summit](https://passdatacommunitysummit.com/)
+  - **Power BI for advanced analytics - Part 1**, Oct 20, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+  - **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
+  - **Clustering and Segmentation In Power BI**, Nov 8-12, 2021, [PASS Data Community Summit](https://passdatacommunitysummit.com/)
+  - **Power BI AI Visuals in An Hour**, November 2021, Atlanta Power BI User Group
 
 
 
