@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Adding Interactive Widgets To Visuals Using Deneb in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Adding Interactive Widgets To Visuals Using Deneb in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity" />
+<meta property="og:description" content="Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-22T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity","dateModified":"2022-01-22T00:00:00-06:00","datePublished":"2022-01-22T00:00:00-06:00","headline":"Adding Interactive Widgets To Visuals Using Deneb in Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html"},"url":"https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Adding Interactive Widgets To Visuals Using Deneb in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Adding Interactive Widgets To Visuals Using Deneb in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity" />
+<meta property="og:description" content="Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-22T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity","dateModified":"2022-01-22T00:00:00-06:00","datePublished":"2022-01-22T00:00:00-06:00","headline":"Adding Interactive Widgets To Visuals Using Deneb in Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html"},"url":"https://pawarbi.github.io/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Adding Interactive Widgets To Visuals Using Deneb in Power BI</h1><p class="page-description">Deneb custom visual can be used to add interactive widgets that are bound to the visual and add interactivity</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-01-22T00:00:00-06:00" itemprop="datePublished">
+        Jan 22, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      13 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#Power BI">Power BI</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#deneb">deneb</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#custom visual">custom visual</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#altair">altair</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#python">python</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-01-22-Deneb-Custom-visual-interactive-widget-composite.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-01-22-Deneb-Custom-visual-interactive-widget-composite.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-01-22-Deneb-Custom-visual-interactive-widget-composite.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Deneb">Deneb </a></li>
+<li class="toc-entry toc-h2"><a href="#Adding-Interactive-Widgets">Adding Interactive Widgets </a></li>
+<li class="toc-entry toc-h2"><a href="#Create-Widget-Using-Altair">Create Widget Using Altair </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Building-Base-Visuals">Building Base Visuals </a>
+<ul>
+<li class="toc-entry toc-h6"><a href="#Bar-Chart">Bar Chart </a></li>
+<li class="toc-entry toc-h6"><a href="#Scatter-Plot">Scatter Plot </a></li>
+<li class="toc-entry toc-h6"><a href="#Creating-Selector">Creating Selector </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#Extracting-JSON-for-Deneb">Extracting JSON for Deneb </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Steps">Steps </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-01-22-Deneb-Custom-visual-interactive-widget-composite.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deneb">
+<a class="anchor" href="#Deneb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deneb<a class="anchor-link" href="#Deneb"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Deneb is a free Microsoft certified custom visual available in the Apps gallery. Unlike many other custom visuals, it's highly customizale and fairly easy to setup. It uses JSON syntax of the Vega/Vega-Lite languages to create visuals. You can read more about it on it's <a href="https://deneb-viz.github.io/">official site</a>. Kudos to its creator <a href="https://twitter.com/the_d_mp">Daniel Marsh-Patrick</a> for open-sourcing it. Please support his efforts <a href="https://www.buymeacoffee.com/dmp">here</a>. Also check out some awesome visuals created by <a href="https://kerrykolosko.com/visualisations/">Kerry Kolosko</a> using Deneb.</p>
+<p>As I have mentioned before on my blog, I use Python &amp; Power BI together in my workflow. Since Deneb uses Vega-Lite, I can use any other Vega-Lite library to develop the visuals and use them in Power BI with Deneb. While you can build Deneb visuals using JSON, I like using <a href="https://altair-viz.github.io/index.html">Altair</a> to create the visuals and then use that JSON in Deneb. I have already created a video on how you can do that. Please watch it to learn more, I won't cover it here again.</p>
+<p>The goal of this blog is to show you three things that are not possible in native Power BI visuals:</p>
+<ul>
+<li>Adding intereactive widgets that are bound to a visual</li>
+<li>Creating data-driven conditional labels</li>
+<li>Creating composite visuals by layering and adding visuals to each other to build more complex visuals</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gR5RpQtIwHs" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Adding-Interactive-Widgets">
+<a class="anchor" href="#Adding-Interactive-Widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Interactive Widgets<a class="anchor-link" href="#Adding-Interactive-Widgets"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can think of widgets as the slicers that are bound to a visual and can be used by the user to control various formatting options of the visual. This can be used to personalize the visual, as well help in exploring the data interactively. These widgets can be slicers, radio buttons, dropdowns etc. Unlike the Power BI slicer, since these are bound to the visual, they are very responsive. I will show couple of example of how you can use Altair to first build the visual and then use the JSON to re-create it in Power BI.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-Widget-Using-Altair">
+<a class="anchor" href="#Create-Widget-Using-Altair" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create Widget Using Altair<a class="anchor-link" href="#Create-Widget-Using-Altair"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To build the visual, we don't really need data from Power BI. We can use some dummy data to build the visual, which can then to transferred to Deneb. I will use Pandas for creating dataframe.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Altair version:"</span><span class="p">,</span><span class="n">alt</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Altair version: 4.1.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Creating a dummy dataframe with X, Y, Z columns with 50 observations.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">'X'</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="s1">'Y'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span>
+    <span class="s1">'Z'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="p">}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.0</td>
+      <td>77.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>2.0</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>3.0</td>
+      <td>51.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Building-Base-Visuals">
+<a class="anchor" href="#Building-Base-Visuals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building Base Visuals<a class="anchor-link" href="#Building-Base-Visuals"> </a>
+</h4>
+<p>I will build two visuals and show how you can create a composite visual. Try interacting with the visual by zooming and hovering. I have annotated the code below if you are not familiar with Altair. If you have never used Altair before, still follow along. The code we generate from the visual can be applied to any data in Power BI.</p>
+<p>In this example, we want to build an interactive, composite visual to analyze multivariate data. The bar chart shows X vs. Z and the scatter plot shows X vs Y. We are interested in analyzing the Z variable. By adding interactivity, we can visualize Z in XZ and YZ planes in a single visual.</p>
+<p>First I will create the base visuals with conditional formatting and then show how to add the widget.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="Bar-Chart">
+<a class="anchor" href="#Bar-Chart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bar Chart<a class="anchor-link" href="#Bar-Chart"> </a>
+</h6>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>                                            <span class="c1">#Create a bar chart using df dataframe</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'X'</span><span class="p">,</span>                                                                         <span class="c1">#X variable</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Z'</span><span class="p">,</span>                                                                         <span class="c1">#Y variable is Z</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'X'</span><span class="p">,</span><span class="s1">'Y'</span><span class="p">,</span><span class="s1">'Z'</span><span class="p">],</span>                                                         <span class="c1">#Add tooltip</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span><span class="o">&lt;</span> <span class="mi">20</span><span class="p">,</span>                                                          <span class="c1">#Conditional formatting, threshold 20</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'#477998'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0.25)'</span><span class="p">),</span>              <span class="c1">#if Z &lt; 20, Blue otherwise gray</span>
+        
+    <span class="p">)</span>          
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Bar Chart with Widget"</span><span class="p">))</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
+    <span class="n">align</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span>                                                                <span class="c1">#add text label</span>
+    <span class="n">baseline</span><span class="o">=</span><span class="s1">'middle'</span><span class="p">,</span>                                                            <span class="c1">#align data labels</span>
+    
+    <span class="n">dx</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span> <span class="o">-</span><span class="mi">5</span>                                                                 <span class="c1">#align x &amp; y positions of labels</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">'Z:Q'</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span><span class="o">&lt;</span> <span class="mi">20</span><span class="p">,</span>                                                          <span class="c1">#Conditional formatting, threshold 20</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'#477998'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0)'</span><span class="p">))</span>                 <span class="c1">#only show label if Z &lt; 20, 0 is for alpha</span>
+<span class="p">)</span>
+
+<span class="n">bartext</span> <span class="o">=</span> <span class="p">(</span><span class="n">bar</span> <span class="o">+</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>                                             <span class="c1">#add bar chart layer to text layer</span>
+<span class="n">bartext</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-7130d9e28be44c9fa86d2736e213ff5f"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-7130d9e28be44c9fa86d2736e213ff5f") {
+      outputDiv = document.getElementById("altair-viz-7130d9e28be44c9fa86d2736e213ff5f");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": "bar", "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "selection": {"selector014": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "Bar Chart with Widget", "width": 500}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "dx": 3, "dy": -5}, "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0)"}, "text": {"type": "quantitative", "field": "Z"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "title": "Bar Chart with Widget", "width": 500}], "data": {"name": "data-2a92a2aad2788a9669f8b00966e4e773"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2a92a2aad2788a9669f8b00966e4e773": [{"X": 0, "Y": 1.0, "Z": 60.0}, {"X": 1, "Y": 1.0, "Z": 19.0}, {"X": 2, "Y": 1.0, "Z": 77.0}, {"X": 3, "Y": 2.0, "Z": 31.0}, {"X": 4, "Y": 3.0, "Z": 51.0}, {"X": 5, "Y": 3.0, "Z": 17.0}, {"X": 6, "Y": 4.0, "Z": 69.0}, {"X": 7, "Y": 4.0, "Z": 19.0}, {"X": 8, "Y": 5.0, "Z": 71.0}, {"X": 9, "Y": 6.0, "Z": 44.0}, {"X": 10, "Y": 6.0, "Z": 10.0}, {"X": 11, "Y": 7.0, "Z": 54.0}, {"X": 12, "Y": 7.0, "Z": 20.0}, {"X": 13, "Y": 8.0, "Z": 64.0}, {"X": 14, "Y": 9.0, "Z": 21.0}, {"X": 15, "Y": 9.0, "Z": 5.0}, {"X": 16, "Y": 9.0, "Z": 71.0}, {"X": 17, "Y": 10.0, "Z": 91.0}, {"X": 18, "Y": 11.0, "Z": 52.0}, {"X": 19, "Y": 11.0, "Z": 70.0}, {"X": 20, "Y": 12.0, "Z": 26.0}, {"X": 21, "Y": 13.0, "Z": 30.0}, {"X": 22, "Y": 13.0, "Z": 28.0}, {"X": 23, "Y": 14.0, "Z": 35.0}, {"X": 24, "Y": 15.0, "Z": 22.0}, {"X": 25, "Y": 15.0, "Z": 49.0}, {"X": 26, "Y": 16.0, "Z": 58.0}, {"X": 27, "Y": 16.0, "Z": 4.0}, {"X": 28, "Y": 17.0, "Z": 46.0}, {"X": 29, "Y": 17.0, "Z": 99.0}, {"X": 30, "Y": 18.0, "Z": 33.0}, {"X": 31, "Y": 19.0, "Z": 63.0}, {"X": 32, "Y": 19.0, "Z": 66.0}, {"X": 33, "Y": 19.0, "Z": 60.0}, {"X": 34, "Y": 20.0, "Z": 0.0}, {"X": 35, "Y": 20.0, "Z": 87.0}, {"X": 36, "Y": 21.0, "Z": 37.0}, {"X": 37, "Y": 22.0, "Z": 25.0}, {"X": 38, "Y": 22.0, "Z": 66.0}, {"X": 39, "Y": 22.0, "Z": 95.0}, {"X": 40, "Y": 23.0, "Z": 20.0}, {"X": 41, "Y": 23.0, "Z": 99.0}, {"X": 42, "Y": 24.0, "Z": 88.0}, {"X": 43, "Y": 24.0, "Z": 34.0}, {"X": 44, "Y": 25.0, "Z": 33.0}, {"X": 45, "Y": 25.0, "Z": 61.0}, {"X": 46, "Y": 26.0, "Z": 21.0}, {"X": 47, "Y": 26.0, "Z": 92.0}, {"X": 48, "Y": 27.0, "Z": 27.0}, {"X": 49, "Y": 27.0, "Z": 55.0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="Scatter-Plot">
+<a class="anchor" href="#Scatter-Plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scatter Plot<a class="anchor-link" href="#Scatter-Plot"> </a>
+</h6>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scatter</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>                             <span class="c1">#Create a scatterplot using df dataframe</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'X'</span><span class="p">,</span>                                                                 <span class="c1">#X axis is X</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Y'</span><span class="p">,</span>                                                                 <span class="c1">#Y axis uses Y variable</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'X'</span><span class="p">,</span><span class="s1">'Y'</span><span class="p">,</span><span class="s1">'Z'</span><span class="p">],</span> 
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'red'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0.25)'</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Sactterplot with Widget"</span><span class="p">))</span>
+
+<span class="n">scatter</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-6a1bf792ce1143efbd05f1c56835939a"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-6a1bf792ce1143efbd05f1c56835939a") {
+      outputDiv = document.getElementById("altair-viz-6a1bf792ce1143efbd05f1c56835939a");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-2a92a2aad2788a9669f8b00966e4e773"}, "mark": "circle", "encoding": {"color": {"condition": {"value": "red", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Y"}}, "height": 400, "selection": {"selector016": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "Sactterplot with Widget", "width": 300, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2a92a2aad2788a9669f8b00966e4e773": [{"X": 0, "Y": 1.0, "Z": 60.0}, {"X": 1, "Y": 1.0, "Z": 19.0}, {"X": 2, "Y": 1.0, "Z": 77.0}, {"X": 3, "Y": 2.0, "Z": 31.0}, {"X": 4, "Y": 3.0, "Z": 51.0}, {"X": 5, "Y": 3.0, "Z": 17.0}, {"X": 6, "Y": 4.0, "Z": 69.0}, {"X": 7, "Y": 4.0, "Z": 19.0}, {"X": 8, "Y": 5.0, "Z": 71.0}, {"X": 9, "Y": 6.0, "Z": 44.0}, {"X": 10, "Y": 6.0, "Z": 10.0}, {"X": 11, "Y": 7.0, "Z": 54.0}, {"X": 12, "Y": 7.0, "Z": 20.0}, {"X": 13, "Y": 8.0, "Z": 64.0}, {"X": 14, "Y": 9.0, "Z": 21.0}, {"X": 15, "Y": 9.0, "Z": 5.0}, {"X": 16, "Y": 9.0, "Z": 71.0}, {"X": 17, "Y": 10.0, "Z": 91.0}, {"X": 18, "Y": 11.0, "Z": 52.0}, {"X": 19, "Y": 11.0, "Z": 70.0}, {"X": 20, "Y": 12.0, "Z": 26.0}, {"X": 21, "Y": 13.0, "Z": 30.0}, {"X": 22, "Y": 13.0, "Z": 28.0}, {"X": 23, "Y": 14.0, "Z": 35.0}, {"X": 24, "Y": 15.0, "Z": 22.0}, {"X": 25, "Y": 15.0, "Z": 49.0}, {"X": 26, "Y": 16.0, "Z": 58.0}, {"X": 27, "Y": 16.0, "Z": 4.0}, {"X": 28, "Y": 17.0, "Z": 46.0}, {"X": 29, "Y": 17.0, "Z": 99.0}, {"X": 30, "Y": 18.0, "Z": 33.0}, {"X": 31, "Y": 19.0, "Z": 63.0}, {"X": 32, "Y": 19.0, "Z": 66.0}, {"X": 33, "Y": 19.0, "Z": 60.0}, {"X": 34, "Y": 20.0, "Z": 0.0}, {"X": 35, "Y": 20.0, "Z": 87.0}, {"X": 36, "Y": 21.0, "Z": 37.0}, {"X": 37, "Y": 22.0, "Z": 25.0}, {"X": 38, "Y": 22.0, "Z": 66.0}, {"X": 39, "Y": 22.0, "Z": 95.0}, {"X": 40, "Y": 23.0, "Z": 20.0}, {"X": 41, "Y": 23.0, "Z": 99.0}, {"X": 42, "Y": 24.0, "Z": 88.0}, {"X": 43, "Y": 24.0, "Z": 34.0}, {"X": 44, "Y": 25.0, "Z": 33.0}, {"X": 45, "Y": 25.0, "Z": 61.0}, {"X": 46, "Y": 26.0, "Z": 21.0}, {"X": 47, "Y": 26.0, "Z": 92.0}, {"X": 48, "Y": 27.0, "Z": 27.0}, {"X": 49, "Y": 27.0, "Z": 55.0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's combine these two to make a composite chart. This is a single visual now with two chart types.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">bartext</span> <span class="o">|</span> <span class="n">scatter</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-588efb2487a34c16906738af3bb8e751"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-588efb2487a34c16906738af3bb8e751") {
+      outputDiv = document.getElementById("altair-viz-588efb2487a34c16906738af3bb8e751");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "hconcat": [{"layer": [{"mark": "bar", "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "selection": {"selector014": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "Bar Chart with Widget", "width": 500}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "dx": 3, "dy": -5}, "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0)"}, "text": {"type": "quantitative", "field": "Z"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "title": "Bar Chart with Widget", "width": 500}]}, {"mark": "circle", "encoding": {"color": {"condition": {"value": "red", "test": "(datum.Z < 20)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Y"}}, "height": 400, "title": "Sactterplot with Widget", "width": 300}], "data": {"name": "data-2a92a2aad2788a9669f8b00966e4e773"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2a92a2aad2788a9669f8b00966e4e773": [{"X": 0, "Y": 1.0, "Z": 60.0}, {"X": 1, "Y": 1.0, "Z": 19.0}, {"X": 2, "Y": 1.0, "Z": 77.0}, {"X": 3, "Y": 2.0, "Z": 31.0}, {"X": 4, "Y": 3.0, "Z": 51.0}, {"X": 5, "Y": 3.0, "Z": 17.0}, {"X": 6, "Y": 4.0, "Z": 69.0}, {"X": 7, "Y": 4.0, "Z": 19.0}, {"X": 8, "Y": 5.0, "Z": 71.0}, {"X": 9, "Y": 6.0, "Z": 44.0}, {"X": 10, "Y": 6.0, "Z": 10.0}, {"X": 11, "Y": 7.0, "Z": 54.0}, {"X": 12, "Y": 7.0, "Z": 20.0}, {"X": 13, "Y": 8.0, "Z": 64.0}, {"X": 14, "Y": 9.0, "Z": 21.0}, {"X": 15, "Y": 9.0, "Z": 5.0}, {"X": 16, "Y": 9.0, "Z": 71.0}, {"X": 17, "Y": 10.0, "Z": 91.0}, {"X": 18, "Y": 11.0, "Z": 52.0}, {"X": 19, "Y": 11.0, "Z": 70.0}, {"X": 20, "Y": 12.0, "Z": 26.0}, {"X": 21, "Y": 13.0, "Z": 30.0}, {"X": 22, "Y": 13.0, "Z": 28.0}, {"X": 23, "Y": 14.0, "Z": 35.0}, {"X": 24, "Y": 15.0, "Z": 22.0}, {"X": 25, "Y": 15.0, "Z": 49.0}, {"X": 26, "Y": 16.0, "Z": 58.0}, {"X": 27, "Y": 16.0, "Z": 4.0}, {"X": 28, "Y": 17.0, "Z": 46.0}, {"X": 29, "Y": 17.0, "Z": 99.0}, {"X": 30, "Y": 18.0, "Z": 33.0}, {"X": 31, "Y": 19.0, "Z": 63.0}, {"X": 32, "Y": 19.0, "Z": 66.0}, {"X": 33, "Y": 19.0, "Z": 60.0}, {"X": 34, "Y": 20.0, "Z": 0.0}, {"X": 35, "Y": 20.0, "Z": 87.0}, {"X": 36, "Y": 21.0, "Z": 37.0}, {"X": 37, "Y": 22.0, "Z": 25.0}, {"X": 38, "Y": 22.0, "Z": 66.0}, {"X": 39, "Y": 22.0, "Z": 95.0}, {"X": 40, "Y": 23.0, "Z": 20.0}, {"X": 41, "Y": 23.0, "Z": 99.0}, {"X": 42, "Y": 24.0, "Z": 88.0}, {"X": 43, "Y": 24.0, "Z": 34.0}, {"X": 44, "Y": 25.0, "Z": 33.0}, {"X": 45, "Y": 25.0, "Z": 61.0}, {"X": 46, "Y": 26.0, "Z": 21.0}, {"X": 47, "Y": 26.0, "Z": 92.0}, {"X": 48, "Y": 27.0, "Z": 27.0}, {"X": 49, "Y": 27.0, "Z": 55.0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Few things to notice in the code above:</p>
+<ul>
+<li>For the bar chart, I have defined an alternate condition that values less than 20 are blue in color and values above 20 are gray</li>
+<li>I added text as another chart on top of the bar chart. This allow us to create data-driven labels. In the options, notice I defined the text color as <code>hsla(232, 7%, 20%, 0)</code>. The last value here <code>0</code> is the <code>alpha</code> that defines the transperancy. If Z &gt; 20, the text will be become transparent and only values below 20 will be appear.</li>
+<li>For scatterplot, values below 20 are red and values above 20 are gray</li>
+<li>I combined the two charts together using " | ". </li>
+</ul>
+<p>In the base visuals, I defined the color threshold 20 manually. Now we want to add a slicer widget so the user can control that threshold. To do that, we have to define a selector and bind that to the visuals above.</p>
+<p>Below I am defining the min and max range for the slicer, name of the slicer and the default value.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="Creating-Selector">
+<a class="anchor" href="#Creating-Selector" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Selector<a class="anchor-link" href="#Creating-Selector"> </a>
+</h6>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">slider</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">binding_range</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'color_threshold:'</span><span class="p">)</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SelectorName"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">'color_threshold'</span><span class="p">],</span>
+                                <span class="n">bind</span><span class="o">=</span><span class="n">slider</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="p">{</span><span class="s1">'color_threshold'</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">color_threshold</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now I just need to change the color threshold value I entered (20) to the slider variable <code>color_threshold</code> and bind the selector to the visuals.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>                                        <span class="c1">#Create a bar chart using df dataframe</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'X'</span><span class="p">,</span>                                                                     <span class="c1">#X variable</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Z'</span><span class="p">,</span>                                                                     <span class="c1">#Y variable is Z</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'X'</span><span class="p">,</span><span class="s1">'Y'</span><span class="p">,</span><span class="s1">'Z'</span><span class="p">],</span>                                                     <span class="c1">#Add tooltip</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span><span class="o">&lt;</span> <span class="n">selector</span><span class="o">.</span><span class="n">color_threshold</span><span class="p">,</span>                                 <span class="c1">#Conditional formatting the selector variable</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'#477998'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0.25)'</span><span class="p">),</span>           <span class="c1">#if Z &lt; 20, Blue otherwise gray</span>
+        
+    <span class="p">)</span>          
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Bar Chart with Widget"</span><span class="p">))</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
+    <span class="n">align</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span>                                                                <span class="c1">#add text label</span>
+    <span class="n">baseline</span><span class="o">=</span><span class="s1">'middle'</span><span class="p">,</span>                                                            <span class="c1">#align data labels</span>
+    
+    <span class="n">dx</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span> <span class="o">-</span><span class="mi">5</span>                                                                 <span class="c1">#align x &amp; y positions of labels</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">text</span><span class="o">=</span><span class="s1">'Z:Q'</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span><span class="o">&lt;</span> <span class="n">selector</span><span class="o">.</span><span class="n">color_threshold</span><span class="p">,</span>                                   <span class="c1">#Conditional formatting</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'#477998'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0)'</span><span class="p">))</span>             
+<span class="p">)</span>
+
+<span class="n">bartext</span> <span class="o">=</span> <span class="p">(</span><span class="n">bar</span> <span class="o">+</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>                                          
+<span class="n">bartext</span>
+
+
+<span class="n">scatter</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>                             <span class="c1">#</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'X'</span><span class="p">,</span>                                                                 
+    <span class="n">y</span><span class="o">=</span><span class="s1">'Y'</span><span class="p">,</span>                                                                
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'X'</span><span class="p">,</span><span class="s1">'Y'</span><span class="p">,</span><span class="s1">'Z'</span><span class="p">],</span> 
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">datum</span><span class="o">.</span><span class="n">Z</span> <span class="o">&lt;</span> <span class="n">selector</span><span class="o">.</span><span class="n">color_threshold</span><span class="p">,</span>                                   <span class="c1">#passed the color_threshold variable</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'red'</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">'hsla(232, 7%, 20%, 0.25)'</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Sactterplot with Widget"</span><span class="p">))</span>
+
+<span class="n">scatter</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+
+
+
+<span class="n">final</span> <span class="o">=</span><span class="p">(</span><span class="n">bartext</span> <span class="o">|</span> <span class="n">scatter</span><span class="p">)</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">selector</span>
+<span class="p">)</span>
+
+<span class="n">final</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-3e91a77d24ba46d68ef97ea22d3db1ce"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3e91a77d24ba46d68ef97ea22d3db1ce") {
+      outputDiv = document.getElementById("altair-viz-3e91a77d24ba46d68ef97ea22d3db1ce");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "hconcat": [{"layer": [{"mark": "bar", "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < SelectorName.color_threshold)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "selection": {"selector017": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}, "SelectorName": {"type": "single", "fields": ["color_threshold"], "bind": {"input": "range", "max": 100, "min": 0, "name": "color_threshold:", "step": 1}, "init": {"color_threshold": 20}}}, "title": "Bar Chart with Widget", "width": 500}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "dx": 3, "dy": -5}, "encoding": {"color": {"condition": {"value": "#477998", "test": "(datum.Z < SelectorName.color_threshold)"}, "value": "hsla(232, 7%, 20%, 0)"}, "text": {"type": "quantitative", "field": "Z"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Z"}}, "height": 400, "title": "Bar Chart with Widget", "width": 500}]}, {"mark": "circle", "encoding": {"color": {"condition": {"value": "red", "test": "(datum.Z < SelectorName.color_threshold)"}, "value": "hsla(232, 7%, 20%, 0.25)"}, "tooltip": [{"type": "quantitative", "field": "X"}, {"type": "quantitative", "field": "Y"}, {"type": "quantitative", "field": "Z"}], "x": {"type": "quantitative", "field": "X"}, "y": {"type": "quantitative", "field": "Y"}}, "height": 400, "selection": {"SelectorName": {"type": "single", "fields": ["color_threshold"], "bind": {"input": "range", "max": 100, "min": 0, "name": "color_threshold:", "step": 1}, "init": {"color_threshold": 20}}}, "title": "Sactterplot with Widget", "width": 300}], "data": {"name": "data-2a92a2aad2788a9669f8b00966e4e773"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2a92a2aad2788a9669f8b00966e4e773": [{"X": 0, "Y": 1.0, "Z": 60.0}, {"X": 1, "Y": 1.0, "Z": 19.0}, {"X": 2, "Y": 1.0, "Z": 77.0}, {"X": 3, "Y": 2.0, "Z": 31.0}, {"X": 4, "Y": 3.0, "Z": 51.0}, {"X": 5, "Y": 3.0, "Z": 17.0}, {"X": 6, "Y": 4.0, "Z": 69.0}, {"X": 7, "Y": 4.0, "Z": 19.0}, {"X": 8, "Y": 5.0, "Z": 71.0}, {"X": 9, "Y": 6.0, "Z": 44.0}, {"X": 10, "Y": 6.0, "Z": 10.0}, {"X": 11, "Y": 7.0, "Z": 54.0}, {"X": 12, "Y": 7.0, "Z": 20.0}, {"X": 13, "Y": 8.0, "Z": 64.0}, {"X": 14, "Y": 9.0, "Z": 21.0}, {"X": 15, "Y": 9.0, "Z": 5.0}, {"X": 16, "Y": 9.0, "Z": 71.0}, {"X": 17, "Y": 10.0, "Z": 91.0}, {"X": 18, "Y": 11.0, "Z": 52.0}, {"X": 19, "Y": 11.0, "Z": 70.0}, {"X": 20, "Y": 12.0, "Z": 26.0}, {"X": 21, "Y": 13.0, "Z": 30.0}, {"X": 22, "Y": 13.0, "Z": 28.0}, {"X": 23, "Y": 14.0, "Z": 35.0}, {"X": 24, "Y": 15.0, "Z": 22.0}, {"X": 25, "Y": 15.0, "Z": 49.0}, {"X": 26, "Y": 16.0, "Z": 58.0}, {"X": 27, "Y": 16.0, "Z": 4.0}, {"X": 28, "Y": 17.0, "Z": 46.0}, {"X": 29, "Y": 17.0, "Z": 99.0}, {"X": 30, "Y": 18.0, "Z": 33.0}, {"X": 31, "Y": 19.0, "Z": 63.0}, {"X": 32, "Y": 19.0, "Z": 66.0}, {"X": 33, "Y": 19.0, "Z": 60.0}, {"X": 34, "Y": 20.0, "Z": 0.0}, {"X": 35, "Y": 20.0, "Z": 87.0}, {"X": 36, "Y": 21.0, "Z": 37.0}, {"X": 37, "Y": 22.0, "Z": 25.0}, {"X": 38, "Y": 22.0, "Z": 66.0}, {"X": 39, "Y": 22.0, "Z": 95.0}, {"X": 40, "Y": 23.0, "Z": 20.0}, {"X": 41, "Y": 23.0, "Z": 99.0}, {"X": 42, "Y": 24.0, "Z": 88.0}, {"X": 43, "Y": 24.0, "Z": 34.0}, {"X": 44, "Y": 25.0, "Z": 33.0}, {"X": 45, "Y": 25.0, "Z": 61.0}, {"X": 46, "Y": 26.0, "Z": 21.0}, {"X": 47, "Y": 26.0, "Z": 92.0}, {"X": 48, "Y": 27.0, "Z": 27.0}, {"X": 49, "Y": 27.0, "Z": 55.0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try changing the color_threshold value to see how the charts behave. As you change the slider, bars below the threshold are highlighted in blue, their labels appear and the corrseponding values in X &amp; Y are highlighted in red in the scatter plot. Notice how responsive the charts are.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Extracting-JSON-for-Deneb">
+<a class="anchor" href="#Extracting-JSON-for-Deneb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extracting JSON for Deneb<a class="anchor-link" href="#Extracting-JSON-for-Deneb"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To extract the JSON from the visual, you can use <code>to_json()</code> method or you can just click on the three dots in the top right hand corner of the above visual and select <code>View Source</code> as show below. This will give you the JSON that can be used in Deneb.</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb0.png" alt=""></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#hide_output</span>
+<span class="p">{</span>
+  <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"view"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"continuousWidth"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">"continuousHeight"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}},</span>
+  <span class="s2">"hconcat"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"layer"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"mark"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">,</span>
+          <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"#477998"</span><span class="p">,</span>
+                <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+              <span class="p">},</span>
+              <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0.25)"</span>
+            <span class="p">},</span>
+            <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+          <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"selector017"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"interval"</span><span class="p">,</span>
+              <span class="s2">"bind"</span><span class="p">:</span> <span class="s2">"scales"</span><span class="p">,</span>
+              <span class="s2">"encodings"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">"SelectorName"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"single"</span><span class="p">,</span>
+              <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"color_threshold"</span><span class="p">],</span>
+              <span class="s2">"bind"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"range"</span><span class="p">,</span>
+                <span class="s2">"max"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="s2">"min"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"color_threshold:"</span><span class="p">,</span>
+                <span class="s2">"step"</span><span class="p">:</span> <span class="mi">1</span>
+              <span class="p">},</span>
+              <span class="s2">"init"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"color_threshold"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Bar Chart with Widget"</span><span class="p">,</span>
+          <span class="s2">"width"</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">"mark"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">,</span>
+            <span class="s2">"align"</span><span class="p">:</span> <span class="s2">"right"</span><span class="p">,</span>
+            <span class="s2">"baseline"</span><span class="p">:</span> <span class="s2">"middle"</span><span class="p">,</span>
+            <span class="s2">"dx"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"dy"</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span>
+          <span class="p">},</span>
+          <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"#477998"</span><span class="p">,</span>
+                <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+              <span class="p">},</span>
+              <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0)"</span>
+            <span class="p">},</span>
+            <span class="s2">"text"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">},</span>
+            <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+          <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Bar Chart with Widget"</span><span class="p">,</span>
+          <span class="s2">"width"</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"mark"</span><span class="p">:</span> <span class="s2">"circle"</span><span class="p">,</span>
+      <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+          <span class="p">},</span>
+          <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0.25)"</span>
+        <span class="p">},</span>
+        <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span><span class="p">},</span>
+        <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span><span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+      <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"SelectorName"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"single"</span><span class="p">,</span>
+          <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"color_threshold"</span><span class="p">],</span>
+          <span class="s2">"bind"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"range"</span><span class="p">,</span>
+            <span class="s2">"max"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">"min"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"color_threshold:"</span><span class="p">,</span>
+            <span class="s2">"step"</span><span class="p">:</span> <span class="mi">1</span>
+          <span class="p">},</span>
+          <span class="s2">"init"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"color_threshold"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Sactterplot with Widget"</span><span class="p">,</span>
+      <span class="s2">"width"</span><span class="p">:</span> <span class="mi">300</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"data-2a92a2aad2788a9669f8b00966e4e773"</span><span class="p">},</span>
+  <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"https://vega.github.io/schema/vega-lite/v4.8.1.json"</span><span class="p">,</span>
+  <span class="s2">"datasets"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"data-2a92a2aad2788a9669f8b00966e4e773"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">60</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">77</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">51</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">17</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">69</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">71</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">44</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">54</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">64</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">21</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">71</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">91</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">52</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">26</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">28</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">35</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">22</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">49</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">58</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">46</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">99</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">33</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">63</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">66</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">60</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">87</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">37</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">66</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">95</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">99</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">88</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">34</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">33</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">61</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">21</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">92</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">27</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">:</span> <span class="mi">55</span><span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To use it in Deneb, you will need to make three changes to the code above:</p>
+<ul>
+<li>Change the names X, Y and Z to the names of the columns you will be using in Power BI. For example, if you want to use <code>Sales</code> column on Y axis, wherever you see Y in the code above, change it to Sales</li>
+<li>Change <code>'data': {'name': 'data-22c7bda41ed58dcd275c5ceb7d2df6d9'}</code> to <code>'data': {'name': 'dataset'}</code>
+</li>
+<li>Delete everything starting from <code>'$schema'</code> and below</li>
+</ul>
+<p>The final JSON you need is below. You can customize the width, height, title, column names, column type, colors, threshold based on your needs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>If you are using a text column on your X-axis, change the <code>&amp;#8217;type&amp;#8217;: &amp;#8217;quantitative&amp;#8217;</code> below to <code>&amp;#8217;type&amp;#8217;: &amp;#8217;nominal&amp;#8217;</code>
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#hide_output</span>
+<span class="p">{</span>
+  <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"view"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"continuousWidth"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+      <span class="s2">"continuousHeight"</span><span class="p">:</span> <span class="mi">300</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"hconcat"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"layer"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"mark"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">,</span>
+          <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"#477998"</span><span class="p">,</span>
+                <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+              <span class="p">},</span>
+              <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0.25)"</span>
+            <span class="p">},</span>
+            <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+              <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+            <span class="p">},</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+              <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+          <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"selector017"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"interval"</span><span class="p">,</span>
+              <span class="s2">"bind"</span><span class="p">:</span> <span class="s2">"scales"</span><span class="p">,</span>
+              <span class="s2">"encodings"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">"SelectorName"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"single"</span><span class="p">,</span>
+              <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"color_threshold"</span>
+              <span class="p">],</span>
+              <span class="s2">"bind"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"range"</span><span class="p">,</span>
+                <span class="s2">"max"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="s2">"min"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"color_threshold:"</span><span class="p">,</span>
+                <span class="s2">"step"</span><span class="p">:</span> <span class="mi">1</span>
+              <span class="p">},</span>
+              <span class="s2">"init"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"color_threshold"</span><span class="p">:</span> <span class="mi">20</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Bar Chart with Widget"</span><span class="p">,</span>
+          <span class="s2">"width"</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">"mark"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">,</span>
+            <span class="s2">"align"</span><span class="p">:</span> <span class="s2">"right"</span><span class="p">,</span>
+            <span class="s2">"baseline"</span><span class="p">:</span> <span class="s2">"middle"</span><span class="p">,</span>
+            <span class="s2">"dx"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"dy"</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span>
+          <span class="p">},</span>
+          <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"#477998"</span><span class="p">,</span>
+                <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+              <span class="p">},</span>
+              <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0)"</span>
+            <span class="p">},</span>
+            <span class="s2">"text"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+              <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+            <span class="p">},</span>
+            <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+                <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+              <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+            <span class="p">},</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+              <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+          <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Bar Chart with Widget"</span><span class="p">,</span>
+          <span class="s2">"width"</span><span class="p">:</span> <span class="mi">500</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"mark"</span><span class="p">:</span> <span class="s2">"circle"</span><span class="p">,</span>
+      <span class="s2">"encoding"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"color"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"condition"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span>
+            <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"(datum.Z &lt; SelectorName.color_threshold)"</span>
+          <span class="p">},</span>
+          <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"hsla(232, 7%, 20%, 0.25)"</span>
+        <span class="p">},</span>
+        <span class="s2">"tooltip"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+            <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+            <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+            <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Z"</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+          <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"X"</span>
+        <span class="p">},</span>
+        <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"quantitative"</span><span class="p">,</span>
+          <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"Y"</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"height"</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+      <span class="s2">"selection"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"SelectorName"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"single"</span><span class="p">,</span>
+          <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"color_threshold"</span><span class="p">],</span>
+          <span class="s2">"bind"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"range"</span><span class="p">,</span>
+            <span class="s2">"max"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">"min"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"color_threshold:"</span><span class="p">,</span>
+            <span class="s2">"step"</span><span class="p">:</span> <span class="mi">1</span>
+          <span class="p">},</span>
+          <span class="s2">"init"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"color_threshold"</span><span class="p">:</span> <span class="mi">20</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Sactterplot with Widget"</span><span class="p">,</span>
+      <span class="s2">"width"</span><span class="p">:</span> <span class="mi">300</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"dataset"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Steps">
+<a class="anchor" href="#Steps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps<a class="anchor-link" href="#Steps"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Install Deneb from App Source. Add your columns to the visual.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb1.png" alt="1"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Make sure you remove the summarization</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb2.png" alt="2"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Select Edit from the three dots in the top right hand corner</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb3.png" alt="3"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Select Empty as we will be adding the code we extracted above</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb4.png" alt="4"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Add the JSON code. You will see the message <code>Cannot read property type of null</code> in the right pane. 
+<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb5.png" alt="5">
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>To fix the message, click on the spanner.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb6.png" alt="6"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>This will render the visuals. Now just go back to the Power BI canvas and resize the window by dragging the corners. You can always change the width and height specified in the JSON to make it fit in your report as needed.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/deneb7.gif" alt="7"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can download the .pbix file from <a href="https://github.com/pawarbi/blog/blob/master/images/Deneb%20Interactive.pbix">here</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As I mentioned above, these widgets can be double slicers, radio buttons, dropdowns etc. and can be used to change pretty much any property of the visual. This is extremely powerful. Also as you saw above, you can create composite visuals that are very effective at analyzing complex, multivariate data. One thing I did not show in this blog is adding cross-highlighting. It's fairly easy to do that. You can read about it on Deneb's documentation. I will show it to in a future blog post.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/power%20bi/deneb/custom%20visual/altair/python/2022/01/22/Deneb-Custom-visual-interactive-widget-composite.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
