@@ -203,7 +203,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In a recent <a href="https://www.youtube.com/watch?v=lopTsclrpHI">video by Guy In A Cube</a>, Adam showed a great trick to pass a list to the <code>where</code> clause in a SQL statement. I want to show another approach which is more parametric and can fold. It does come with one limitation that I will share. Watch Adam's video first:</p>
+<p>In a recent <a href="https://www.youtube.com/watch?v=lopTsclrpHI">video by Guy In A Cube</a>, Adam showed a great trick to pass a list to the <code>where</code> clause in a SQL statement. I want to show another approach which is more parametric and can fold. It does come with one drawback that I will share. Watch Adam's video first:</p>
 
 </div>
 </div>
@@ -234,6 +234,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It's known that instead of pasting query in the SQL server connection dialog box like below, you can use the same SQL statement in <code>Value.NativeQuery()</code> to make it foldable. This has the advantage of potentially speeding up the refresh times by offloading all the processing to the server instead of the gateway. I highly recommend reading <a href="https://blog.crossjoin.co.uk/2021/02/21/query-folding-on-sql-queries-in-power-query-using-value-nativequery-and-enablefoldingtrue/">this blog</a> by Chris Webb, which is how I learned about this function. I have also added few more resources about Query Folding at the end of the blog, please check them out.</p>
+<p>This will not fold :</p>
 
 </div>
 </div>
@@ -245,6 +246,7 @@ window.onload = wrap_img;
 <h5 id="Using-Native.Query()">
 <a class="anchor" href="#Using-Native.Query()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Native.Query()<a class="anchor-link" href="#Using-Native.Query()"> </a>
 </h5>
+<p>This will fold:</p>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/nq2.png" alt="2"></p>
 
 </div>
@@ -253,7 +255,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What's not well-known is that you can pass parameters to the <code>Value.NativeQuery()</code> using the optional third argument. Again, I learned about it from Chris' blog <a href="https://blog.crossjoin.co.uk/2016/12/11/passing-parameters-to-sql-queries-with-value-nativequery-in-power-query-and-power-bi/">here</a>. I modified the SQL statement below and passed a parameter <code>@Date</code> by using the third optional argument as shown below. You can use as many parameters as you like. The query is still foldable.</p>
+<p>What's not generally known is that you can pass parameters to the <code>Value.NativeQuery()</code> using the optional third argument. Again, I learned about it from Chris' blog <a href="https://blog.crossjoin.co.uk/2016/12/11/passing-parameters-to-sql-queries-with-value-nativequery-in-power-query-and-power-bi/">here</a>. I modified the SQL statement and passed a parameter <code>@Date</code> by using the third optional argument as shown below. You can use as many parameters as you like. The query is still foldable.</p>
 
 </div>
 </div>
@@ -324,6 +326,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The solution to this is using <code>OPENJSON</code> format to pass the values. I have not tested it against all the foldable sources. It certainly works with SQL Server and Synapse Analytics. I found this solution last year on a forum somewhere and I can't find the source anymore unfortunately. If anyone knows it, please let me know so I can attribute to the original author.</p>
+<p>Create the parameter as a JSON object and read it in SQl statement using OPENJSON</p>
 
 </div>
 </div>
@@ -402,7 +405,8 @@ window.onload = wrap_img;
 <h5 id="Ben-Gribaudo's-Blog">
 <a class="anchor" href="#Ben-Gribaudo's-Blog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ben Gribaudo's Blog<a class="anchor-link" href="#Ben-Gribaudo's-Blog"> </a>
 </h5>
-<p><a href="https://bengribaudo.com/blog/2022/01/20/6500/power-query-m-primer-part-23-query-folding-i">Ben's blog</a> is like a book on Query Folding. If you want to get deeper understanding of query folding and M in general, you have to read Ben's blog.</p>
+<p><a href="https://bengribaudo.com/blog/2022/01/20/6500/power-query-m-primer-part-23-query-folding-i">Ben's blog</a> is the most comprehensive resource on Query Folding. If you want to get deeper understanding of query folding and M in general, you have to read Ben's blog.</p>
+<p>Watch <a href="https://bengribaudo.com/blog/2020/08/26/5417/how-power-query-thinks"><strong>How Power Query Thinks</strong></a> by Ben</p>
 
 </div>
 </div>
