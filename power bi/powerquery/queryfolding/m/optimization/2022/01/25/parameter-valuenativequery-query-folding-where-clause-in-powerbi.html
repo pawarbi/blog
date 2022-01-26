@@ -164,7 +164,7 @@ window.onload = wrap_img;
 </li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#The-Solution">The Solution </a></li>
+<li class="toc-entry toc-h2"><a href="#The-Solution-:-Use-JSON">The Solution : Use JSON </a></li>
 <li class="toc-entry toc-h2"><a href="#Resources">Resources </a>
 <ul>
 <li class="toc-entry toc-h5"><a href="#30DQUERY-Challenge">30DQUERY Challenge </a></li>
@@ -249,7 +249,19 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What's not well-known is that you can pass parameters to the <code>Value.NativeQuery()</code> using the optional third argument. Again, I learned about it from Chris' blog <a href="https://blog.crossjoin.co.uk/2016/12/11/passing-parameters-to-sql-queries-with-value-nativequery-in-power-query-and-power-bi/">here</a>. I modified the SQL statement below and passed a parameter <code>@Date</code> by using the third optional argument as shown below. You can use as many parameters as you like. The query is still foldable. Be sure to set <code>[EnableFolding=true]</code></p>
+<p>What's not well-known is that you can pass parameters to the <code>Value.NativeQuery()</code> using the optional third argument. Again, I learned about it from Chris' blog <a href="https://blog.crossjoin.co.uk/2016/12/11/passing-parameters-to-sql-queries-with-value-nativequery-in-power-query-and-power-bi/">here</a>. I modified the SQL statement below and passed a parameter <code>@Date</code> by using the third optional argument as shown below. You can use as many parameters as you like. The query is still foldable.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>Be sure to set [EnableFolding=true] to fold subsequent query steps. If you don’t specify this, your initial query will fold but not the queries following the initial query
+</div>
 
 </div>
 </div>
@@ -298,8 +310,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Solution">
-<a class="anchor" href="#The-Solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution<a class="anchor-link" href="#The-Solution"> </a>
+<h2 id="The-Solution-:-Use-JSON">
+<a class="anchor" href="#The-Solution-:-Use-JSON" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Solution : Use JSON<a class="anchor-link" href="#The-Solution-:-Use-JSON"> </a>
 </h2>
 </div>
 </div>
