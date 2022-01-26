@@ -103,7 +103,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -164,7 +164,11 @@ window.onload = wrap_img;
 </li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#The-Solution-:-Use-JSON">The Solution : Use JSON </a></li>
+<li class="toc-entry toc-h2"><a href="#The-Solution-:-Use-JSON">The Solution : Use JSON </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#What-If-You-Have-An-Existing-List-?">What If You Have An Existing List ? </a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#Resources">Resources </a>
 <ul>
 <li class="toc-entry toc-h5"><a href="#30DQUERY-Challenge">30DQUERY Challenge </a></li>
@@ -336,7 +340,30 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The only limitation here is the automatically generated SQL query does not show the values passed to <code>IN</code>. But it folds, that's what matters.</p>
+<h5 id="What-If-You-Have-An-Existing-List-?">
+<a class="anchor" href="#What-If-You-Have-An-Existing-List-?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What If You Have An Existing List ?<a class="anchor-link" href="#What-If-You-Have-An-Existing-List-?"> </a>
+</h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you have an existing list that's derived from a column, you can use Text.Combine(), like Adam did, and pass it to the JSON parameter we created. If you want to pass numbers to the <code>where</code> clause like I did above, here are the steps to pass your list named <code>_mylist</code> as a parameter:</p>
+<ul>
+<li>First convert the numbers to text, you can use <code>Number.ToText()</code>. Easier to just convert the column to text before creating the list</li>
+<li>Concatenate the list: <code>"[" &amp; Text.Combine(_mylist,",") &amp; "]"</code>
+</li>
+<li>Now you can specify this list as a parameter directly in the <code>Value.NativeQuery()</code> parameters option</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The only drawback here is the automatically generated SQL query does not show the values passed to <code>IN</code>. But it folds, that's what matters.</p>
 
 </div>
 </div>
