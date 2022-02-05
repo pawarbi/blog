@@ -103,7 +103,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      34 min read
+      35 min read
     
 </span></p>
 
@@ -216,6 +216,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Wine-Consumption">Wine Consumption </a></li>
 <li class="toc-entry toc-h3"><a href="#Vodka-Consumption">Vodka Consumption </a></li>
 <li class="toc-entry toc-h3"><a href="#Conclusion:">Conclusion: </a></li>
+<li class="toc-entry toc-h3"><a href="#Limitations:">Limitations: </a></li>
 </ul>
 </li>
 </ul><!--
@@ -240,9 +241,9 @@ window.onload = wrap_img;
 <h2 id="Overview">
 <a class="anchor" href="#Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview<a class="anchor-link" href="#Overview"> </a>
 </h2>
-<p>The goal of this notebook is to show how to do exploratory data analysis of time series data and use feature based clustering method to identify attributes that are similar in time domain. The novelty of this based is, instead of relying on shape of the time series, feature based approach enables more interpretable method. I used some of these techniques in a real project so I wanted to showcase this for own future reference.</p>
-<p>The data here is alcohol consumption across 80+ regions of Russia. I am not sure if this is real data or not. Hypothetically, an alcohol company has been operating in St. Petersburg. Their campaign was successful in St.Petersburg so we want to identify other regions where they can potentially run similar campaigns. We have alcohol consumption for alcohol types per capita from 1998 to 2016.</p>
-<p>I don't know anything about Russia's geography or economy, so I will make assumptions in my analysis.</p>
+<p>The goal of this notebook is to show how to do exploratory data analysis of time series data and use feature based clustering method to identify attributes that are similar in time domain. The novelty of this based is, instead of relying on shape of the time series, feature based approach enables more interpretable solution. I used some of these techniques in a real project so I wanted to showcase this for my own future reference.</p>
+<p>The data here is alcohol consumption across 80+ regions of Russia. I am not sure if this is real data or not. Hypothetically, an alcohol company has been operating in St. Petersburg. Their campaign was successful in St.Petersburg so we want to identify other regions where they can potentially run similar campaigns. We have alcohol consumption for differrent alcohol types per capita from 1998 to 2016.</p>
+<p>I don't know anything about Russia's geography or economy, so I will make reasonable assumptions in my analysis.</p>
 
 </div>
 </div>
@@ -550,7 +551,7 @@ Chechen Republic , wine : 100.0 %
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#alchol types</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#alcohol types</span>
 <span class="n">alcohols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>                                   
 
 <span class="c1">#Find number of missing values and location of the missing values each of the 4 regions</span>
@@ -681,7 +682,7 @@ Chechen Republic , wine : 100.0 %
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Fig 1: Heatmap showing number of alchol types missing by year and region </span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Fig 1: Heatmap showing number of alcohol types missing by year and region </span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> 
 
 <span class="p">(</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span>    
@@ -1634,7 +1635,7 @@ Name: min, dtype: float64</pre>
 <h3 id="Comparing-Saint-Petersburg-with-Rest-of-Russia">
 <a class="anchor" href="#Comparing-Saint-Petersburg-with-Rest-of-Russia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing Saint Petersburg with Rest of Russia<a class="anchor-link" href="#Comparing-Saint-Petersburg-with-Rest-of-Russia"> </a>
 </h3>
-<p>Fig 6 and 7 show breakdown of alchol consumption by volume and percentage for all of Russia. Fig 8 &amp; 9 show similar metrics for Saint Petersburg. This will help us compare the trends and identify insights. All 4 charts are zoomable and can be panned. Fig 10 shows the alcohol consumption for Saint Petersburg by rank order.</p>
+<p>Fig 6 and 7 show breakdown of alcohol consumption by volume and percentage for all of Russia. Fig 8 &amp; 9 show similar metrics for Saint Petersburg. This will help us compare the trends and identify insights. All 4 charts are zoomable and can be panned. Fig 10 shows the alcohol consumption for Saint Petersburg by rank order.</p>
 
 </div>
 </div>
@@ -1911,7 +1912,7 @@ Name: min, dtype: float64</pre>
 <p><strong>3.Vodka</strong>: Vodka is synonymous with Russia and yet vodka isn't the most consumed alcohol. Consumption of alcohol decreased in Russia and Saint Petersburg. Vodka remained the second most consumed alcohol in Saint Petersburg until 2013. As show in fig 10, vodka became the third most consumed alcohol by volume.</p>
 <p><strong>4.Wine</strong>: Preference for wine over vodka steadily increased in the first 16 years and then took over vodka as the second most consumed alcohol by volume in Saint Petersburg. While some reasearch has been done to identify the reasons, it's not conclusive. It's postulated that women prefer wine over beer and vodka so perhaps change in Saint Petersburg's demographic mixture may have led to wine's popularity but not much data is available to confirm that. <strong>As show in fig 10, wine became more popular than vodka in 2014. Consumers in Saint Petersburg drink 5% more wine per capita than national average (14% vs. 9%)</strong>.</p>
 <p><strong>5. Champagne &amp; Brandy</strong>: These two are lumped together because historically these two alcohols haven't been consumed much, neither in Russia nor in Saint Petersburg. For example, in 2016 Saint Petersburg consumers drank 41 ltr beer on average and only 3.2 lts champagne and brandy. Although the percentage of these two has been increasing, at the expense of beer, but still the volumes are very low.</p>
-<p><strong>6. Hard vs. weak alcohol</strong>: We can group the alcohols by the percentage of alcohol present in them. Vodka, brandy contain ~40% alcohol whereas beer, champagne &amp; wine contain 4-12% alcohol. If we group the alchols this way as hard vs. weak based on alcohol content, we see a differrent picture. As shown in fig 11, although by volume the amount of hard alcohol consumed is low, by percentage <strong>consumers in Saint Petersburg are actually preferring hard over weak alcohols at a rapid pace.</strong></p>
+<p><strong>6. Hard vs. weak alcohol</strong>: We can group the alcohols by the percentage of alcohol present in them. Vodka, brandy contain ~40% alcohol whereas beer, champagne &amp; wine contain 4-12% alcohol. If we group the alcohols this way as hard vs. weak based on alcohol content, we see a differrent picture. As shown in fig 11, although by volume the amount of hard alcohol consumed is low, by percentage <strong>consumers in Saint Petersburg are actually preferring hard over weak alcohols at a rapid pace.</strong></p>
 
 </div>
 </div>
@@ -3248,7 +3249,7 @@ Notes:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"The correlation coefficient between regional GDP and median alchol consumption across differrent regions is"</span><span class="p">,</span><span class="nb">round</span><span class="p">((</span><span class="n">ru_gdp_regional</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ru_gdp_regional</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">GDP</span><span class="p">)),</span><span class="mi">2</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"The correlation coefficient between regional GDP and median alcohol consumption across differrent regions is"</span><span class="p">,</span><span class="nb">round</span><span class="p">((</span><span class="n">ru_gdp_regional</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ru_gdp_regional</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">GDP</span><span class="p">)),</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -4579,7 +4580,7 @@ Name: regions, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Out of 81 regions, 10 regions show patters that show trends for hard &amp; weak alcohols that are similar to that of Saint Petersburg. Let's look at those closely.</p>
+<p>Out of 81 regions, 10 regions show patters that show trends for hard &amp; weak alcohols that are similar to that of Saint Petersburg. Let's look at those closely. You can in the charts below, feature based clustering method identified regions that follow similar time series pattern.</p>
 
 </div>
 </div>
@@ -4725,13 +4726,37 @@ Name: regions, dtype: object</pre>
 </ol>
 <ol>
 <li>
-<p>In the analysis it was found that consumers in Saint Petersburg have been consuming less alcohol compared to the past, especially beer. They have also been preferring wine over vodka in the last 3 years. It was also found that although the consumers have been drinking less alcohol, the preference towards hard alchols (vodka &amp; brandy) has been picking up over weak alchols (beer, wine and champagne)</p>
+<p>In the analysis it was found that consumers in Saint Petersburg have been consuming less alcohol compared to the past, especially beer. They have also been preferring wine over vodka in the last 3 years. It was also found that although the consumers have been drinking less alcohol, the preference towards hard alcohols (vodka &amp; brandy) has been picking up over weak alcohols (beer, wine and champagne)</p>
 </li>
 <li>
 <p>To find regions similar to that of Saint Petersburg, feature based time series clustering technique was used to find regions that show similar trends for both hard and weak alcohols.</p>
 </li>
 <li>
 <p>Analysis showed that macroeconomic factors play an important rule in alcohol consumption. We recommend that the company assess macroeconomics (CPI, GDP, international markets etc.) to decide when to launch the campaign. We could not include GDP data in clustering due to unavailability of data for all regions, but we recommend carrying out additional clustering with inclusion of GDP to find similar regions.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Limitations:">
+<a class="anchor" href="#Limitations:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations:<a class="anchor-link" href="#Limitations:"> </a>
+</h3>
+<ol>
+<li>
+<p>I did not focus on any geospatial analysis. Russia is a vast country and many regions operate autonomously so there are likely to be strong differrences among some regions despite being similar in alchol volume consumption.</p>
+</li>
+<li>
+<p>I have made assumptions regarding GDP numbers</p>
+</li>
+<li>
+<p>One limitation of K-Means is its sensitivity to initialization. Although I spent some time tuning parameters, I did not include it in the analysis here to keep it short. In my real project, I used GMM instead of K-Means.</p>
+</li>
+<li>
+<p>Catch22 is one of the many libraries that allow time series feature extraction. You can also take a look at <code>tsfresh</code> and <code>tsfeat</code></p>
 </li>
 </ol>
 
