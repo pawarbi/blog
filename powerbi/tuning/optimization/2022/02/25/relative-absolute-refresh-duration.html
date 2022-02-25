@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Relative &amp; Absolute Table Refresh Durations in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Relative &amp; Absolute Table Refresh Durations in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Few ways to get relative &amp; abolsute refresh durations in Power BI" />
+<meta property="og:description" content="Few ways to get relative &amp; abolsute refresh durations in Power BI" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"headline":"Relative &amp; Absolute Table Refresh Durations in Power BI","dateModified":"2022-02-25T00:00:00-06:00","description":"Few ways to get relative &amp; abolsute refresh durations in Power BI","datePublished":"2022-02-25T00:00:00-06:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html"},"url":"https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Relative &amp; Absolute Table Refresh Durations in Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Relative &amp; Absolute Table Refresh Durations in Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Few ways to get relative &amp; abolsute refresh durations in Power BI" />
+<meta property="og:description" content="Few ways to get relative &amp; abolsute refresh durations in Power BI" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"headline":"Relative &amp; Absolute Table Refresh Durations in Power BI","dateModified":"2022-02-25T00:00:00-06:00","description":"Few ways to get relative &amp; abolsute refresh durations in Power BI","datePublished":"2022-02-25T00:00:00-06:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html"},"url":"https://pawarbi.github.io/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Relative &amp; Absolute Table Refresh Durations in Power BI</h1><p class="page-description">Few ways to get relative &amp; abolsute refresh durations in Power BI</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-02-25T00:00:00-06:00" itemprop="datePublished">
+        Feb 25, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#tuning">tuning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#optimization">optimization</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-02-25-relative-absolute-refresh-duration.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-02-25-relative-absolute-refresh-duration.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-02-25-relative-absolute-refresh-duration.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Overview">Overview </a></li>
+<li class="toc-entry toc-h2"><a href="#Relative-Refresh">Relative Refresh </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Solution-1-:-The-Easy-Way">Solution 1 : The Easy Way </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Hovering-over-the-table-name">Hovering over the table name </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#Solution-2-:-Selective-Refresh-Duration">Solution 2 : Selective Refresh Duration </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Refresh-duration-for-a-specific-table">Refresh duration for a specific table </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#Solution-3-:-Using-DMV">Solution 3 : Using DMV </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#Getting-refresh-times-using-DMV">Getting refresh times using DMV </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Absolute-Refresh">Absolute Refresh </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Solution-4-:-Using-SQL-Server-Profiler-with-"Visualize-My-Refresh"">Solution 4 : Using SQL Server Profiler with &quot;Visualize My Refresh&quot; </a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#The-most-accurate-method">The most accurate method </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-02-25-relative-absolute-refresh-duration.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Overview">
+<a class="anchor" href="#Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview<a class="anchor-link" href="#Overview"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When designing models and queries in Power BI dekstop, you often need to measure the individual dataset refresh duration. This is particularly important for large datasets where you are trying to optimize the queries to reduce the refresh time during development and in service. Matthew Roche from Power BI CAT team <a href="https://twitter.com/SQLAllFather/status/1478918643744272386?s=20&amp;t=pJZyCVjTYk8qK8f-Bb_ezw">asked a question recently on Twitter</a> about measuring refresh duration. Most pointed to Phil Seamark's <a href="https://dax.tips/2021/02/15/visualise-your-power-bi-refresh/">Visualize Your Power BI Refresh</a> blog and tool. I use that tool and it was the only way I was aware of. But Power BI user <a href="https://twitter.com/eric_beery11">Eric Beery</a> responded with an interesting solution that I didn't know about. In this blog I am exploring that solution.</p>
+<p><strong>All credit goes to Eric for this solution</strong>
+
+</p>
+<center>
+    <div class="jekyll-twitter-plugin">
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">Great idea. My current workaround:<br><br>Hovering over the table in the field list shows the date/time the refresh completed. So I use the difference in completion time between a small table (like date) and the large fact table in interested in to figure out how long it took.</p>— Eric Beery (@eric_beery11) <a href="https://twitter.com/eric_beery11/status/1478925334812704776?ref_src=twsrc%5Etfw">January 6, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Relative-Refresh">
+<a class="anchor" href="#Relative-Refresh" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relative Refresh<a class="anchor-link" href="#Relative-Refresh"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution-1-:-The-Easy-Way">
+<a class="anchor" href="#Solution-1-:-The-Easy-Way" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution 1 : The Easy Way<a class="anchor-link" href="#Solution-1-:-The-Easy-Way"> </a>
+</h3>
+<h5 id="Hovering-over-the-table-name">
+<a class="anchor" href="#Hovering-over-the-table-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hovering over the table name<a class="anchor-link" href="#Hovering-over-the-table-name"> </a>
+</h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you hover the table in report view or model view, you can get the "Data refreshed" date and time. Unfortunately it doesn't give you the data refresh start time so it's not possible to get the exact duration. We can get the relative refresh time by looking at when the refresh finished for a table with little/no data. For example, the small table below finished refreshing at 11:51:39 AM and the large table finished at 11:52:15 AM. So the refresh time for the large table was roughly 45 seconds longer than the small table. This obvisouly doesn't help us a lot but that's the basic idea.</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r1.gif" alt="">
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>This assumes the refreshes happen in parallel. If you have disabled "Allow parallel loading of tables" under options, tables will be refreshed sequentially in which case this doesn’t help. 
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can improvise this by adding a blank table by clicking on <strong>"Enter data"</strong> on the home tab. This will create a blank table without any rows. The idea here is that the blank table should take the least amount of time and thus should be close to the start of refresh time. We can use that to get a better estimation of <em>relative</em> refresh duration.</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r2.png" alt=""></p>
+<p>As you can in the image below, the empty table loaded at 12:51:25PM and the large table finished refreshing at 12:51:52PM, thus the large table takes roughly ~25 seconds to load. It took a bit longer in the first attempt because it was the first refresh. I am guessing when I refreshed again, the connection &amp; data were already cached so it was faster.</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r3.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution-2-:-Selective-Refresh-Duration">
+<a class="anchor" href="#Solution-2-:-Selective-Refresh-Duration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution 2 : Selective Refresh Duration<a class="anchor-link" href="#Solution-2-:-Selective-Refresh-Duration"> </a>
+</h3>
+<h5 id="Refresh-duration-for-a-specific-table">
+<a class="anchor" href="#Refresh-duration-for-a-specific-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Refresh duration for a specific table<a class="anchor-link" href="#Refresh-duration-for-a-specific-table"> </a>
+</h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As noted above, the limitation of this method is that we it won't work withour enabling parallel load. Also, even when parallel load in enabled, the query might wait for other queries to connect/refresh which will give false duration. We can get around this by refreshing only select few tables. This is not possibel in the report view, but if we switch to model view, we can CNTRL + Select the tables to refresh. This will provide slightly more accurate relative refresh time and we don't have to wait for all the queries to refresh. This is a better way when working with many tables or when you have a large table.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r4.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution-3-:-Using-DMV">
+<a class="anchor" href="#Solution-3-:-Using-DMV" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution 3 : Using DMV<a class="anchor-link" href="#Solution-3-:-Using-DMV"> </a>
+</h3>
+<h5 id="Getting-refresh-times-using-DMV">
+<a class="anchor" href="#Getting-refresh-times-using-DMV" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting refresh times using DMV<a class="anchor-link" href="#Getting-refresh-times-using-DMV"> </a>
+</h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since this is all metadata, I thought I could query the DMV to get the same information. If we query <em>TMSCHEMA_PARTITIONS</em> using DAX Studio, we can get the same refresh times.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r5.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note in this case, there are two times- ModifiedTime and RefreshedTime. ModifiedTime tells you when the table was last saved/modified and RefreshedTime tells you when the data was refreshed. It is Also note that the times are in UTC time zone and since we are using MDX, there is no way to convert it to local time zone in DAX Studio, at least I am not aware of it.</p>
+<p>Using DMV gives us partition level refresh time. This helped in a project where I had to partition a massive dataset and wanted to know how well it was working. Querying the DMV allowed me to tune the size/number of partitions.</p>
+<p>DAX Studio can connect to published datasets in service. So using this method, we can even check the refresh times for tables in a published datasets. Below I am using Python to connect to a published dataset and query the DMV.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">adodbapi</span> <span class="k">as</span> <span class="nn">ado</span>
+
+
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">adodbapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"Provider=MSOLAP.8; Data Source = 'powerbi://api.powerbi.com/v1.0/myorg/&lt;workspace&gt;';initial catalog='&lt;dataset name&gt;'"</span><span class="p">)</span>
+<span class="n">cstring</span> <span class="o">=</span> <span class="s2">"Provider=MSOLAP.8; Data Source = 'powerbi://api.powerbi.com/v1.0/myorg/&lt;workspace&gt;';initial catalog='&lt;dataset name&gt;'"</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+
+<span class="k">with</span> <span class="n">ado</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">cstring</span><span class="p">)</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+        <span class="n">dax_str</span> <span class="o">=</span> <span class="s1">''' select [Name]</span>
+<span class="s1">    ,[ModifiedTime]</span>
+<span class="s1">    ,[RefreshedTime] </span>
+
+<span class="s1">from $SYSTEM.TMSCHEMA_PARTITIONS '''</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">dax_str</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Convert the DMV data to a pandas dataframe</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_dmv</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">'''</span>
+<span class="sd">    Original script: https://stackoverflow.com/questions/56075159/convert-listadodbapi-apibase-sqlrow-to-pd-dataframe</span>
+<span class="sd">    </span>
+<span class="sd">    Modified to make changes to retrieve the DMV data</span>
+<span class="sd">    </span>
+<span class="sd">    Input: Pandas dataframe</span>
+<span class="sd">    Return: Pandas dataframe with columns convrted to datetime </span>
+<span class="sd">    </span>
+<span class="sd">    Author: Sandeep Pawar</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
+<span class="sd">    '''</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ado_results</span><span class="p">))</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ado_results</span><span class="p">))</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">col</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">"UTC"</span><span class="p">)</span>
+    <span class="n">values</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'ModifiedTime'</span><span class="p">,</span><span class="s1">'RefreshedTime'</span><span class="p">]</span>
+    
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_dmv</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="p">((</span><span class="n">df</span><span class="p">[[</span><span class="s1">'RefreshedTime'</span><span class="p">]]</span><span class="o">-</span><span class="n">df</span><span class="p">[[</span><span class="s1">'RefreshedTime'</span><span class="p">]]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">'m'</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">"Refresh Durations"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">'Datsets'</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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24WOb4cdduCss85i4MCBC7X/8OHD2XPPPRk5ciQvv/wy06dP56233po7d/DCCy/k+OOP56GHHlroGBcXVxTNzMxsqdOpUycaGhp48sknWWWVVbjgggsa3f7OO+9kgw024IknnlggSZw9e3ZLhlrTqFGjaGho4NJLL2XbbbeloaGBhoYGttpqqzaRJIITRTMzM1vKbbnllrz++usAvPjii+y+++4MGDCAbbfdlmeeeYaGhgZ+9KMfcdttt9G/f38++eQTOnfuzIknnsgWW2zB2LFj+dOf/sTgwYPp378/3/72t5k9ezazZ89m+PDhbLLJJvTt25ezzz57bp/XX389gwcPZv311+f+++8HUsJ5wgknMGjQIDbddFMuvvhiIN1xfMwxx7DRRhsxdOhQ3nzzzSaPqXPnzgDcc889bL/99hx00EGsv/76/OQnP2HkyJEMHjyYvn378uKLLwKpYrr//vszaNAgBg0axIMPPrhYxtaXns3MzGypNXv2bO68806++c1vAnDkkUcyYsQI1ltvPR555BGOPvpo7rrrLk455RTGjRvH+eefD8BHH33EJptswimnnMLkyZP5zW9+w4MPPkiHDh04+uijGTlyJBtvvDGvv/46Tz75JADvvffe3H5nzZrFo48+ym233cbJJ5/MHXfcwR/+8Ae6du3KY489xqeffsrWW2/NkCFDeOKJJ3j22WeZNGkS//rXv9hoo434xje+UfcxTpgwgcmTJ7PKKquw9tprc8QRR/Doo4/yu9/9jvPOO49zzjmH73//+xx33HFss802vPrqq+y2225Mnjx5kcfXiaKZmZktdT755BP69+/PlClTGDBgALvuuivTp0/noYce4sADD5y73aefflq6f/v27dl///2BdFl6/PjxDBo0aG7bq666KnvttRcvvfQSxx57LEOHDmXIkCFz999vv/0AGDBgAFOmTAFgzJgxTJw4kRtuuAGA999/n+eff5777ruPQw45hPbt27Paaqux0047NetYBw0aRM+ePQFYZ5115sbRt29f7r77bgDuuOMOnn766bn7fPDBB3z44Yd06dKlWX1Vc6JoZmZmS53KHMX333+fPffckwsuuIDhw4ez0kor0dDQ0OT+HTt2pH379kC6NHzYYYfx61//eoHtJkyYwOjRo7ngggu47rrruOyyywBYbrnlgJRwzpo1a2475513Hrvtttt8bdx2222L9HVClb4A2rVrN/d5u3bt5vY9Z84cxo4dS6dOnRa6nzKeo2hmZmZLra5du3Luuedy1lln0alTJ/r06cP1118PpMRtwoQJTbax8847c8MNN8ydO/jvf/+bV155hbfffps5c+aw//77c+qpp/L444832s5uu+3GRRddxMyZMwF47rnn+Oijj9huu+245pprmD17NtOmTZtbBVychgwZMveyOlBXslwPVxTNzMxskdTzdTYtabPNNqNfv35cc801jBw5ku985zv88pe/ZObMmRx88MH069ev0f032mgjfvnLXzJkyBDmzJlDhw4duOCCC+jUqROHH344c+bMASitOBYdccQRTJkyhc0335yIoEePHtx0003su+++3HXXXfTt25f111+f7bfffrEde8W5557Ld7/7XTbddFNmzZrFdtttx4gRIxa5XUXEYgjPzKz1DRw4MMaNG9faYZh95k2ePJkNN9ywtcOwhVD22kkaHxGlXwrpS89mZmZmVsqJopmZmZmVcqJoZmZmzeapa0ufhXnNnCiamZlZs3Ts2JF33nnHyeJSJCJ455136NixY7P2813PZmZm1iy9evVi6tSpvPXWW60dijVDx44d6dWrV/N2iogl8gPMBhoKPz9ZTO3+vybW9y30+W/g5fz4jhrb3wMMLFk+HDh/EeLcAfhbE9sMLsQ6Adi3sO404DVgeklcbxX2OyIvXwsYn5c9BRxV2KcP8AjwPHAtsGxVnJV97q0R5wmF/p7Mr+0qed1lwJvAk1X79AcezvuMAwbn5YdWnRdzgP6NjNGawHTg+MKyf+TxegoYAbQvjMGdwMT8uvbKy3es6nMGsE+N/n6Tj/FJYFhh+THAC0AA3QvLTyrGVtLeisDrtc6lPE5j87FMrOpT+Tx4DpgMfK+xPhs7BxqJ78C87RwK7wNgWeByYFIe6x3y8uWBW4Fn8n6nL8R7Y0plDIHv5WMbCXQF/lp4bQ9vqq0BAwaEmZk1DzAuav0fXWvF4v6hKsFpjXaBK4ADmtjmHlovUVweWCY/7klKuCrPv5iXlSWKC8SVP9iXy4875w/j1fLz64CD8+MRwHfy45WAp4E18/NV6ziuvYC7Cs+3AzZnwURxDPCl/HgP4J6StvoCLzXR343A9cyfKK6Y/1VeXzm264HD8uOdgKtK2luF9AvE8iXrhgK3kyrv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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the same dataset published to service, I deducted the refres time of teh empty table from rest of the times to get relatove refresh duration. Yo can use SSMS/Tabular Editor to selectively refresh datasets (just like above) and get more relatively accurate refresh durations.</p>
+<p>In the same twitter thread, Imke Feldmann showed that she has incorporated a similar approach in her Power BI Cleaner tool. Take a look at it below:
+
+</p>
+<center>
+    <div class="jekyll-twitter-plugin">
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">Same here - what a great find. 👍<br>I've created a report on that which will be included in the next version of my <a href="https://twitter.com/hashtag/PowerBI?src=hash&amp;ref_src=twsrc%5Etfw">#PowerBI</a> Cleaner tool. <br>Join the exclusive preview of it tomorrow in my chat with Reid from <a href="https://twitter.com/HavensBI?ref_src=twsrc%5Etfw">@HavensBI</a> : <a href="https://t.co/78pwTQVhVv">https://t.co/78pwTQVhVv</a> <a href="https://t.co/H7D5aecL1Z">pic.twitter.com/H7D5aecL1Z</a></p>— Imke Feldmann (@TheBIccountant) <a href="https://twitter.com/TheBIccountant/status/1478975202981724162?ref_src=twsrc%5Etfw">January 6, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Absolute-Refresh">
+<a class="anchor" href="#Absolute-Refresh" aria-hidden="true"><span class="octicon octicon-link"></span></a>Absolute Refresh<a class="anchor-link" href="#Absolute-Refresh"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id='Solution-4-:-Using-SQL-Server-Profiler-with-"Visualize-My-Refresh"'>
+<a class="anchor" href="#Solution-4-:-Using-SQL-Server-Profiler-with-" visualize-my-refresh aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution 4 : Using SQL Server Profiler with "Visualize My Refresh"<a class="anchor-link" href="#Solution-4-:-Using-SQL-Server-Profiler-with-%22Visualize-My-Refresh%22"> </a>
+</h3>
+<h5 id="The-most-accurate-method">
+<a class="anchor" href="#The-most-accurate-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>The most accurate method<a class="anchor-link" href="#The-most-accurate-method"> </a>
+</h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The most accurate and reliable way to capture refresh durations are by using the SQL Server Profiler and <a href="https://dax.tips/">Phil Seamark's</a> "Visualize My Refresh" <a href="https://dax.tips/2021/02/15/visualise-your-power-bi-refresh/">report</a>. Phil will explain it better than I can so watch below:
+<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/r6.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y1B3HmGtGB0" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you have any thoughts on improving these solutions, please let me know.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/tuning/optimization/2022/02/25/relative-absolute-refresh-duration.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
