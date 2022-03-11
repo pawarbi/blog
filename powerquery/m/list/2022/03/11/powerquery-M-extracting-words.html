@@ -183,7 +183,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem<a class="anchor-link" href="#Problem"> </a>
 </h2>
 <p>A colleague reached out to me with an interesting problem. He wanted to extract certain error codes/phrases from sentences. He had a list of all possible codes and phrases and wanted it to be dynamic so that he can change the list of possible codes in the future. For example, imagine you survey 10 BI developers on which languages they use on a daily basis. Some might say Python, SQL, R, Excel etc. We have a list of all possible languages and we want to extract only the languages for that developer based on this list. If a language does not exist in the list, it should return a null value. See below what the final solution should look like:</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(13" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(13" alt="">.png)</p>
 
 </div>
 </div>
@@ -196,8 +196,8 @@ window.onload = wrap_img;
 </h2>
 <p>I couldn't find a solution online so I created one using List functions in M. All of the steps below can be wrapped into one nice function, but for demonstration purposes I will do it step by step. If you use this solution, just convert it into a function as needed. Also to keep the blog short, I am going to assume that the words/phrases match exactly with those in the list. You will need to format them (uppercase/lowercase/remove punctuations etc.) based on your scenario.</p>
 <p>We start with 2 columns. First column contains unique id for each respondent and the second column has their text responses. We also have a list of languages as another query.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(14" alt="1">.png)
-<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/lang%20list.png" alt="langlist"></p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(14" alt="">.png)
+<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/lang%20list.png" alt=""></p>
 
 </div>
 </div>
@@ -210,7 +210,7 @@ window.onload = wrap_img;
 </h4>
 <p>Create a new column with the text trimmed and cleaned. You can go to Add column &gt; Format &gt; Trim &gt; Clean</p>
 <p>If their are any punctuations, you should remove those as well in this step. We need each of the words to be isolated. For example, if the sentence contains "SQL," it will be treated as a one word. Remove the comma to turn "SQL," into "SQL".</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(15" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(15" alt="">.png)</p>
 
 </div>
 </div>
@@ -222,9 +222,9 @@ window.onload = wrap_img;
 <a class="anchor" href="#Step-2-:-Split-the-Text-using-Text.Split" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2 : Split the Text using <code>Text.Split</code><a class="anchor-link" href="#Step-2-:-Split-the-Text-using-Text.Split"> </a>
 </h4>
 <p>In this step we split the setence on each row into separate words and store them as a list using <code>Text.Split()</code> function.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(16" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(16" alt="">.png)</p>
 <p>Notice after splitting we get a list on each row.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(17" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(17" alt="">.png)</p>
 
 </div>
 </div>
@@ -236,9 +236,9 @@ window.onload = wrap_img;
 <a class="anchor" href="#Step-2-:-Find-Matching-Words-Using-List.Intersect-with-List.Buffer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2 : Find Matching Words Using <code>List.Intersect</code> with <code>List.Buffer</code><a class="anchor-link" href="#Step-2-:-Find-Matching-Words-Using-List.Intersect-with-List.Buffer"> </a>
 </h4>
 <p>Now we need to lookup the pre-defined list to see if any of the words in the above list exist. The expected result is that if the list contains any of the pre-defined words, those should be returned otherwise we should get a null value. We can achieve this using <code>List.Intersect()</code>. I am wrapping the list with <code>List.Buffer()</code> to make lookup faster.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(18" alt="1">.png)
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(18" alt="">.png)
 Notice below, the Person1 uses Python so the resulting list on the first row contains only "Python" and no other words. 
-<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/wordlistshown.png" alt="1"></p>
+<img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/wordlistshown.png" alt=""></p>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ Notice below, the Person1 uses Python so the resulting list on the first row con
 <a class="anchor" href="#Step-3-:-Convert-List-to-Table-Using-Table.FromList" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3 : Convert List to Table Using <code>Table.FromList</code><a class="anchor-link" href="#Step-3-:-Convert-List-to-Table-Using-Table.FromList"> </a>
 </h4>
 <p>Convert the intersected list into a table using <code>Table.FromList</code>.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(19" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(19" alt="">.png)</p>
 
 </div>
 </div>
@@ -262,9 +262,9 @@ Notice below, the Person1 uses Python so the resulting list on the first row con
 <a class="anchor" href="#Step-4-:-Expand-the-Table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 4 : Expand the Table<a class="anchor-link" href="#Step-4-:-Expand-the-Table"> </a>
 </h4>
 <p>Now we just need to expand the table to get each matching word on a separate row for each person. You can eaither use <code>Table.ExpandTableColumn</code> or just click on the two double arrows</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(21" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(21" alt="">.png)</p>
 <p>After extracting :</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(11" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(11" alt="">.png)</p>
 
 </div>
 </div>
@@ -277,11 +277,11 @@ Notice below, the Person1 uses Python so the resulting list on the first row con
 </h4>
 <p>Remove all the intermediate columns from steps 2-4 to keep only the resulting column with matching words! As I mentioned above, all these steps can be rolled into one nice function that can be used elsewhere as well.</p>
 <p>Person2 had two languages Python &amp; R so we get two lines, whereas person5 &amp; 8 had no matching languages thus null.</p>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(12" alt="1">.png)</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/word%20(12" alt="">.png)</p>
 <h4 id="Final-M-code:">
 <a class="anchor" href="#Final-M-code:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final M code:<a class="anchor-link" href="#Final-M-code:"> </a>
 </h4>
-<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/finalMcarbon.png" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/finalMcarbon.png" alt=""></p>
 
 </div>
 </div>
