@@ -3,9 +3,12 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated December 2021)*
+*(Last Updated May 2022)*
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working in Pharmacy Analytics team at [Humana](https://www.humana.com/) as Sr. Data Visualization Engineer. I use advanced data analytics, Statistics, Machine Learning to help improve health & well-being of our members. 
+
+You can watch my chat with Ben Ferry below :
+[![IMAGE_ALT](https://img.youtube.com/vi/5Nfd0StYseU/0.jpg)](https://www.youtube.com/watch?v=5Nfd0StYseU)
 
 Prior to Humana, I worked at Cree Lighting as Data Analytics Engineer. My background is in Mechanical Engineering & Product Development. After graduating with an M.S in Mechanical Engineering, I worked as research engineer focused on using engineering simulation tools  ([Finite Element Analysis](https://en.wikipedia.org/wiki/Finite_element_method), [Computational Fluid Dynamics](https://www.simscale.com/docs/simwiki/cfd-computational-fluid-dynamics/what-is-cfd-computational-fluid-dynamics/)) to analyze products. I am co-inventor of 4 patents related to thermal management of lighting fixtures. For 10+ years, I worked in a cross-disciplinary team of engineers to analyze structural and thermal performance of industrial and semiconductor products. I used to design physical tests using [DOE](https://asq.org/quality-resources/design-of-experiments), gather data, analyze it, create simulation models and recommend design changes to the product engineers. Now as a Data Science professional, I do the same thing but with different tools and data.
 
