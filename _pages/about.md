@@ -7,7 +7,9 @@ permalink: /about/
 
 My name is Sandeep Pawar. I am a Data Science professional, currently working in Pharmacy Analytics team at [Humana](https://www.humana.com/) as Sr. Data Visualization Engineer. I use advanced data analytics, Statistics, Machine Learning to help improve health & well-being of our members. 
 
-You can watch my chat with Ben Ferry below :
+You can watch my chat with Ben Ferry to learn about me, my work and data :
+
+
 [![IMAGE_ALT](https://img.youtube.com/vi/5Nfd0StYseU/0.jpg)](https://www.youtube.com/watch?v=5Nfd0StYseU)
 
 Prior to Humana, I worked at Cree Lighting as Data Analytics Engineer. My background is in Mechanical Engineering & Product Development. After graduating with an M.S in Mechanical Engineering, I worked as research engineer focused on using engineering simulation tools  ([Finite Element Analysis](https://en.wikipedia.org/wiki/Finite_element_method), [Computational Fluid Dynamics](https://www.simscale.com/docs/simwiki/cfd-computational-fluid-dynamics/what-is-cfd-computational-fluid-dynamics/)) to analyze products. I am co-inventor of 4 patents related to thermal management of lighting fixtures. For 10+ years, I worked in a cross-disciplinary team of engineers to analyze structural and thermal performance of industrial and semiconductor products. I used to design physical tests using [DOE](https://asq.org/quality-resources/design-of-experiments), gather data, analyze it, create simulation models and recommend design changes to the product engineers. Now as a Data Science professional, I do the same thing but with different tools and data.
@@ -73,6 +75,8 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Power BI for advanced analytics - Part 2**, Nov 3, 2021, [AI42](https://www.youtube.com/channel/UCYSVVM0ASUGDTeontl4pbxA/videos)
   - **Clustering and Segmentation In Power BI**, Nov 8-12, 2021, [PASS Data Community Summit](https://passdatacommunitysummit.com/)
   - **Demystifying Power BI AI Visuals**, November 1 2021, Atlanta Power BI User Group
+  - **Power BI Scatterplot Deep Dive**, Apr 19, 2022, [Minnesota SQL Server UG](https://www.meetup.com/MN-SQL-Server-User-Group-PASSMN/events/283211347/)
+  - **Query Folding in Power BI**,May 18 2022, [Austin TX Power BI User Group](https://www.meetup.com/Austin-Power-BI-User-Group/events/285287979/)
 
 
 
