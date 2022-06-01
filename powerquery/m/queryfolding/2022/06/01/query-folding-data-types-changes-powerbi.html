@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Query Folding Safe Data Type Changes | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Query Folding Safe Data Type Changes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Simple solution to make data type changes query folding safe" />
+<meta property="og:description" content="Simple solution to make data type changes query folding safe" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Simple solution to make data type changes query folding safe","dateModified":"2022-06-01T00:00:00-05:00","datePublished":"2022-06-01T00:00:00-05:00","headline":"Query Folding Safe Data Type Changes","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html"},"url":"https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Query Folding Safe Data Type Changes | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Query Folding Safe Data Type Changes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Simple solution to make data type changes query folding safe" />
+<meta property="og:description" content="Simple solution to make data type changes query folding safe" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Simple solution to make data type changes query folding safe","dateModified":"2022-06-01T00:00:00-05:00","datePublished":"2022-06-01T00:00:00-05:00","headline":"Query Folding Safe Data Type Changes","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html"},"url":"https://pawarbi.github.io/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Query Folding Safe Data Type Changes</h1><p class="page-description">Simple solution to make data type changes query folding safe</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-06-01T00:00:00-05:00" itemprop="datePublished">
+        Jun 1, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerquery">powerquery</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#M">M</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#queryfolding">queryfolding</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-06-01-query-folding-data-types-changes-powerbi.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-06-01-query-folding-data-types-changes-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-06-01-query-folding-data-types-changes-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Query-Folding">Query Folding </a></li>
+<li class="toc-entry toc-h2"><a href="#Checking-Query-Folding">Checking Query Folding </a></li>
+<li class="toc-entry toc-h2"><a href="#Changing-Data-Type">Changing Data Type </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Decimal-to-Percentage">Decimal to Percentage </a></li>
+<li class="toc-entry toc-h3"><a href="#Decimal-to-Currency">Decimal to Currency </a></li>
+<li class="toc-entry toc-h3"><a href="#Text-to-Logical">Text to Logical </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Summary">Summary </a></li>
+<li class="toc-entry toc-h2"><a href="#Resources">Resources </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-06-01-query-folding-data-types-changes-powerbi.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Query-Folding">
+<a class="anchor" href="#Query-Folding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Query Folding<a class="anchor-link" href="#Query-Folding"> </a>
+</h2>
+<p>I won't repeat here what is query folding. You can read about it in detail in <a href="https://docs.microsoft.com/en-us/power-query/power-query-folding">official documentation</a> and the resources I have provided below. But at a high level, query folding allows us to create query steps that send a single native query back to the data source instead of the mashup engine doing transformations. As much as possible, we want to design queries so they fold. Not all PowerQuery transformations are foldable. One of those transformations is changing data type.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
+
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">title</span><span class="o">=</span><span class="s">"vimeo-player"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://player.vimeo.com/video/714177719?h=466f2d1c1b"</span> <span class="na">width</span><span class="o">=</span><span class="s">"640"</span> <span class="na">height</span><span class="o">=</span><span class="s">"360"</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">"0"</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/714177719?h=466f2d1c1b" width="640" height="360" frameborder="0" allowfullscreen=""></iframe>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Checking-Query-Folding">
+<a class="anchor" href="#Checking-Query-Folding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Checking Query Folding<a class="anchor-link" href="#Checking-Query-Folding"> </a>
+</h2>
+<p>It is still debatable whether changing data types actually breaks query folding. My own tests using SQL Server, Postgres (BigQuery, Bit.io), OData, Synapse Analytics Serverless/Dedicated servers show that most data type changes don't actually break folding when you <strong>check the server logs</strong>. But my friend <a href="https://twitter.com/DataMozart/status/1529875011313467393">Nikola recently pointed out that</a> it may not always be the case. There are three ways to check if a query is folding :</p>
+<ul>
+<li>Right click the step in PQ and check if View Native Query option is greyed out. If it's greyed out, folding has stopped. Below query is foldable as the option is not greyed out. However, If this option is greyed out it doesn't necessarily mean that query folding isn't happening. But if it is not greyed out then we can be sure that query folding is taking place for sure. This method is similar to using <em>Value.Metadata()</em> to check query folding (<a href="https://en.brunner.bi/post/new-ways-to-check-if-queries-fold-in-power-query">link</a>). </li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/power-query/media/power-query-folding/query-folding-example.png" alt=""></p>
+<ul>
+<li>
+<p>Use Start Diagnostics in Power Query and check the detailed diagnostics report for the query sent to the data source. You can watch <a href="https://usergroup.tv/videos/query-folding-in-power-bi/">my video</a> above to learn about this technique. This process is definitely a bit tedious. You can also use SQL Profiler in DAX Studio or SSMS to trace queries and identify the queries generated.</p>
+</li>
+<li>
+<p>Check the server logs. This is the most straightforward and sure fire way. But not everyone has access to these logs.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Changing-Data-Type">
+<a class="anchor" href="#Changing-Data-Type" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing Data Type<a class="anchor-link" href="#Changing-Data-Type"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So how do we make data type changes, query folding safe? Easy -  <strong>Use Table.TransformColumns() instead of Table.TransformColumnTypes()</strong> .I have verified this with all the foldable data source types and it has always worked. If it doesn't work in your scenario, please let me know. 
+In the screenshot below, I am connected to serverless SQL pool in Synapse Analytics. I will be changing data types for three columns UnitPrice (decimal), UnitPriceDiscountPct (decimal), Is_Promotion (text).</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDC%201.PNG" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decimal-to-Percentage">
+<a class="anchor" href="#Decimal-to-Percentage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Percentage<a class="anchor-link" href="#Decimal-to-Percentage"> </a>
+</h3>
+<p>Custom Transformation : <code>Table.TransformColumns(Data, UnitPriceDiscountPct)</code></p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS2.PNG" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decimal-to-Currency">
+<a class="anchor" href="#Decimal-to-Currency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Currency<a class="anchor-link" href="#Decimal-to-Currency"> </a>
+</h3>
+<p>Custom Transformation : <code>Table.TransformColumns(Data, UnitPrice)</code></p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS3.PNG" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Text-to-Logical">
+<a class="anchor" href="#Text-to-Logical" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text to Logical<a class="anchor-link" href="#Text-to-Logical"> </a>
+</h3>
+<p>Custom Transformation : <code>Table.TransformColumns(Data, Is_Promotion)</code></p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDC4.PNG" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can use the exact same pattern to make any data type change query folding safe:</p>
+<p><code>Table.TransformColumns(Data, ColumnName)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">
+<a class="anchor" href="#Summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary<a class="anchor-link" href="#Summary"> </a>
+</h2>
+<p>Data type changes do not always stop query folding. You have to check the server logs to ensure if it's truly folding or not. But you can use above described method to always force query folding. This method works for SQL server, OData and Postgres SQL.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">
+<a class="anchor" href="#Resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources<a class="anchor-link" href="#Resources"> </a>
+</h2>
+<ul>
+<li>
+<p>Chris Webb's Blog: <a href="https://blog.crossjoin.co.uk/2021/02/21/query-folding-on-sql-queries-in-power-query-using-value-nativequery-and-enablefoldingtrue/">https://blog.crossjoin.co.uk/2021/02/21/query-folding-on-sql-queries-in-power-query-using-value-nativequery-and-enablefoldingtrue/</a></p>
+</li>
+<li>
+<p>Query Folding King, THE Alex Powers's <a href="https://www.youtube.com/watch?v=9sV3hIn8VTY">30 Day Query Folding Challenge</a></p>
+</li>
+<li>
+<p><a href="https://pawarbi.github.io/blog/power%20bi/powerquery/queryfolding/m/optimization/2022/01/25/parameter-valuenativequery-query-folding-where-clause-in-powerbi.html">My previous blog</a></p>
+</li>
+<li>
+<p>Nikola Ilic's blogs: Nikola has written and presented extensively on this topic</p>
+<ul>
+<li>
+<p><a href="https://data-mozart.com/query-folding-tricks-lies-ultimate-performance-test/">https://data-mozart.com/query-folding-tricks-lies-ultimate-performance-test/</a></p>
+</li>
+<li>
+<p><a href="https://data-mozart.com/what-is-a-query-folding-in-power-bi-and-why-should-i-care/">https://data-mozart.com/what-is-a-query-folding-in-power-bi-and-why-should-i-care/</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerquery/m/queryfolding/2022/06/01/query-folding-data-types-changes-powerbi.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
