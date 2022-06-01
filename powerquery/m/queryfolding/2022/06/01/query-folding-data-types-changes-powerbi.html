@@ -181,7 +181,7 @@ window.onload = wrap_img;
 <h2 id="Query-Folding">
 <a class="anchor" href="#Query-Folding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Query Folding<a class="anchor-link" href="#Query-Folding"> </a>
 </h2>
-<p>I won't repeat here what is query folding. You can read about it in detail in <a href="https://docs.microsoft.com/en-us/power-query/power-query-folding">official documentation</a> and the resources I have provided below. But at a high level, query folding allows us to create query steps that send a single native query back to the data source instead of the mashup engine doing transformations. As much as possible, we want to design queries so they fold. Not all PowerQuery transformations are foldable. One of those transformations is changing data type.</p>
+<p>You can read about query folding in detail in <a href="https://docs.microsoft.com/en-us/power-query/power-query-folding">official documentation</a> and the resources I have provided below. But at a high level, query folding allows us to create query steps that send a single native query back to the data source instead of the mashup engine doing the transformations. As much as possible, we want to design queries so they fold. Not all PowerQuery transformations are foldable. One of those transformations is changing data type.</p>
 
 </div>
 </div>
@@ -270,7 +270,8 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <h3 id="Decimal-to-Percentage">
 <a class="anchor" href="#Decimal-to-Percentage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Percentage<a class="anchor-link" href="#Decimal-to-Percentage"> </a>
 </h3>
-<p>Custom Transformation : <code>Table.TransformColumns(Data, UnitPriceDiscountPct)</code></p>
+<p>Custom Transformation :</p>
+<p>Table.TransformColumns(Data, UnitPriceDiscountPct)</p>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS2.PNG" alt=""></p>
 
 </div>
@@ -282,7 +283,8 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <h3 id="Decimal-to-Currency">
 <a class="anchor" href="#Decimal-to-Currency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Currency<a class="anchor-link" href="#Decimal-to-Currency"> </a>
 </h3>
-<p>Custom Transformation : <code>Table.TransformColumns(Data, UnitPrice)</code></p>
+<p>Custom Transformation :</p>
+<p>Table.TransformColumns(Data, UnitPrice)</p>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS3.PNG" alt=""></p>
 
 </div>
@@ -294,7 +296,8 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <h3 id="Text-to-Logical">
 <a class="anchor" href="#Text-to-Logical" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text to Logical<a class="anchor-link" href="#Text-to-Logical"> </a>
 </h3>
-<p>Custom Transformation : <code>Table.TransformColumns(Data, Is_Promotion)</code></p>
+<p>Custom Transformation :</p>
+<p>Table.TransformColumns(Data, Is_Promotion)</p>
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDC4.PNG" alt=""></p>
 
 </div>
@@ -303,8 +306,8 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can use the exact same pattern to make any data type change query folding safe:</p>
-<p><code>Table.TransformColumns(Data, ColumnName)</code></p>
+<p>You can use the exact same pattern to make any data type change query folding safe, including for text and date columns.</p>
+<p>Table.TransformColumns(Data, ColumnName)</p>
 
 </div>
 </div>
