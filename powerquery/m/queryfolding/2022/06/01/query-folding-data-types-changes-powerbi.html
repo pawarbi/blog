@@ -271,7 +271,36 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <a class="anchor" href="#Decimal-to-Percentage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Percentage<a class="anchor-link" href="#Decimal-to-Percentage"> </a>
 </h3>
 <p>Custom Transformation :</p>
-<p>Table.TransformColumns(Data, UnitPriceDiscountPct)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Table.TransformColumns(Data, {{"UnitPriceDiscountPct",Number.From, Percentage.Type}})'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS2.PNG" alt=""></p>
 
 </div>
@@ -284,7 +313,36 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <a class="anchor" href="#Decimal-to-Currency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decimal to Currency<a class="anchor-link" href="#Decimal-to-Currency"> </a>
 </h3>
 <p>Custom Transformation :</p>
-<p>Table.TransformColumns(Data, UnitPrice)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Table.TransformColumns(Data, {{"UnitPrice",Number.From, Currency.Type}})'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDCS3.PNG" alt=""></p>
 
 </div>
@@ -297,7 +355,36 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <a class="anchor" href="#Text-to-Logical" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text to Logical<a class="anchor-link" href="#Text-to-Logical"> </a>
 </h3>
 <p>Custom Transformation :</p>
-<p>Table.TransformColumns(Data, Is_Promotion)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Table.TransformColumns(Data, {{"Is_Promotion",Text.From, type logical}})'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/QFDC4.PNG" alt=""></p>
 
 </div>
@@ -307,11 +394,33 @@ In the screenshot below, I am connected to serverless SQL pool in Synapse Analyt
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can use the exact same pattern to make any data type change query folding safe, including for text and date columns.</p>
-<p>Table.TransformColumns(Data, ColumnName)</p>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Table.TransformColumns(Data, {{"ColumnName",&lt;..&gt;.From, type &lt;enter type&gt;}})'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
