@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>User Feedback Link / Button In Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="User Feedback Link / Button In Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Embed link in Power BI reports for users to easily submit feedback via email" />
+<meta property="og:description" content="Embed link in Power BI reports for users to easily submit feedback via email" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-10T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Embed link in Power BI reports for users to easily submit feedback via email","dateModified":"2022-06-10T00:00:00-05:00","datePublished":"2022-06-10T00:00:00-05:00","headline":"User Feedback Link / Button In Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html"},"url":"https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>User Feedback Link / Button In Power BI | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="User Feedback Link / Button In Power BI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Embed link in Power BI reports for users to easily submit feedback via email" />
+<meta property="og:description" content="Embed link in Power BI reports for users to easily submit feedback via email" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-10T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Embed link in Power BI reports for users to easily submit feedback via email","dateModified":"2022-06-10T00:00:00-05:00","datePublished":"2022-06-10T00:00:00-05:00","headline":"User Feedback Link / Button In Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html"},"url":"https://pawarbi.github.io/blog/usability/2022/06/10/submit-feedback-button-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">User Feedback Link / Button In Power BI</h1><p class="page-description">Embed link in Power BI reports for users to easily submit feedback via email</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-06-10T00:00:00-05:00" itemprop="datePublished">
+        Jun 10, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#usability">usability</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-06-10-submit-feedback-button-powerbi.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-06-10-submit-feedback-button-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-06-10-submit-feedback-button-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Dashboard-Graveyard">Dashboard Graveyard </a></li>
+<li class="toc-entry toc-h2"><a href="#Mailto-Link">Mailto Link </a></li>
+<li class="toc-entry toc-h2"><a href="#Resources">Resources </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-06-10-submit-feedback-button-powerbi.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dashboard-Graveyard">
+<a class="anchor" href="#Dashboard-Graveyard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dashboard Graveyard<a class="anchor-link" href="#Dashboard-Graveyard"> </a>
+</h2>
+<p>If you have created data analytics dashboards, you must have seen hundreds of dashboards that are created and left unused in workspaces leading to a graveyard of dead dashboards. While there might many reason for this, one of the primary reasons being lack of feedback loop. Often the business requirements change, users change, dashboards may have inaccuracies or they could be lacking usability/accessibility. To overcome this, the developer should set up a feedback loop either formally or informally so the business users can provide timely feedback. Below I show one quick method I use to help my business partners send me a feedback while they are accessing the dashboard. This has worked very well for me because it's less friction to provide feedback since it's right there on the report and it's freestyle (as opposed to forms). Users can submit feedback along with supplemntal information.</p>
+<p>Note that I am using the term dashboard loosely here :) Be sure to check the additional links at the bottom of the page to learn about the other ways to help users provide feedback.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/dashboard%20graveyard.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mailto-Link">
+<a class="anchor" href="#Mailto-Link" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mailto Link<a class="anchor-link" href="#Mailto-Link"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The idea is simple, create a customized <em>mailto</em> link that the users can click on. We can customize the link to include email addresses, subject line and the body of the email with instructions. Be specific and succinct in your instructions.</p>
+<p>There are several free online mailto link generators. I like to use <a href="https://mailtolink.me/">mailtolink</a>. Just fill out the email addresses, subject and the instructions and it will create the link for you.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>For privacy reasons, I enter dummy email addresses and links in the generator and then replace them in word. <strong>Don’t include any confidential information there.</strong> You can also use it to create a template once and just edit it for future projects.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once you have created the link, you can just embed the link in a text box and done !!! When the user clicks on the report, it will launch their default email client with the addresses, subject, instructions filled out. Once you create the url, be sure to test it in your browser.</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/mailtourllink.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Power BI, create a text box "Submit Feedback" and hyeperlink it to the generated mailto link. 
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>For some reason, the link doesn’t work with the buttons. I get around this by overlaying a transparent text box on a button/image so the text is hidden but you get the same effect.  
+</div>
+Try below, click on the <strong>Submit Feedback</strong> button in the top right corner:
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">link</span> <span class="o">=</span> <span class="s1">'https://app.powerbi.com/view?r=eyJrIjoiNjAzOGYzNTEtM2JlNS00ZmE2LThiZTQtYWRjNzI1MzJmYzc5IiwidCI6IjkxMzc2MWU4LTc4NjEtNDc0ZS05ZjM4LWQyZDc1MjUwMDExZiJ9&amp;pageName=ReportSection2a85fb54a002b410a870'</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiNjAzOGYzNTEtM2JlNS00ZmE2LThiZTQtYWRjNzI1MzJmYzc5IiwidCI6IjkxMzc2MWU4LTc4NjEtNDc0ZS05ZjM4LWQyZDc1MjUwMDExZiJ9&amp;pageName=ReportSection2a85fb54a002b410a870" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Be sure to let me know your feedback ! :)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">
+<a class="anchor" href="#Resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources<a class="anchor-link" href="#Resources"> </a>
+</h2>
+<p>There are other creative ways to achieve the same thing.</p>
+<ul>
+<li>
+<p>David Eldersveld shows how to <a href="https://dataveld.com/2019/06/05/enrich-your-power-bi-app-navigation-experience/">embed Microsoft Forms in Apps</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/B2VYRZlLUAs">Using Google Forms to submit feedback</a>, very creative.</p>
+</li>
+<li>
+<p><a href="https://zebrabi.com/writeback-comments-power-bi/">Using Power Apps</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/usability/2022/06/10/submit-feedback-button-powerbi.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
