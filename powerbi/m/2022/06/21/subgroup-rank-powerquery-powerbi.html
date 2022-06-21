@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column" />
+<meta property="og:description" content="Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"headline":"Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function","dateModified":"2022-06-21T00:00:00-05:00","datePublished":"2022-06-21T00:00:00-05:00","description":"Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html"},"@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column" />
+<meta property="og:description" content="Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"headline":"Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function","dateModified":"2022-06-21T00:00:00-05:00","datePublished":"2022-06-21T00:00:00-05:00","description":"Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html"},"@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Creating Subgroup Ranks in Power Query Using Table.AddRankColumn Function</h1><p class="page-description">Table.AddRankColumn is the latest addition to the M language. This post shows how you can use it to create subgroup rank column</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-06-21T00:00:00-05:00" itemprop="datePublished">
+        Jun 21, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#M">M</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-06-21-subgroup-rank-powerquery-powerbi.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-06-21-subgroup-rank-powerquery-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-06-21-subgroup-rank-powerquery-powerbi.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Table.AddRankColumn">Table.AddRankColumn </a></li>
+<li class="toc-entry toc-h2"><a href="#Subgroup-Rank">Subgroup Rank </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Important-Notes:">Important Notes: </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-06-21-subgroup-rank-powerquery-powerbi.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table.AddRankColumn">
+<a class="anchor" href="#Table.AddRankColumn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table.AddRankColumn<a class="anchor-link" href="#Table.AddRankColumn"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Table.AddRankColumn is the latest addition to the M language which lets you create ranks in Power Query directly. No more buffer-sort-add index column trick which was computationally expensive and could be less accurate. With this function you can specify one or more columns to rank by and also the order (ascending/descending). This is not a replacement for the <code>RANKX</code> function in DAX. If your rank order is not going to change or need it for validation purposes, this is a great function.</p>
+<p>Read the <a href="https://docs.microsoft.com/en-us/powerquery-m/table-addrankcolumn">official documentation</a> for all the function parameters. But Reza Rad has the most <a href="https://radacad.com/adding-pre-calculating-rank-in-power-bi-using-power-query">comprehensive overview</a> of the function with examples so definitely check it out.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>You need to upgrade to June 2022 version of Power BI to use it in Desktop. 
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Subgroup-Rank">
+<a class="anchor" href="#Subgroup-Rank" aria-hidden="true"><span class="octicon octicon-link"></span></a>Subgroup Rank<a class="anchor-link" href="#Subgroup-Rank"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the example below, we have three products, their colors and the Units. <code>Rank1</code> column shows the rank by number of units for all the products in the ascending order. What we are looking for is the subgroup rank, i.e rank within each product type as shown in <code>Rank2</code> column.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_clipboard</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Units</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="p">[</span><span class="s1">'Units'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Rank1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="p">[</span><span class="s1">'Units'</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Rank2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Product'</span><span class="p">)[</span><span class="s1">'Units'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">'rank'</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'Product'</span><span class="p">,</span><span class="s1">'Rank2'</span><span class="p">])</span>
+           
+     <span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Product</th>
+      <th>Color</th>
+      <th>Units</th>
+      <th>Rank1</th>
+      <th>Rank2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Product A</td>
+      <td>Red</td>
+      <td>4549</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Product A</td>
+      <td>Green</td>
+      <td>5562</td>
+      <td>10</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Product A</td>
+      <td>Black</td>
+      <td>7635</td>
+      <td>11</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Product A</td>
+      <td>Yellow</td>
+      <td>15000</td>
+      <td>12</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Product B</td>
+      <td>Black</td>
+      <td>1513</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Product B</td>
+      <td>Red</td>
+      <td>2969</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Product B</td>
+      <td>Black</td>
+      <td>3860</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Product B</td>
+      <td>Yellow</td>
+      <td>5409</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Product B</td>
+      <td>Green</td>
+      <td>5491</td>
+      <td>9</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Product C</td>
+      <td>Yellow</td>
+      <td>600</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Product C</td>
+      <td>Green</td>
+      <td>4264</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Product C</td>
+      <td>Red</td>
+      <td>4839</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is my walkthrough of how you can create subgroup ranks in Power Query.
+
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ysDBHMbtXsk" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Important-Notes:">
+<a class="anchor" href="#Important-Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important Notes:<a class="anchor-link" href="#Important-Notes:"> </a>
+</h4>
+<ol>
+<li>
+<p>As I mention in the video, this function is <strong>not query foldable</strong> so be sure to plan your steps to utilize folding first. If you don't know what is query folding, <a href="https://player.vimeo.com/video/714177719?h=466f2d1c1b">watch my in-depth session</a> on query folding.</p>
+</li>
+<li>
+<p>When you create the rank column, it will always sort the table by the newly created rank column. This may not always be desired. For example if your table is sorted by date or a key column when imported, that sort order will be disrupted when you create the rank column. I am not sure if there is a way to prevent that from happening. This also has an unintended effect that vertipaq compression may not be optimal. As you know, cardinality of the column matters in <a href="https://www.red-gate.com/simple-talk/databases/sql-server/bi-sql-server/vertipaq-optimization-and-its-impact-on-columnstore-compression/">vertipaq compression</a> but distribution of values matters as well. If the sort order is disrupted it may increase the size of the dataset. Be sure to check before and after.</p>
+</li>
+<li>
+<p>I haven't tested this on a large dataset but be sure to check the refresh time and dataset size after creating the rank column.</p>
+</li>
+<li>
+<p>Look at the <code>RankKind</code> <a href="https://docs.microsoft.com/en-us/powerquery-m/rankkind-type">parameter</a> to specify how the ranking should be done.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/m/2022/06/21/subgroup-rank-powerquery-powerbi.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
