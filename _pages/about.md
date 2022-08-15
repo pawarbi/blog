@@ -77,14 +77,13 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Demystifying Power BI AI Visuals**, November 1 2021, Atlanta Power BI User Group
   - **Power BI Scatterplot Deep Dive**, Apr 19, 2022, [Minnesota SQL Server UG](https://www.meetup.com/MN-SQL-Server-User-Group-PASSMN/events/283211347/)
   - **Query Folding in Power BI**,May 18 2022, [Austin TX Power BI User Group](https://www.meetup.com/Austin-Power-BI-User-Group/events/285287979/)
+  - **Serialization To Optimize Spark Notebooks in Synapse Analytics**,July 9th 2022, [Data Toboggan Cool Runnings](https://www.datatoboggan.co.uk/coolrunnings2022/)
+
+**Upcoming Presentations**:
+  - **Data Insights Summit - Chicago**,Sept 13-14 2022 
+  - **Portland Power BI User Group**,Sept 28 2022 
 
 
-
-
-
-  
-  
-  
  
  You can connect with me on LinkedIn and Twitter at:
 - **[LinkedIn](https://cutt.ly/pawarbi-linkedin)**
