@@ -33,8 +33,9 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
  
 **Certifications**:
  - Machine Learning Engineer with Microsoft Azure - [Udacity Nanodegree](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/f184bcbe-c13a-4dee-baea-9b2c608a3fe1.svg)
+ - Microsoft Certified Enterprise Data Analyst (DP-500)
  - Microsoft Certified Azure Data Scientist (DP-100)
- - Microsoft Certified Data Analyst (DA-100)
+ - Microsoft Certified Data Analyst (PL-300)
  - Azure AI Fundamentals Certification (AI-900)
  - JMP: Modern Screening Designs (Statistical Design of Experiments)
  - JMP: ANOVA and Regression
