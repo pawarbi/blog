@@ -5,7 +5,7 @@ permalink: /about/
 ---
 *(Last Updated August 2022)*
 
-My name is Sandeep Pawar. I am a Data Analytics & Data Science professional, currently working at [Hitachi Solutions]([https://www.humana.com/](https://global.hitachi-solutions.com/solutions/insights-enterprise-reporting-analytics/)) as Sr Power BI Architect. I use advanced data analytics, data visualization, Statistics, Machine Learning to create solutions, primarily using Microsoft data products & tools.
+My name is Sandeep Pawar. I am a Data Analytics & Data Science professional, currently working at [Hitachi Solutions](https://global.hitachi-solutions.com/solutions/insights-enterprise-reporting-analytics/) as Sr Power BI Architect. I use advanced data analytics, data visualization, Statistics, Machine Learning to create solutions, primarily using Microsoft data products & tools.
 
 You can watch my chat with Ben Ferry to learn about me, my work and data :
 
