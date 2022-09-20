@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Function To Audit Datasources For Query Folding | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Function To Audit Datasources For Query Folding" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Functions to quickly check which of the data sources are folding" />
+<meta property="og:description" content="Functions to quickly check which of the data sources are folding" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-20T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2022-09-20T00:00:00-05:00","dateModified":"2022-09-20T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html"},"description":"Functions to quickly check which of the data sources are folding","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html","headline":"Function To Audit Datasources For Query Folding","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Function To Audit Datasources For Query Folding | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Function To Audit Datasources For Query Folding" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Functions to quickly check which of the data sources are folding" />
+<meta property="og:description" content="Functions to quickly check which of the data sources are folding" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-20T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2022-09-20T00:00:00-05:00","dateModified":"2022-09-20T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html"},"description":"Functions to quickly check which of the data sources are folding","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html","headline":"Function To Audit Datasources For Query Folding","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Function To Audit Datasources For Query Folding</h1><p class="page-description">Functions to quickly check which of the data sources are folding</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-20T00:00:00-05:00" itemprop="datePublished">
+        Sep 20, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#powerquery">powerquery</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#queryfolding">queryfolding</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-09-20-query-folding-audit-powerbi-powerquery.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-09-20-query-folding-audit-powerbi-powerquery.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-09-20-query-folding-audit-powerbi-powerquery.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Query-Folding">Query Folding </a></li>
+<li class="toc-entry toc-h2"><a href="#Query-Folding-Audit">Query Folding Audit </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Value.Metadata">Value.Metadata </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Function-1:-__QFIndicator">Function 1: __QFIndicator </a></li>
+<li class="toc-entry toc-h2"><a href="#Function-2:-__QFAudit">Function 2: __QFAudit </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Steps">Steps </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Resources">Resources </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-09-20-query-folding-audit-powerbi-powerquery.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Query-Folding">
+<a class="anchor" href="#Query-Folding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Query Folding<a class="anchor-link" href="#Query-Folding"> </a>
+</h2>
+<p>I will assume you already know what is query folding. If you don't, please read <a href="https://learn.microsoft.com/en-us/power-query/query-folding-examples">this documentation</a> or watch the session I presented few months ago. I have included more resources at the bottom.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
+
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">title</span><span class="o">=</span><span class="s">"vimeo-player"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://player.vimeo.com/video/714177719?h=466f2d1c1b"</span> <span class="na">width</span><span class="o">=</span><span class="s">"640"</span> <span class="na">height</span><span class="o">=</span><span class="s">"360"</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">"0"</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Query-Folding-Audit">
+<a class="anchor" href="#Query-Folding-Audit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Query Folding Audit<a class="anchor-link" href="#Query-Folding-Audit"> </a>
+</h2>
+<p>Imagine a scenario where you are revisiting one of your old reports or are helping a client optimize their dataset performance. One of the first things you will look at are which of the queries are folding. If the query is folding, Power BI will offload all or part of the transformations back to the datasource thus resulting in faster refreshes. If you just have couple of data sources, you can check it by right clicking or using other methods I described in the video above. But if you have 20-30 queries, which is not uncommon, it will take time. What if there was a quick way so you can prioritize which queries to check ? The functions I wrote below will do exactly that.</p>
+<h4 id="Value.Metadata">
+<a class="anchor" href="#Value.Metadata" aria-hidden="true"><span class="octicon octicon-link"></span></a>Value.Metadata<a class="anchor-link" href="#Value.Metadata"> </a>
+</h4>
+<p>The function relies on two M functions. <code>Value.Metadata</code> which checks if the query is folding. And using <code>#section</code> to get list of all the queries. You can read more about <code>Value.Metadata</code> on Chris Webb's blog <a href="https://blog.crossjoin.co.uk/2016/08/02/another-way-to-check-query-folding-in-power-bipower-query-m-code/">here</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Function-1:-__QFIndicator">
+<a class="anchor" href="#Function-1:-__QFIndicator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Function 1: __QFIndicator<a class="anchor-link" href="#Function-1:-__QFIndicator"> </a>
+</h2>
+<p>This function uses <code>Value.Metadata</code> to check if query is folding or is foldable. If it returns <code>FALSE</code>, either the datasource is not foldable (such as Excel, CSV etc.) or the query is not folding. 
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>This function is not fullproof. There are scenarios where the query could be folding but it still might return <code>FALSE</code>. BigQuery, OData are some examples of that. 
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>// Save as __QFIndicator                
+(tableName as table) =&gt;
+  let
+    fn =
+      if (Value.Metadata(tableName)[QueryFolding][IsFolded] = true) then
+        "Query Folded Successfully"
+      else
+        error Error.Record(
+          "Query Folding Warning",
+          "Query not folding",
+          "Either the query does not use native query (i.e SQL) or the transformations are not foldable. If you are using SQL, check the query logs"
+        )
+  in
+    fn</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Function-2:-__QFAudit">
+<a class="anchor" href="#Function-2:-__QFAudit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Function 2: __QFAudit<a class="anchor-link" href="#Function-2:-__QFAudit"> </a>
+</h2>
+<p>This function applies the above <code>__QFIndicator</code> function on all the queries returned by the <code>#Section</code> function and gives you a sorted list.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>// Save as __QFAudit
+(optional RunFn as text) =&gt;
+  let
+    Source = #sections[Section1], 
+    #"Converted to Table" = Record.ToTable(Source), 
+    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Converted to Table"), 
+    #"Added Custom" = Table.AddColumn(
+            #"Removed Errors", 
+            "IsTable", 
+            each [Value] is table, 
+            type logical
+    ), 
+    #"Filtered Rows" = Table.SelectRows(#"Added Custom", each ([IsTable] = true)), 
+    QFCheck = Table.AddColumn(
+            #"Filtered Rows", 
+            "QF Check", 
+             each try __QFIndicator([Value]) otherwise Character.FromNumber(10060) &amp; " Check the query", 
+            type text
+    ), 
+    Result = Table.Sort(QFCheck, QF Check)
+  in
+    Result</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/qf1.png" alt="qf1"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Steps">
+<a class="anchor" href="#Steps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps<a class="anchor-link" href="#Steps"> </a>
+</h4>
+<ol>
+<li>Just save these two functions in PowerQuery</li>
+<li>Click <code>Invoke</code> on <code>__QFAudit</code> function</li>
+<li>It will return a table that looks like below. </li>
+<li>Note that the table doesn't query is not folding. It's prompting you to check the query. In some cases your data source may not support folding and in other query could be folding but <code>Value.Metadata</code> may not be able to pick it up. That's just the limitation of the function. You will get the same results in Dataflow where Query Folding indicator is available. </li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/qf2.png" alt="qf2"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>Another limitation here is that if you add a new query, you will have to invoke the function again. The results of the <code>#section</code> are not available in modeling fields and it won’t refresh automatically. This is a helper function. You can read more about it <a href="https://bengribaudo.com/blog/2021/07/12/5809/power-query-m-primer-part21-identifier-scope-sections">here</a>.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">
+<a class="anchor" href="#Resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources<a class="anchor-link" href="#Resources"> </a>
+</h2>
+<ol>
+<li>Chris Webb's Blog : <a href="https://blog.crossjoin.co.uk/2016/08/02/another-way-to-check-query-folding-in-power-bipower-query-m-code/">https://blog.crossjoin.co.uk/2016/08/02/another-way-to-check-query-folding-in-power-bipower-query-m-code/</a>
+</li>
+<li>30 Day Query Folding Challenge : <a href="https://www.youtube.com/watch?v=9sV3hIn8VTY">https://www.youtube.com/watch?v=9sV3hIn8VTY</a>
+</li>
+<li>Nikola's blog: <a href="https://data-mozart.com/query-folding-devil-is-in-the-detail/">https://data-mozart.com/query-folding-devil-is-in-the-detail/</a>
+</li>
+<li>Query Folding Guidance: <a href="https://learn.microsoft.com/en-us/power-bi/guidance/power-query-folding">https://learn.microsoft.com/en-us/power-bi/guidance/power-query-folding</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/srenamecol1.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/powerquery/queryfolding/2022/09/20/query-folding-audit-powerbi-powerquery.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Power BI, ML, Python, R, Azure ML</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="pawarbi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
