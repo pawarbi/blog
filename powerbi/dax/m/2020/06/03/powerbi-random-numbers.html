@@ -161,6 +161,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h5"><a href="#Tip-6:-Randomly-subsample-the-data-by-using-SAMPLE()-in-DAX">Tip 6: Randomly subsample the data by using SAMPLE() in DAX </a></li>
 <li class="toc-entry toc-h5"><a href="#Tip-7:-Randomly-generate-letters-or-sequence-of-letters">Tip 7: Randomly generate letters or sequence of letters </a></li>
 <li class="toc-entry toc-h5"><a href="#Tip-8:-Changing-column-type-to-decimal">Tip 8: Changing column type to decimal </a></li>
+<li class="toc-entry toc-h5"><a href="#Tip-9:-Limit-the-use-of-calculated-tables-and-columns-with-RAND()-and-RANDBETWEEN()">Tip 9: Limit the use of calculated tables and columns with RAND() and RANDBETWEEN() </a></li>
 </ul>
 </li>
 </ul>
@@ -285,6 +286,17 @@ window.onload = wrap_img;
 <a class="anchor" href="#Tip-8:-Changing-column-type-to-decimal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 8: Changing column type to decimal<a class="anchor-link" href="#Tip-8:-Changing-column-type-to-decimal"> </a>
 </h5>
 <p>When you create the custom column with random numbers using <code>Number.Random()</code> in Power Query, it will be mixed type (123/ABC). If you convert it to Decimal, randomness is lost and all the numbers in the column will be the same. Solution to that is just add another index column ! You can always delete it later.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Tip-9:-Limit-the-use-of-calculated-tables-and-columns-with-RAND()-and-RANDBETWEEN()">
+<a class="anchor" href="#Tip-9:-Limit-the-use-of-calculated-tables-and-columns-with-RAND()-and-RANDBETWEEN()" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tip 9: Limit the use of calculated tables and columns with RAND() and RANDBETWEEN()<a class="anchor-link" href="#Tip-9:-Limit-the-use-of-calculated-tables-and-columns-with-RAND()-and-RANDBETWEEN()"> </a>
+</h5>
+<p>The DAX Maestro Marco Russo <a href="https://www.sqlbi.com/blog/marco/2022/04/30/about-waiting-time-for-power-bi-desktop-to-open/">has a blog on "volatile" DAX functions</a>. These are the DAX functions that return differrent values when the model is refreshed. Using too many of these volatile functions in the model can cause slower refreshes. Use the <code>RAND()</code> AND <code>RANDBETWEEN()</code> but use them judicously and be aware of the potential performance impact.</p>
 
 </div>
 </div>
