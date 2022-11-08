@@ -209,7 +209,7 @@ $path = "C:\Users\User\Downloads\"
 foreach ($Csv in $Csv)
 {
 $report= $Csv.report_id
-$file_name = $Csv.Outfile_file
+$file_name = $Csv.file_name
 
 if ([string]::IsNullOrEmpty($report) -or ([string]::IsNullOrEmpty($file_name)))
     {
