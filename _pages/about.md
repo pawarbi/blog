@@ -79,10 +79,11 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Power BI Scatterplot Deep Dive**, Apr 19, 2022, [Minnesota SQL Server UG](https://www.meetup.com/MN-SQL-Server-User-Group-PASSMN/events/283211347/)
   - **Query Folding in Power BI**,May 18 2022, [Austin TX Power BI User Group](https://www.meetup.com/Austin-Power-BI-User-Group/events/285287979/)
   - **Serialization To Optimize Spark Notebooks in Synapse Analytics**,July 9th 2022, [Data Toboggan Cool Runnings](https://www.datatoboggan.co.uk/coolrunnings2022/)
+  - **Data Insights Summit - Chicago**,Sept 13-14 2022 [Time Series Forecasting in Power BI, Tabular Editor](https://datainsightsummit.us/index.php/schedule-2/) 
+  - **Portland Power BI User Group**,Sept 28 2022, [Key Influencer Visual Deep Dive](https://www.linkedin.com/posts/sanpawar_portland-power-bi-virtual-meetup-wed-sep-activity-6980962825326268417-y5_h)
+  - **Delhi Power BI User Group**,Oct 26 2022, [Introduction to Tabular Editor](https://pawarbi.github.io/blog/powerbi/tabulareditor/presentation/2022/10/28/powerbi-tabular-editor-session.html)
+  - **Atlanta Power BI User Group**,Nov 07 2022, [Data Science for Power BI Developers](https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/powershell-download-powerbi-report-copy.html)
 
-**Upcoming Presentations**:
-  - **Data Insights Summit - Chicago**,Sept 13-14 2022 
-  - **Portland Power BI User Group**,Sept 28 2022 
 
 
  
