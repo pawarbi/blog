@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Sandeep Pawar
-description: Power BI, ML, Python, R, Azure ML 
+description: Data Analytics, Data Science Professional with expertise in Microsoft Data stack (Power BI, Azure) 
 github_username: pawarbi
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
@@ -40,8 +40,8 @@ baseurl: "/blog" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    twitter: pawarbi
-    github: pawarbi
+    - { platform: twitter, user_url: "https://twitter.com/pawarbi" }
+#    github: pawarbi
 
 # Set this to true to get LaTeX math equation support
 use_math: 
