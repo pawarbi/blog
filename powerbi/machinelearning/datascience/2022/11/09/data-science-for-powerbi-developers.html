@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Power BI AutoML Deep Dive | Sandeep Pawar</title>
+<title>Data Science For Power BI Developers | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Power BI AutoML Deep Dive" />
+<meta property="og:title" content="Data Science For Power BI Developers" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
-<meta property="og:description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
+<meta name="description" content="Recording of the session at Atlanta Power BI User Group" />
+<meta property="og:description" content="Recording of the session at Atlanta Power BI User Group" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-08-25T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-11-09T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html","headline":"Power BI AutoML Deep Dive","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html"},"@context":"https://schema.org"}</script>
+{"description":"Recording of the session at Atlanta Power BI User Group","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html","headline":"Data Science For Power BI Developers","dateModified":"2022-11-09T00:00:00-06:00","datePublished":"2022-11-09T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -24,19 +24,19 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Power BI AutoML Deep Dive | Sandeep Pawar</title>
+<title>Data Science For Power BI Developers | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Power BI AutoML Deep Dive" />
+<meta property="og:title" content="Data Science For Power BI Developers" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
-<meta property="og:description" content="I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" />
+<meta name="description" content="Recording of the session at Atlanta Power BI User Group" />
+<meta property="og:description" content="Recording of the session at Atlanta Power BI User Group" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-08-25T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-11-09T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html","headline":"Power BI AutoML Deep Dive","dateModified":"2021-08-25T00:00:00-05:00","datePublished":"2021-08-25T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html"},"@context":"https://schema.org"}</script>
+{"description":"Recording of the session at Atlanta Power BI User Group","@type":"BlogPosting","url":"https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html","headline":"Data Science For Power BI Developers","dateModified":"2022-11-09T00:00:00-06:00","datePublished":"2022-11-09T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -97,8 +97,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Power BI AutoML Deep Dive</h1><p class="page-description">I was invited to speak at Portland Power BI User Group about Power BI AutoML. In this session, I showed how to create business-focussed, robust, explainable machine learning models using the AutoML capabilities in Power BI</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-25T00:00:00-05:00" itemprop="datePublished">
-        Aug 25, 2021
+    <h1 class="post-title p-name" itemprop="name headline">Data Science For Power BI Developers</h1><p class="page-description">Recording of the session at Atlanta Power BI User Group</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-11-09T00:00:00-06:00" itemprop="datePublished">
+        Nov 9, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -110,13 +110,13 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#PowerBI">PowerBI</a>
-        &nbsp;
-      
-        <a class="category-tags-link" href="/blog/categories/#automl">automl</a>
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
         &nbsp;
       
         <a class="category-tags-link" href="/blog/categories/#machinelearning">machinelearning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#datascience">datascience</a>
         
       
       </p>
@@ -127,19 +127,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2021-08-25-powerbi-automl.ipynb" role="button" target="_blank">
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2022-11-09-data-science-for-powerbi-developers.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2021-08-25-powerbi-automl.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2022-11-09-data-science-for-powerbi-developers.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2021-08-25-powerbi-automl.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2022-11-09-data-science-for-powerbi-developers.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -148,12 +148,12 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Power-BI-AutoML-Deep-Dive">Power BI AutoML Deep Dive </a></li>
+<li class="toc-entry toc-h2"><a href="#Motivation">Motivation </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2021-08-25-powerbi-automl.ipynb
+# file to edit: _notebooks/2022-11-09-data-science-for-powerbi-developers.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -168,22 +168,17 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Power-BI-AutoML-Deep-Dive">
-<a class="anchor" href="#Power-BI-AutoML-Deep-Dive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Power BI AutoML Deep Dive<a class="anchor-link" href="#Power-BI-AutoML-Deep-Dive"> </a>
+<h2 id="Motivation">
+<a class="anchor" href="#Motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation<a class="anchor-link" href="#Motivation"> </a>
 </h2>
-<p>In this session I wanted to show, not only how to create the machine learning models, but more importantly how to create models that answer business questions and are explainable and robust. Please watch and let me know your thoughts. Topic covered:</p>
-<ul>
-<li>Machine Learning Basics</li>
-<li>License Requirements</li>
-<li>How to create models that are:<ul>
-<li>Business focused (cost/loss functions/profit curves)</li>
-<li>Generalizable (underfitting/overfitting/error terrain analysis)</li>
-<li>Interpretable (SHAP, feature importance)</li>
-<li>Manageable (MLOps process and workflow)</li>
-</ul>
-</li>
-<li>Recommendations, Limitations</li>
-</ul>
+<p>I have presented on many topics related to Machine Learning, Data Science, Azure ML, AI Visuals in Power BI but I have always wanted to present how a Power BI developer can use data science in their workflow. The common misconception is that you have to know a ton of Statistics to use data science principles. While it will always help, that's not a requirement to get started. The difference between a BI developer and a data scientist is essentially how they analyze the data to get differrent insights. In this session I show what that approach looks like from a Power BI developer's perspective, common tasks/use cases in data science and how to get started. As a Power BI developer you will be able to enrich your reports with additional insights that you won't otherwise won't without data science.</p>
+<p>Thank you to Teo, Damu and others for inviting me to present.
+
+</p>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/S8o8UFaTo70" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
 
 </div>
 </div>
@@ -191,12 +186,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>
-</p>
-<center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/_CaFacQiW_E" frameborder="0" allowfullscreen=""></iframe>
-</center>
-
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/srenamecol1.png" alt=""></p>
 
 </div>
 </div>
@@ -213,7 +203,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/powerbi/automl/machinelearning/2021/08/25/powerbi-automl.html" hidden></a>
+</script><a class="u-url" href="/blog/powerbi/machinelearning/datascience/2022/11/09/data-science-for-powerbi-developers.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
