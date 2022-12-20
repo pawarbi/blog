@@ -2,7 +2,7 @@
   
     
         "post0": {
-            "title": "Fixing the Power BI Deployment Pipieline Error For Migrated Tabular Model With RLS",
+            "title": "Fixing the Power BI Deployment Pipiline Error For Migrated Tabular Model With RLS",
             "content": "The Issue . I recently completed a project where we migrated Analysis Services models to Power BI Premium datasets. Since Power BI datasets are nothing but AS tabular models, it&#39;s easy to copy/paste (manually or using C# scripts) tabular model objects such as relationships, measures, calculated columns, hierarchies, RLS roles etc. Everything went smoothly except when we set up deployment pipelines for CI/CD, it failed with an error that gave no clue why it was failing. We created a support ticket with Microsoft but they were stumped as well. They suggested using Large Dataset Format to resolve the error but that did not work. But after several tests, I figured out the issue. . . The Solution . The solution was simple: Change the Model Permission from Administrator to Read. When the object properties were copied, I copied everything along with the associated metadata. For a Power BI dataset, the security roles and access are defined in the service and not in the Power BI dataset. If you keep the Model Permission as Administrator, the Power BI dataset still works and refreshs fine but the Deployment Pipeline will fail. Don&#39;t ask me how long it took to figure this out! . .",
             "url": "https://pawarbi.github.io/blog/powerbi/tabulareditor/rls/2022/12/20/tabular-model-rls-deployment-pipeline.html",
             "relUrl": "/powerbi/tabulareditor/rls/2022/12/20/tabular-model-rls-deployment-pipeline.html",
