@@ -235,9 +235,9 @@
         ,"post21": {
             "title": "",
             "content": "Power BI AutoML Deep Dive . In this session I wanted to show, not only how to create the machine learning models, but more importantly how to create models that answer business questions and are explainable and robust. Please watch and let me know your thoughts. Topic covered: . Machine Learning Basics | License Requirements | How to create models that are: Business focused (cost/loss functions/profit curves) | Generalizable (underfitting/overfitting/error terrain analysis) | Interpretable (SHAP, feature importance) | Manageable (MLOps process and workflow) | . | Recommendations, Limitations | . youtube https://youtu.be/_CaFacQiW_E .",
-            "url": "https://pawarbi.github.io/blog/2022/12/20/2021-08-25-powerbi-automl-deepdive.html",
-            "relUrl": "/2022/12/20/2021-08-25-powerbi-automl-deepdive.html",
-            "date": " • Dec 20, 2022"
+            "url": "https://pawarbi.github.io/blog/2023/01/13/2021-08-25-powerbi-automl-deepdive.html",
+            "relUrl": "/2023/01/13/2021-08-25-powerbi-automl-deepdive.html",
+            "date": " • Jan 13, 2023"
         }
         
     
@@ -268,9 +268,9 @@
         ,"post24": {
             "title": "",
             "content": "Machine Learning in Power BI . Power BI and Azure ML have native integration with each other, which means not only you can consume the model deploy in Power BI but also use the resources/tools in Azure ML to manage the MLOps process. There is a misconception that you need Power BI Premium to use Azure ML. In this session I show that&#39;s not the case. Below are the topics covered: . Limitation of using Python or R in Power BI . Formula firewall | Privacy setting of the datasource must be Public | 30 min query timeout | Have to use personal gateway | Cannot use enhanced metadata | Dependency management | Not scaleable | No MLOps | . | Steps to access Azure ML models in Power BI . Give Azure ML access to Power BI tenant in IAM | Use scoring script with input/output schema | . | . . Topics Covered: . Invoking Azure ML models in Power Query in Desktop and using dataflow in service . | Thoughts on batch-scoring . | Other considerations: . Azure ML models can only be called for real-time inference. | Use ACI for small models and AKS for large models that requore GPU, scaleable compute, low latency, high availability | Real-time inferencing is expensive! Use batch scoring if real-time is not needed | Incremental refreshes in Power BI will work with models invoked from Azure ML but watch out for (query) performance | With Azure Arc, you can use your own Kubernets service! Deploy the model in Azure ML but use your own K8 (AWS, GCP etc.) | Premium Per User gives you access to Auto ML. If you have access to PPU, it may be worth first experimenting with AutoML before using Azure ML model to save cost. PPU Automl doesn&#39;t offer the same level of MLOps capabilities though. | . | . . References: . https://docs.microsoft.com/en-us/power-bi/connect-data/service-aml-integrate . | https://pawarbi.github.io/blog/powerbi/r/python/2020/05/15/powerbi-python-r-tips.html . | https://azure.microsoft.com/en-us/blog/innovate-across-hybrid-and-multicloud-with-new-azure-arc-capabilities/ . | https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-scripts . | https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-power-bi-custom-model . | . | .",
-            "url": "https://pawarbi.github.io/blog/2022/12/20/2021-04-05-operationalizing-ml-models-powerbi-azureml-mlops.html",
-            "relUrl": "/2022/12/20/2021-04-05-operationalizing-ml-models-powerbi-azureml-mlops.html",
-            "date": " • Dec 20, 2022"
+            "url": "https://pawarbi.github.io/blog/2023/01/13/2021-04-05-operationalizing-ml-models-powerbi-azureml-mlops.html",
+            "relUrl": "/2023/01/13/2021-04-05-operationalizing-ml-models-powerbi-azureml-mlops.html",
+            "date": " • Jan 13, 2023"
         }
         
     
@@ -323,9 +323,9 @@
         ,"post29": {
             "title": "",
             "content": "Forecasting in Power BI . I have written and talked about Time Series Forecasting previously, especially on how to create forecasts in Power BI. You can refer to my previous blog posts below: . Time series Forecasting in Python &amp; R, Part 1 (EDA): Link This blog covers exploratory data analysis techniques for time series data before creating the forecast. . Time series Forecasting in Python &amp; R, Part 2 (Forecasting): Link Here I go into theoretical and practical aspects of creatings forecasts using many different classical forecasting methods . Time series Forecasting in Power BI: Link This blog shows how to create forecasts in Power BI, its strengths, limitations, and my recommendations. . I recently presented on this topic at Global AI Bootcamp, Singapore. Here is the recording of that presentation. It summarizes my findings from the blog above. . .",
-            "url": "https://pawarbi.github.io/blog/2022/12/20/2021-01-20-timeseries-forecasting-in-powerbi.html",
-            "relUrl": "/2022/12/20/2021-01-20-timeseries-forecasting-in-powerbi.html",
-            "date": " • Dec 20, 2022"
+            "url": "https://pawarbi.github.io/blog/2023/01/13/2021-01-20-timeseries-forecasting-in-powerbi.html",
+            "relUrl": "/2023/01/13/2021-01-20-timeseries-forecasting-in-powerbi.html",
+            "date": " • Jan 13, 2023"
         }
         
     
