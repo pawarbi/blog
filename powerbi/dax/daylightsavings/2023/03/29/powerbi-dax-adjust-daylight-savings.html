@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Handy Keyboard Shortcuts in Power BI | Sandeep Pawar</title>
+<title>DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Handy Keyboard Shortcuts in Power BI" />
+<meta property="og:title" content="DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Few handy keyboard shortcuts I use frequenctly in Power BI" />
-<meta property="og:description" content="Few handy keyboard shortcuts I use frequenctly in Power BI" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html" />
+<meta name="description" content="A quick measure to calculate time based on US Daylight Savings Time" />
+<meta property="og:description" content="A quick measure to calculate time based on US Daylight Savings Time" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-17T00:00:00-05:00" />
+<meta property="article:published_time" content="2023-03-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Few handy keyboard shortcuts I use frequenctly in Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html"},"url":"https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html","headline":"Handy Keyboard Shortcuts in Power BI","dateModified":"2020-06-17T00:00:00-05:00","datePublished":"2020-06-17T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"A quick measure to calculate time based on US Daylight Savings Time","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html"},"url":"https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html","headline":"DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time","dateModified":"2023-03-29T00:00:00-05:00","datePublished":"2023-03-29T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -24,19 +24,19 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Handy Keyboard Shortcuts in Power BI | Sandeep Pawar</title>
+<title>DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time | Sandeep Pawar</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Handy Keyboard Shortcuts in Power BI" />
+<meta property="og:title" content="DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Few handy keyboard shortcuts I use frequenctly in Power BI" />
-<meta property="og:description" content="Few handy keyboard shortcuts I use frequenctly in Power BI" />
-<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html" />
-<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html" />
+<meta name="description" content="A quick measure to calculate time based on US Daylight Savings Time" />
+<meta property="og:description" content="A quick measure to calculate time based on US Daylight Savings Time" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html" />
 <meta property="og:site_name" content="Sandeep Pawar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-17T00:00:00-05:00" />
+<meta property="article:published_time" content="2023-03-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Few handy keyboard shortcuts I use frequenctly in Power BI","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html"},"url":"https://pawarbi.github.io/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html","headline":"Handy Keyboard Shortcuts in Power BI","dateModified":"2020-06-17T00:00:00-05:00","datePublished":"2020-06-17T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"A quick measure to calculate time based on US Daylight Savings Time","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html"},"url":"https://pawarbi.github.io/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html","headline":"DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time","dateModified":"2023-03-29T00:00:00-05:00","datePublished":"2023-03-29T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -97,8 +97,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Handy Keyboard Shortcuts in Power BI</h1><p class="page-description">Few handy keyboard shortcuts I use frequenctly in Power BI</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-17T00:00:00-05:00" itemprop="datePublished">
-        Jun 17, 2020
+    <h1 class="post-title p-name" itemprop="name headline">DAX Measure to Dynamically Offset Datetime Based on Daylight Savings Time</h1><p class="page-description">A quick measure to calculate time based on US Daylight Savings Time</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-03-29T00:00:00-05:00" itemprop="datePublished">
+        Mar 29, 2023
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -111,6 +111,12 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
         <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#dax">dax</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#daylightsavings">daylightsavings</a>
         
       
       </p>
@@ -121,19 +127,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2020-06-17-powerbi-keyboard-shortcuts.ipynb" role="button" target="_blank">
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2023-03-29-powerbi-dax-adjust-daylight-savings.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2020-06-17-powerbi-keyboard-shortcuts.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2023-03-29-powerbi-dax-adjust-daylight-savings.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2020-06-17-powerbi-keyboard-shortcuts.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2023-03-29-powerbi-dax-adjust-daylight-savings.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -142,12 +148,12 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Shortcuts">Shortcuts </a></li>
+<li class="toc-entry toc-h2"><a href="#Adjusting-Time-Based-on-DST">Adjusting Time Based on DST </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2020-06-17-powerbi-keyboard-shortcuts.ipynb
+# file to edit: _notebooks/2023-03-29-powerbi-dax-adjust-daylight-savings.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -162,47 +168,39 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Shortcuts">
-<a class="anchor" href="#Shortcuts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shortcuts<a class="anchor-link" href="#Shortcuts"> </a>
+<h2 id="Adjusting-Time-Based-on-DST">
+<a class="anchor" href="#Adjusting-Time-Based-on-DST" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adjusting Time Based on DST<a class="anchor-link" href="#Adjusting-Time-Based-on-DST"> </a>
 </h2>
-<p>I am sure there are many more, but these are the ones I use frequently.</p>
-<ol>
-<li>
-<strong>Alt + Drag</strong> to toggle snap-on off and move objects freely</li>
-</ol>
-<ol>
-<li>
-<strong>Up/Down arrows</strong> to move objects in small steps &amp; SHIFT+ Arrow to move them large steps</li>
-</ol>
-<ol>
-<li>
-<strong>Ctrl + Shift + Arrow</strong> to make shapes bigger/smaller</li>
-</ol>
-<ol>
-<li>
-<strong>Shift + Resize</strong> to keep the aspect ratio</li>
-</ol>
-<ol>
-<li>
-<strong>Ctrl + G</strong> to group and <strong>Ctrl + Shift + G</strong> to ungroup. Align, Distribute and Group and then resize to scale all the shapes/cards at the same time</li>
-</ol>
-<ol>
-<li>
-<strong>Ctrl + Arrow</strong> to quickly cycle through visuals/shapes on the canvas</li>
-</ol>
+<p>It's often a requirement in Power BI reports to use dates or display refresh times. The best practice is to calculate the refresh time <a href="https://www.fourmoo.com/2017/10/10/using-power-bi-to-ensure-daylight-savings-dates-and-times-change-dynamically/">using M</a> but if you are using Direct Query or streaming dataset, it's not an option. You have to create a DAX measure. I recently had such requirement to show refresh time based on Pacific Time zone. Below measure calculates the current time in UTC timezone and returns time in Pacific time zone adjusted for daylight savings time. I used official rules from <a href="https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst">here</a>, which state:</p>
+<ul>
+<li>DST begins on second Sunday of March</li>
+<li>DST ends on first Sunday of November</li>
+</ul>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>
-</p>
-<center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/f1SclBko0qw" frameborder="0" allowfullscreen=""></iframe>
-</center>
+<pre><code>Page Refreshed Datetime =
+// https://www.nist.gov/pml/time-and-frequency-division/popular-links/daylight-saving-time-dst
+// Calculates time in Pacific timezone
 
+VAR _utcnow =
+    UTCNOW ()
+VAR _year =
+    YEAR ( _utcnow )
+VAR _utcdate =
+    DATE ( YEAR ( _utcnow ), MONTH ( _utcnow ), DAY ( _utcnow ) ) // DST begins on the second Sunday of March    
+VAR _dstbegins =
+    DATE ( _year, 3, 1 )
+        + MOD ( 8 - WEEKDAY ( DATE ( _year, 3, 1 ) ), 7 ) + 7 // DST ends on the first Sunday of November            
+VAR _dstends =
+    DATE ( _year, 11, 1 )
+        + MOD ( 8 - WEEKDAY ( DATE ( _year, 11, 1 ) ), 7 )
+VAR _IsDST = _utcdate &gt;= _dstbegins
+    &amp;&amp; _utcdate &lt; _dstends
+RETURN
+    SWITCH (
+        TRUE,
+        _IsDST, _utcnow - TIME ( 7, 00, 00 ), //For Pacific Timezone
+        _utcnow - TIME ( 8, 00, 00 )
+    )</code></pre>
 
 </div>
 </div>
@@ -219,7 +217,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/powerbi/2020/06/17/powerbi-keyboard-shortcuts.html" hidden></a>
+</script><a class="u-url" href="/blog/powerbi/dax/daylightsavings/2023/03/29/powerbi-dax-adjust-daylight-savings.html" hidden></a>
 </article>
 
       </div>
