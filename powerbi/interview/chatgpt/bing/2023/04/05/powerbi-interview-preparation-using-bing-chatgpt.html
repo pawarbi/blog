@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using articles from SQLBI to generate interview questions" />
+<meta property="og:description" content="Using articles from SQLBI to generate interview questions" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-05T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Using articles from SQLBI to generate interview questions","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html"},"url":"https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html","headline":"Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help","dateModified":"2023-04-05T00:00:00-05:00","datePublished":"2023-04-05T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help | Sandeep Pawar</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using articles from SQLBI to generate interview questions" />
+<meta property="og:description" content="Using articles from SQLBI to generate interview questions" />
+<link rel="canonical" href="https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html" />
+<meta property="og:url" content="https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html" />
+<meta property="og:site_name" content="Sandeep Pawar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-05T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Using articles from SQLBI to generate interview questions","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html"},"url":"https://pawarbi.github.io/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html","headline":"Preparing For Power BI (or Any) Interview With Bing/ChatGPT’s Help","dateModified":"2023-04-05T00:00:00-05:00","datePublished":"2023-04-05T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://pawarbi.github.io/blog/feed.xml" title="Sandeep Pawar" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-164557532-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Sandeep Pawar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Preparing For Power BI (or Any) Interview With Bing/ChatGPT&#39;s Help</h1><p class="page-description">Using articles from SQLBI to generate interview questions</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-04-05T00:00:00-05:00" itemprop="datePublished">
+        Apr 5, 2023
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#powerbi">powerbi</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#interview">interview</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#chatgpt">chatgpt</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#bing">bing</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/pawarbi/blog/tree/master/_notebooks/2023-04-05-powerbi-interview-preparation-using-bing-chatgpt.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/pawarbi/blog/master?filepath=_notebooks%2F2023-04-05-powerbi-interview-preparation-using-bing-chatgpt.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/pawarbi/blog/blob/master/_notebooks/2023-04-05-powerbi-interview-preparation-using-bing-chatgpt.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Prompt:">Prompt: </a></li>
+<li class="toc-entry toc-h2"><a href="#Answers">Answers </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2023-04-05-powerbi-interview-preparation-using-bing-chatgpt.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prompt:">
+<a class="anchor" href="#Prompt:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prompt:<a class="anchor-link" href="#Prompt:"> </a>
+</h2>
+<pre><code>
+Generate interview questions based on the following articles. Questions should not be vague. The purpose of the interview is to test interviewee's technical competency and real world experience with using CALCULATE in DAX. Avoid using trick questions. Categorize the questions into 3 levels: Beginner, Intermediate and Expert. Give the interviewee a real world example of Sales analysis for a company that sells umbrellas in US, Vietnam and Brazil. Explain the table, columns and measures briefly and then ask questions based on this example. Don't include answers. Do not ask for anything that is outside these articles.
+
+https://www.sqlbi.com/articles/introducing-calculate-in-dax/
+
+https://www.sqlbi.com/articles/understanding-context-transition-in-dax/
+
+https://www.sqlbi.com/articles/filter-context-in-dax/
+
+https://www.sqlbi.com/articles/row-context-in-dax/</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Answers">
+<a class="anchor" href="#Answers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Answers<a class="anchor-link" href="#Answers"> </a>
+</h2>
+<p>Below is Bing's Response.</p>
+
+<pre><code>text
+Some possible interview questions based on the articles are:
+
+- Beginner level:
+  - What is the difference between row context and filter context in DAX?
+  - What is the purpose of the CALCULATE function in DAX?
+  - How can you use CALCULATE to modify the filter context of an expression?
+  - What are some examples of filter arguments that can be used with CALCULATE?
+  - What is the difference between short syntax and long syntax for filter arguments in CALCULATE?
+
+- Intermediate level:
+  - How does CALCULATE handle existing filters in the filter context?
+  - What are some filter modifier functions that can be used with CALCULATE?
+  - How can you use USERELATIONSHIP and CROSSFILTER functions with CALCULATE to modify or activate relationships?
+  - What is context transition and how does it affect the behavior of CALCULATE?
+  - How can you use variables to store intermediate results in a CALCULATE expression?
+
+- Expert level:
+  - How does CALCULATE handle complex filter conditions that involve multiple columns or tables?
+  - How can you use KEEPFILTERS and REMOVEFILTERS functions with CALCULATE to preserve or remove existing filters?
+  - How can you use ALL, ALLEXCEPT and ALLNOBLANKROW functions with CALCULATE to remove filters from one or more columns or tables?
+  - How can you use FILTER function with CALCULATE to apply custom filter conditions that cannot be defined by a Boolean expression?
+  - How can you use CALCULATETABLE function to modify the filter context of an expression that returns a table object?
+
+A real world example of Sales analysis for a company that sells umbrellas in US, Vietnam and Brazil is:
+
+- Table: Sales
+- Columns: 
+  - Date: The date of the sale
+  - Country: The country where the sale occurred (US, Vietnam or Brazil)
+  - Product: The product name of the umbrella sold
+  - Quantity: The number of units sold
+  - Price: The unit price of the product
+- Measures:
+  - Sales Amount: The total amount of sales, calculated as Quantity * Price
+  - Average Price: The average price of sales, calculated as Sales Amount / Quantity
+  - Sales Quantity: The total number of units sold, calculated as SUM ( Sales [Quantity] )
+
+Some questions based on this example are:
+
+- Beginner level:
+  - What is the sales amount for Brazil in January 2020?
+  - How can you use CALCULATE to filter the sales amount by a specific product name?
+  - How can you use CALCULATE to show the sales amount for each country as a percentage of the total sales amount?
+
+- Intermediate level:
+  - What is the average price for Vietnam in February 2020?
+  - How can you use CALCULATE to show the average price for each product as a percentage of the average price for all products?
+  - How can you use CALCULATE to compare the sales quantity for each country with the previous month?
+
+- Expert level:
+  - What is the sales quantity for US in March 2020 for products that have a price higher than the average price for all products?
+  - How can you use CALCULATE to show the sales quantity for each product as a percentage of the sales quantity for its country?
+  - How can you use CALCULATE to compare the sales amount for each country with the same month of the previous year?</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Below is ChatGPT 4's response: <em>This was using March 23 Version of ChatGPT</em></p>
+
+<pre><code>Table description: The table, named "Sales", contains the following columns:
+
+OrderID: Unique identifier for each order
+Date: Date when the order was placed
+Country: Country where the order was made (US, Vietnam, or Brazil)
+Quantity: Number of umbrellas sold in the order
+Price: Price per umbrella
+Discount: Discount applied to the order (as a decimal, e.g., 0.10 for a 10% discount)
+The following measures have been created:
+
+TotalSales: Total sales amount
+TotalDiscount: Total discount amount
+NetSales: Total sales amount after applying the discount
+Beginner:
+
+What is the purpose of the CALCULATE function in DAX?
+How do you use the CALCULATE function to compute the total sales for umbrellas in the US only?
+How would you calculate the average sales per order in Brazil using CALCULATE?
+Intermediate:
+
+Explain the difference between filter context and row context in DAX.
+How does context transition occur, and how does it relate to the CALCULATE function?
+Write a DAX formula to calculate the total sales for umbrellas in the last 30 days, using the CALCULATE function.
+Expert:
+
+Can you describe a scenario where context transition might produce unexpected results, and how you would address it in the context of our umbrella sales example?
+How would you create a measure that calculates the percentage of total sales coming from discounted orders, using the CALCULATE function?
+Write a DAX formula that calculates the total sales in Vietnam only for the orders that have a higher sales amount than the average sales amount in the US, using the CALCULATE function.</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>For reproducibility, here are the settings I used in Bing</strong>:</p>
+<p><img src="https://raw.githubusercontent.com/pawarbi/blog/master/images/powerbi-interview-gpt.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the initial tests, both Bing and ChatGPT asked questions that were outside the scope of this articles, so I added <code>Do not ask for anything that is outside these articles</code> to get a better response. Overall, I think the questions are generic and do like how it it ramped up the complexity from beginner to expert. If I added more articles and transcripts using <a href="https://openai.com/research/whisper">Whisper</a> (from SQLBI and non-SQLBI), it might generate more diverese questions. You can also use it to get answers.</p>
+<p>I do hope Marco and Alberto create an open-source ChatGPT plugin that can be used to interact with their articles. I am also exploring developing something similar as a side project.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="pawarbi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/powerbi/interview/chatgpt/bing/2023/04/05/powerbi-interview-preparation-using-bing-chatgpt.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://pawarbi.github.io/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Data Analytics, Data Science Professional with expertise in Microsoft Data stack (Power BI, Azure)</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+  <a rel="me" href="https://twitter.com/pawarbi" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
