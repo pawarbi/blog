@@ -3,7 +3,7 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-*(Last Updated August 2022)*
+*(Last Updated April 2023)*
 
 My name is Sandeep Pawar. I am a Data Analytics & Data Science professional, currently working at [Hitachi Solutions](https://global.hitachi-solutions.com/solutions/insights-enterprise-reporting-analytics/) as Sr Power BI Architect. I use advanced data analytics, data visualization, Statistics, Machine Learning to create solutions, primarily using Microsoft data products & tools.
 
@@ -83,6 +83,9 @@ I enjoy watching cricket and making espressos & latte art. I can make a heart, t
   - **Portland Power BI User Group**,Sept 28 2022, [Key Influencer Visual Deep Dive](https://www.linkedin.com/posts/sanpawar_portland-power-bi-virtual-meetup-wed-sep-activity-6980962825326268417-y5_h)
   - **Delhi Power BI User Group**,Oct 26 2022, [Introduction to Tabular Editor](https://pawarbi.github.io/blog/powerbi/tabulareditor/presentation/2022/10/28/powerbi-tabular-editor-session.html)
   - **Atlanta Power BI User Group**,Nov 07 2022, [Data Science for Power BI Developers](https://pawarbi.github.io/blog/powerbi/machinelearning/datascience/2022/11/09/powershell-download-powerbi-report-copy.html)
+  - **No Code CI/CD Pipeline For Power BI Deployment**,Mar 06 2023, [Power BI Summit](https://globalpowerbisummit.com/?page_id=1417)
+  - **Python For Power BI Developers**,Apr 20 2023, [Persian Power BI User Group](https://www.youtube.com/@VahidDM)
+
 
 
 
